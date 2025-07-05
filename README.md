@@ -1,129 +1,124 @@
-# LG_DX_School
 
-## Notion-MCP 활용방안 가이드
+# 3-Part Daily Reflection Dashboard
 
-### 1. 개요
-Notion은 협업 문서화 및 데이터 관리 플랫폼이며, MCP(Model Context Protocol)는 다양한 시스템/에이전트와의 연동 및 자동화를 지원합니다. 두 시스템을 연계하면, 문서 기반 협업과 데이터 자동화, 워크플로우 최적화를 동시에 달성할 수 있습니다.
+## 프로젝트 개요
 
----
-
-### 2. 시스템 연동 구조
-```mermaid
-graph TD
-    A[Notion] --API 연동--> B[MCP Agent]
-    B --> C[자동화 스크립트]
-    C --> D[데이터/문서 통합]
-    D --> E[협업 워크플로우]
-    E --> F[최종 산출물]
-    
-
-```
-**설명:** Notion에서 작성된 문서/데이터가 MCP Agent를 통해 자동화되고, 통합된 결과가 다시 협업 워크플로우로 연결되어 최종 산출물로 이어집니다.
+**오전수업, 오후수업, 저녁자율학습** 3개 시간대별로 학습 컨디션, 난이도, 학습량, GitHub 활동을 자동 기록·분석·시각화하는 Notion/Supabase/GitHub MCP 기반 일일 반성 대시보드 프로젝트입니다.
 
 ---
 
-### 3. 실무 활용 워크플로우
+## 주요 기능 및 전체 구조
+
+### 🏗️ 시스템 아키텍처
 ```mermaid
 flowchart TD
-    S[시작] --> N[Notion 문서 작성]
-    N --> M[MCP Agent 트리거]
-    M --> A[자동화 처리]
-    A --> R[결과 데이터 Notion에 기록]
-    R --> E[협업자 알림 및 피드백]
-    E --> F[완료]
+    A[오전수업 입력] --> B[Notion MCP API]
+    C[오후수업 입력] --> B
+    D[저녁자율학습 입력] --> B
+    E[GitHub 활동] --> F[GitHub MCP API]
+    B & F --> G[3-Part Notion DB]
+    G --> H[통합 대시보드]
+    H --> I[시간대별 차트]
+    H --> J[일일/주간/월간 분석]
 ```
-**설명:** Notion에서 문서를 작성하면 MCP Agent가 자동화 처리를 수행하고, 결과를 다시 Notion에 기록하여 협업자에게 알림 및 피드백을 제공합니다.
 
----
-
-
-### 4. Notion-MCP로 할 수 있는 일
+### 📊 시간대별 데이터 분석 구조
 ```mermaid
-pie title Notion-MCP 활용 주요 영역
-    "문서 자동화" : 30
-    "데이터 통합" : 25
-    "협업 워크플로우" : 20
-    "알림/승인 자동화" : 15
-    "보고서 생성" : 10
+pie title 일일 학습 시간 분배 (예시)
+    "오전수업 (4시간)" : 33
+    "오후수업 (4시간)" : 33
+    "저녁자율학습 (4시간)" : 34
 ```
 
+### 🔄 데이터 흐름 및 자동화 파이프라인
 ```mermaid
-graph TD
-    A[Notion] --> B[데이터 입력]
-    A --> C[업무 문서화]
-    B --> D[MCP Agent]
-    C --> D
-    D --> E[자동화 처리]
-    E --> F[알림/승인]
-    E --> G[보고서 자동 생성]
-    E --> H[외부 시스템 연동]
-    G --> I[최종 산출물]
-    H --> J[데이터 통합]
- 
+sequenceDiagram
+    participant U as User
+    participant M as 오전수업
+    participant A as 오후수업
+    participant E as 저녁자율학습
+    participant N as Notion MCP
+    participant G as GitHub MCP
+    participant D as Dashboard
+    U->>M: 오전 반성 입력(12:00)
+    M->>N: 오전 데이터 저장
+    U->>A: 오후 반성 입력(17:00)
+    A->>N: 오후 데이터 저장
+    U->>E: 저녁 반성 입력(22:00)
+    E->>N: 저녁 데이터 저장
+    G->>N: GitHub 활동 시간대별 정량화
+    N->>D: 대시보드 업데이트
+    D->>D: 시간대별/종합 차트 생성
 ```
 
-**Notion-MCP로 할 수 있는 주요 업무**
-- **문서 자동화**: Notion에 입력된 정보를 MCP가 자동으로 가공 및 처리
-- **데이터 통합**: 여러 소스의 데이터를 Notion-MCP 연동으로 통합 관리
-- **협업 워크플로우**: 문서 기반 협업 프로세스 자동화(예: 승인, 피드백)
-- **알림/승인 자동화**: 특정 조건 발생 시 자동 알림 및 승인 요청
-- **보고서 자동 생성**: 입력된 데이터 기반 자동 보고서/산출물 생성
-- **외부 시스템 연동**: ERP, 메신저, 이메일 등 다양한 외부 시스템과 연동
-
----
-
-
----
-
-## [실전] 학습용 Notion-MCP Dashboard 설계 가이드
-
-### 1. 대시보드 구조 설계
+### 🎛️ 대시보드 네비게이션 구조
 ```mermaid
-flowchart TD
-    A[학습 로드맵] --> B[주차별/단원별 진도표]
-    A --> C[실습/코드 기록]
-    A --> D[자료/참고 DB]
-    B --> E[진도 현황 대시보드]
-    C --> F[실습 결과/코드 대시보드]
-    D --> G[자료/링크 대시보드]
-    E --> H[종합 학습 Dashboard]
-    F --> H
-    G --> H
-
+flowchart LR
+    A[메인 대시보드] --> B[오늘 3-Part 뷰]
+    A --> C[주간 트렌드]
+    A --> D[월간 분석]
+    A --> E[설정 & 목표]
+    B --> B1[오전 상세]
+    B --> B2[오후 상세]
+    B --> B3[저녁 상세]
+    B --> B4[종합 분석]
 ```
-**설명:** 폴더/코드 구조에 맞춰 진도표, 실습, 자료를 각각 DB로 만들고, 이들을 통합한 종합 대시보드를 구성합니다.
 
 ---
 
-### 2. 대시보드 주요 구성 비율
-```mermaid
-pie title 학습 Dashboard 주요 구성 비율
-    "진도/로드맵" : 40
-    "실습/코드 기록" : 30
-    "자료/참고 DB" : 20
-    "피드백/복습" : 10
+## 폴더 구조 및 주요 파일
+
+```text
+LG_DX_School/
+├── src/                  # 주요 자동화/분석/시각화 코드
+├── config/               # 시간대/과목/레이아웃 설정
+├── data/                 # 임시 데이터, 백업, 분석 결과
+├── logs/                 # 실행 로그
+├── docs/                 # 상세 설계/분석/보고서
+├── tests/                # 테스트 코드
+├── requirements.txt      # Python 의존성
+├── .gitignore            # Git 관리 제외 설정
+├── README.md             # 프로젝트 설명서(본 파일)
 ```
-**설명:** 진도/로드맵, 실습/코드, 자료/참고, 피드백/복습 등으로 대시보드 영역을 분배합니다.
 
 ---
 
-### 3. 실전 배치/운영 Best Practice
-- **진도표 DB**: 주차/단원별, 완료여부, 메모 등 속성 추가
-- **실습/코드 DB**: 실습명, 코드링크, 주요 개념, 난이도, 피드백 등
-- **자료/참고 DB**: 분류, 제목, URL, 요약, 활용도 등
-- **관계(Relation) 활용**: 실습-자료, 진도-실습 등 DB간 연결
-- **뷰 다양화**: 표, 보드, 캘린더, 갤러리 등 다양한 뷰로 시각화
-- **종합 대시보드**: 위 DB들을 Rollup/Relation으로 통합, 한눈에 학습 현황 파악
+## 빠른 시작
+
+1. 저장소 클론 및 의존성 설치
+   ```bash
+   git clone https://github.com/positivemultiplier/LG_DX_SCHOOL.git
+   cd LG_DX_SCHOOL
+   pip install -r requirements.txt
+   ```
+2. 환경변수(.env.local) 설정
+3. Notion/Supabase/GitHub MCP 연동 정보 입력
+4. 주요 스크립트 실행 예시
+   - `python src/notion_automation/scripts/morning_reflection.py`
+   - `python src/notion_automation/scripts/afternoon_reflection.py`
+   - `python src/notion_automation/scripts/evening_reflection.py`
+   - `python src/notion_automation/scripts/create_3part_database.py`
 
 ---
 
-### 4. 실전 팁
-- **템플릿화**: 반복되는 실습/학습 기록은 템플릿으로 빠르게 생성
-- **상태/완료 체크박스 적극 활용**: 진행상황 한눈에 파악
-- **정기적 복습/정리**: 완료된 항목은 별도 뷰로 복습
-- **외부 연동**: Google Calendar, GitHub, Slack 등과 연동해 학습 효율 극대화
+## 주요 문서/참고자료
+
+- [docs/daily_reflection_dashboard.md](docs/daily_reflection_dashboard.md) : 전체 시스템 설계/시각화/자동화 전략
+- [docs/daily_reflection_dashboard_tasks.md](docs/daily_reflection_dashboard_tasks.md) : 단계별 태스크/로드맵/진행상황
+- [docs/3Part_DB_Schema_Definition.md](docs/3Part_DB_Schema_Definition.md) : DB 스키마 상세 정의
+- [docs/Phase*_Completion_Report.md](docs/) : 각 Phase별 완료 보고서
 
 ---
 
-### 5. 결론
-Notion-MCP 기반 학습 대시보드는 진도, 실습, 자료, 피드백을 통합 관리하며, 시각화와 자동화로 학습 효율을 극대화할 수 있습니다. 반드시 머메이드 차트 등 시각화와 함께 설계하세요.
+## 기여/협업 가이드
+
+- Pull Request/이슈 등록 전 반드시 최신 문서/코드 확인
+- 커밋 메시지: "[타입] 작업내용: 상세설명" (예: [fix] 버그 수정: 시간대별 입력 오류)
+- 시각화/문서화 규정: Mermaid 차트 4개 이상 필수, 최소 스타일 적용
+- 코드/문서/시각화 일관성 유지
+
+---
+
+## 부록: Notion-MCP 일반 활용 예시(요약)
+
+Notion-MCP는 문서 자동화, 데이터 통합, 협업 워크플로우, 알림/승인 자동화, 보고서 생성, 외부 시스템 연동 등 다양한 업무에 활용할 수 있습니다. (상세 예시는 docs/ 참고)
