@@ -1,0 +1,56 @@
+{
+  "3_part_schedule": {
+    "오전수업": {
+      "start_time": "09:00",
+      "end_time": "12:00", 
+      "reflection_time": "12:00",
+      "notification_offset_minutes": 15,
+      "description": "오전 강의 시간대",
+      "focus_areas": ["이론", "개념", "기초 학습"]
+    },
+    "오후수업": {
+      "start_time": "13:00",
+      "end_time": "17:00",
+      "reflection_time": "17:00", 
+      "notification_offset_minutes": 15,
+      "description": "오후 실습 시간대",
+      "focus_areas": ["실습", "프로젝트", "응용"]
+    },
+    "저녁자율학습": {
+      "start_time": "19:00",
+      "end_time": "22:00",
+      "reflection_time": "22:00",
+      "notification_offset_minutes": 15, 
+      "description": "저녁 자율학습 시간대",
+      "focus_areas": ["복습", "정리", "심화 학습"]
+    }
+  },
+  "github_time_mapping": {
+    "오전수업": {
+      "start_hour": 9,
+      "end_hour": 12,
+      "weight": 1.0,
+      "commit_patterns": ["강의", "수업", "이론", "개념", "학습"]
+    },
+    "오후수업": {
+      "start_hour": 13, 
+      "end_hour": 17,
+      "weight": 1.2,
+      "commit_patterns": ["실습", "프로젝트", "구현", "코딩", "개발"]
+    },
+    "저녁자율학습": {
+      "start_hour": 19,
+      "end_hour": 22, 
+      "weight": 1.1,
+      "commit_patterns": ["복습", "자율", "개인", "정리", "예습"]
+    }
+  },
+  "automation_settings": {
+    "auto_reminder": true,
+    "auto_github_sync": true,
+    "auto_dashboard_update": true,
+    "reminder_advance_minutes": 15,
+    "sync_interval_hours": 1,
+    "dashboard_update_time": "22:30"
+  }
+}

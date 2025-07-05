@@ -1,0 +1,224 @@
+{
+  "chart_type": "line_trend",
+  "title": "📈 시간대별 학습 효율성 트렌드 (최근 7일)",
+  "description": "날짜별 3개 시간대 효율성 변화 추이 및 학습 곡선 분석",
+  "date_labels": [
+    "2025-06-29",
+    "2025-06-30",
+    "2025-07-01",
+    "2025-07-02",
+    "2025-07-03",
+    "2025-07-04",
+    "2025-07-05"
+  ],
+  "trend_lines": {
+    "🌅 오전수업": {
+      "color": "#FFE066",
+      "data": [
+        {
+          "date": "2025-06-29",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-06-30",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-01",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-02",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-03",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-04",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-05",
+          "efficiency": 4.1,
+          "grade": "낮음"
+        }
+      ],
+      "average": 0.5857142857142856
+    },
+    "🌞 오후수업": {
+      "color": "#FF8A56",
+      "data": [
+        {
+          "date": "2025-06-29",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-06-30",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-01",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-02",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-03",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-04",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-05",
+          "efficiency": 3.6,
+          "grade": "낮음"
+        }
+      ],
+      "average": 0.5142857142857143
+    },
+    "🌙 저녁자율학습": {
+      "color": "#9B7EDE",
+      "data": [
+        {
+          "date": "2025-06-29",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-06-30",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-01",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-02",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-03",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-04",
+          "efficiency": 0.0,
+          "grade": "매우 낮음"
+        },
+        {
+          "date": "2025-07-05",
+          "efficiency": 4.0,
+          "grade": "낮음"
+        }
+      ],
+      "average": 0.5714285714285714
+    }
+  },
+  "trend_analysis": {
+    "🌅 오전수업": {
+      "trend_direction": "상승",
+      "change_amount": 4.1,
+      "change_percent": 0,
+      "highest_point": {
+        "date": "2025-07-05",
+        "efficiency": 4.1
+      },
+      "lowest_point": {
+        "date": "2025-06-29",
+        "efficiency": 0.0
+      },
+      "volatility": 4.1
+    },
+    "🌞 오후수업": {
+      "trend_direction": "상승",
+      "change_amount": 3.6,
+      "change_percent": 0,
+      "highest_point": {
+        "date": "2025-07-05",
+        "efficiency": 3.6
+      },
+      "lowest_point": {
+        "date": "2025-06-29",
+        "efficiency": 0.0
+      },
+      "volatility": 3.6
+    },
+    "🌙 저녁자율학습": {
+      "trend_direction": "상승",
+      "change_amount": 4.0,
+      "change_percent": 0,
+      "highest_point": {
+        "date": "2025-07-05",
+        "efficiency": 4.0
+      },
+      "lowest_point": {
+        "date": "2025-06-29",
+        "efficiency": 0.0
+      },
+      "volatility": 4.0
+    },
+    "overall": {
+      "best_performing_timepart": "🌅 오전수업",
+      "worst_performing_timepart": "🌞 오후수업",
+      "timepart_averages": {
+        "🌅 오전수업": 0.5857142857142856,
+        "🌞 오후수업": 0.5142857142857143,
+        "🌙 저녁자율학습": 0.5714285714285714
+      }
+    }
+  },
+  "improvement_analysis": {
+    "🌅 오전수업": {
+      "improvement_rate": 0,
+      "initial_average": 0.0,
+      "recent_average": 1.4,
+      "consistency_score": 8.6,
+      "trend_quality": "유지"
+    },
+    "🌞 오후수업": {
+      "improvement_rate": 0,
+      "initial_average": 0.0,
+      "recent_average": 1.2,
+      "consistency_score": 8.7,
+      "trend_quality": "유지"
+    },
+    "🌙 저녁자율학습": {
+      "improvement_rate": 0,
+      "initial_average": 0.0,
+      "recent_average": 1.3,
+      "consistency_score": 8.6,
+      "trend_quality": "유지"
+    }
+  },
+  "recommendations": [
+    "🌅 오전수업의 효율성이 가장 높음 - 중요한 학습을 이 시간에 집중",
+    "🌞 오후수업의 효율성 개선 필요 - 학습 방법이나 환경 점검 권장",
+    "🌅 오전수업 효율성 변동 큼 - 일관된 학습 패턴 개발 필요",
+    "🌞 오후수업 효율성 변동 큼 - 일관된 학습 패턴 개발 필요",
+    "🌙 저녁자율학습 효율성 변동 큼 - 일관된 학습 패턴 개발 필요"
+  ],
+  "created_at": "2025-07-05T15:30:48.853299",
+  "data_period": "7일간"
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ★★★★★자동정렬 : alt + shift + f
+    리스트 2가지 만들기
+    순서가 있는 리스트 vs 순서가 없는 리스트
+    <ol> ordered list : 순서가 있는 리스트 -> 리스트 앞에 숫자가 출력된다.
+        <li> : 리스트 아이템
+
+    <ul> unordered list : 순서가 없는 리스트 -> 리스트 앞에 기호가 출력된다.
+        <li> : 리스트 아이템   
+
+    * 공통적으로 li 태그를 함께 사용해야 한다.
+    * 사용처 : 웹페이지에서 밑으로 내려오는 하위 항목들을 만들때 사용한다.
+    * tip : 보통 ul 태그로 만들고 css로 기호를 삭제한다.
+    -->
+
+    <div align="right">
+        <h1 style=color:red>순서가 있는 리스트</h1>
+        <ol>
+            hello <br>
+            world <br>
+            my name is
+
+            <li><a href="/03.빅데이터분석기사/README.md">첫번째 아이템</a></li>
+            <li><a href= "/03.빅데이터분석기사/01_필기/1과목_빅데이터_분석_기획/README.md">두번째 아이템</a></li>
+            <li><a href="/03.빅데이터분석기사/01_필기/2과목_빅데이터_탐색/README.md">세번째 아이템</a></li>
+
+        </ol>
+    </div>
+    <div align="center">
+        <h1 style=color:green>순서가 없는 리스트</h1>
+        <ul>
+            hello <br>
+            world <br>
+            my name is
+            <li><a href= "http://www.naver.com">첫번째 아이템</a></li>
+            <li><a href= "http://www.daum.net">두번째 아이템</a></li>
+            <li><a href= "http://www.youtube.com">세번째 아이템</a></li>
+
+
+        </ul>
+    </div>
+    <style>
+        li {
+            list-style-type: none;
+            color: yellow;
+        }
+    </style>
+</body>
+
+</html>

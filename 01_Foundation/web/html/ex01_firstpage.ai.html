@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Improved Web Page</title>
+    <style>
+        /* Internal CSS for styling the page */
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header, footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        nav {
+            background: #444;
+            padding: 0.5rem;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+            margin: 15px;
+            background: white;
+            border-radius: 5px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>웹 페이지에 오신 것을 환영합니다!</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">소개</a></li>
+            <li><a href="#">연락처</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Main content section -->
+        <section id="intro">
+            <h2>소개</h2>
+            <p>이 페이지는 HTML과 CSS의 기초를 보여주기 위해 만들어졌습니다. 더 많은 태그와 스타일을 사용해봅시다.</p>
+            <!-- Adding an image -->
+            <img src="https://via.placeholder.com/600x200" alt="Placeholder Image">
+            <p>위 이미지는 placeholder 이미지입니다. <code>&lt;img&gt;</code> 태그를 사용하여 이미지를 삽입할 수 있습니다.</p>
+        </section>
+
+        <!-- Table section -->
+        <section id="schedule">
+            <h2>오늘의 학습 계획</h2>
+            <p>테이블을 사용하여 정보를 구조화할 수 있습니다.</p>
+            <table>
+                <tr>
+                    <th>시간</th>
+                    <th>주제</th>
+                    <th>비고</th>
+                </tr>
+                <tr>
+                    <td>1교시</td>
+                    <td>HTML 기본 구조</td>
+                    <td>완료</td>
+                </tr>
+                <tr>
+                    <td>2교시</td>
+                    <td>CSS 기초 스타일링</td>
+                    <td>진행 중</td>
+                </tr>
+                <tr>
+                    <td>3교시</td>
+                    <td>레이아웃 및 추가 태그</td>
+                    <td>예정</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Link section -->
+        <section id="links">
+            <h2>유용한 링크</h2>
+            <p>더 많은 정보를 원하시면 아래 링크를 방문하세요:</p>
+            <ul>
+                <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML" target="_blank">MDN Web Docs - HTML</a></li>
+                <li><a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML Tutorial</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My First Website. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

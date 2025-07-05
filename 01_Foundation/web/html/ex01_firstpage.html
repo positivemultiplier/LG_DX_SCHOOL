@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: red;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        h2 {
+            color: blue;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        h3 {
+            color: purple;
+            font-size: 1px;
+            text-align: center;
+        }
+
+        h4 {
+            color: orange;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        h5 {
+            color: green;
+            font-size: 5px;
+            text-align: center;
+        }
+
+        h6 {
+            color: gray;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        p {
+            color: rgb(25, 139, 25);
+            font-size: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- this is 주석
+    HTML -> 웹페이지를 만드는 뼈대를 담당하는 언어 
+    tag -> 컴퓨텅에게 영역을 알려주는 방법
+    <b> </b> -> 태그
+    내용 -> 컨텐츠
+    꾸며주는 말 (정렬) -> 속성
+    <b align="center "> content : 안녕하세요</b>  -> Element(요소)
+    -->
+
+    <!-- h1~h6  : 제목을 만든느 테그 
+        * h1~h6 = 숫자가 커질 수록 크기는 작아진다 (대제목 -> 소제목)
+        * 주의점: 디자인만 신경쓰면 의미가 변경 
+    -->
+
+    Element(요소) : tag(태그) + content(컨텐츠) + attribute(속성)<br>
+    case1 : h 태그 <br>
+    첫번째 작은 제목 -> <h1 align="center"> h1Ll0 w0RLd </h1>
+
+    두번째 작은 제목 -> <h2 align="center"> h2Ll0 w0RLd </h2>
+
+    세번째 작은 제목 -> <h3 align="center"> h3Ll0 w0RLd </h3>
+
+    네번째 작은 제목 -> <h4 align="center"> h4Ll0 w0RLd </h4>
+
+    다섯번째 작은 제목 -> <h5 align="center"> h5Ll0 w0RLd </h5>
+
+    여섯번째 작은 제목 -> <h6 align="center"> h6Ll0 w0RLd </h6>
+
+    <!-- <p> 태그 : 문단을 만드는 태그 -> 
+         * 특징 : 위아래 공백을 추가, 공간을 한줄 전체를 차지
+        <span> 태그 : 특정하고 싶은 태그 -> 
+        * 특징 : 특정 content를 지정할 수 있다.
+    -->
+    case2 : (p + br) + span 태그, 줄바꿈 : 개행?
+    <p>paragraph : 여기는 <span style="color:red">첫번째</span> <span p>문단</span>입니다.<br>여기서 줄이 바뀝니다.</p>
+    case : (p + p) + span 태그
+    <p>paragraph : 여기는 <span style="color: blue">첫번째</span> <span p>문단</span>입니다.</p>
+    <p>여기서 줄이 바뀝니다.</p>
+
+
+    # case3 : b,string 태그
+    <!-- 4. <b>,<strong>  :  특정 내용을 두껍게 만드는 태그 2가지 존재 
+        * 특징 : 시각적으로는 차이가 없다.
+        * 사용법 : b태그는 단순 디자인 용도, strong이 악센트를 가진 기능 용도
+        * strong 태그를 사용하도록 하자.
+    -->
+    <p><b> bold(굵은,두꺼운) 첫번째 두꺼운 글자</b></p>
+
+    <p><strong> Strong(강한,중요한) 두번째 두꺼운 글자 : 하단 네비게이션에 사용, 시각장애인을 위한 악센트를 가졌다.</strong></p>
+
+    <!-- 5. <a> 태그 : 내용과 특정 사이트, 링크, 파일 들을 연결하는 태그(하이퍼링크)
+        
+-->
+    # case 4 : a 태그 + href 속성
+    <p>Anchor, Hypertext Reference <a href="http://www.naver.com">네이버로 이동.</a></p>
+
+
+    <!--
+element(요소) : 태그 + 컨텐츠 + 속성 
+속성 : 태그를 꾸며주는 내용 (align, href, style 등)
+
+-->
+
+
+    <!---#정리
+1) HTML (HyperText Markup Language)
+	- Markup : 표시하겠다.
+	- 역할 : 페이지의 뼈대를 담당(영역을 배치 -> 글자,문단,제목..)
+	- 핵심 : 태그로 소통한다.
+	- <b> </b> : 태그 -> 모습을 결정한다.
+	- 내용 : 컨텐츠 -> 사용자에게 보여줄 내용
+	- 태그를 꾸며주는 내용 : 속성 -> align, href
+	- 태그 + 컨텐츠 + 속성 : element(요소)
+ 
+2) h태그 : 제목을 작성할 때 사용하는 태그
+	* 특징 : 1번~6번까지 존재한다
+	* 사용법 : 크기가 작아질수록 소제목을 의미한다.
+ 
+3) p태그 : 문단을 작성할 때 사용하는 태그
+	* 특징 : 위아래 공백, 한줄 전체를 차지(자동줄바꿈)
+	* 사용법 : 많은 양의 텍스를 작성할 때 문단제작
+ 
+4) span태그 : 특정 문자,문장을 표기할 때 사용하는 태그
+	* 특징 : 아무런 기능이 없는 공태그
+	* 사용법 : 특정 내용을 공간으로 감싸줄때 활용한다.
+ 
+5) b,strong태그 : 글자의 크기는 같지만 두께를 두껍게 만든다.
+	* 특징 : b태그는 기능이 없는 디자인, strong태그는 악세트를 가졌다.
+	* 사용법 : 최근에는 대부분 strong태그를 활용한다.
+ 
+6) a태그 : 특정 내용과 사이트,파일을 연결할 때 활용하는 태그
+	* 특징 : 특정 내용과 연결시키기 위해서 반드시 목적지 선정이 필요하다.
+	* 사용법 : href속성을 활용한다.
+ 
+7) 내일 배울 내용
+	1) 위키만들기 실습
+	2) 목록만들기
+	3) 이미지태그 -> 경로
+	4) 테이블태그
+
+-->
+
+</body>
+
+</html>

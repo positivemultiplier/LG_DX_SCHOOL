@@ -1,0 +1,2033 @@
+{
+  "dashboard_type": "3part_main",
+  "title": "🕐 3-Part Daily Reflection Dashboard",
+  "subtitle": "오전수업 · 오후수업 · 저녁자율학습 종합 분석 (7일간)",
+  "created_at": "2025-07-05T15:34:33.032227",
+  "analysis_period": "7일간",
+  "sections": [
+    {
+      "section_id": "today_summary",
+      "title": "📊 오늘의 3-Part 요약",
+      "type": "summary_cards",
+      "content": {
+        "date": "2025-07-05",
+        "weekday": "Saturday",
+        "timeparts": {
+          "🌅 오전수업": {
+            "completed": true,
+            "score": 0,
+            "condition": "보통",
+            "github_commits": 2,
+            "highlights": [],
+            "status": "개선필요"
+          },
+          "🌞 오후수업": {
+            "completed": true,
+            "score": 0,
+            "condition": "보통",
+            "github_commits": 2,
+            "highlights": [],
+            "status": "개선필요"
+          },
+          "🌙 저녁자율학습": {
+            "completed": true,
+            "score": 0,
+            "condition": "보통",
+            "github_commits": 20,
+            "highlights": [
+              "활발한 코딩 (20개 커밋)"
+            ],
+            "status": "개선필요"
+          }
+        },
+        "overall": {
+          "completed_parts": 3,
+          "total_parts": 3,
+          "completion_rate": 100.0,
+          "average_score": 0.0,
+          "total_score": 0,
+          "day_grade": "충실한 하루"
+        }
+      },
+      "priority": 1
+    },
+    {
+      "section_id": "performance_comparison",
+      "title": "📈 시간대별 성과 비교",
+      "type": "visualization",
+      "content": {
+        "radar_chart": {
+          "chart_type": "radar",
+          "title": "🕐 3-Part 시간대별 성과 비교 (최근 7일)",
+          "description": "오전수업/오후수업/저녁자율학습 시간대별 5개 지표 비교",
+          "metrics": [
+            "이해도",
+            "집중도",
+            "GitHub활동",
+            "컨디션",
+            "종합효율성"
+          ],
+          "timeparts": {
+            "🌅 오전수업": {
+              "color": "#FFE066",
+              "data": [
+                5.0,
+                5.0,
+                0.0,
+                5.0,
+                5.0
+              ],
+              "entries_count": 1
+            },
+            "🌞 오후수업": {
+              "color": "#FF8A56",
+              "data": [
+                5.0,
+                5.0,
+                0.0,
+                5.0,
+                5.0
+              ],
+              "entries_count": 1
+            },
+            "🌙 저녁자율학습": {
+              "color": "#9B7EDE",
+              "data": [
+                5.0,
+                5.0,
+                0.0,
+                5.0,
+                5.0
+              ],
+              "entries_count": 1
+            }
+          },
+          "analysis": {
+            "이해도_최고": "🌅 오전수업 (5.0점)",
+            "이해도_최저": "🌅 오전수업 (5.0점)",
+            "집중도_최고": "🌅 오전수업 (5.0점)",
+            "집중도_최저": "🌅 오전수업 (5.0점)",
+            "GitHub활동_최고": "🌅 오전수업 (0.0점)",
+            "GitHub활동_최저": "🌅 오전수업 (0.0점)",
+            "컨디션_최고": "🌅 오전수업 (5.0점)",
+            "컨디션_최저": "🌅 오전수업 (5.0점)",
+            "종합효율성_최고": "🌅 오전수업 (5.0점)",
+            "종합효율성_최저": "🌅 오전수업 (5.0점)",
+            "시간대별_순위": "🌅 오전수업 (20.0) > 🌞 오후수업 (20.0) > 🌙 저녁자율학습 (20.0)"
+          },
+          "recommendations": [
+            "오전 컨디션 관리 필요 - 충분한 수면과 아침식사 권장",
+            "오후 에너지 저하 - 적절한 휴식과 간식 섭취 필요",
+            "저녁 집중력 관리 - 규칙적인 휴식과 목표 설정 필요",
+            "현재 가장 효율적인 시간대: 🌅 오전수업 - 중요한 학습을 이 시간에 배치"
+          ],
+          "created_at": "2025-07-05T15:34:33.021342",
+          "data_period": "7일간"
+        },
+        "github_heatmap": {
+          "chart_type": "heatmap",
+          "title": "📈 시간대별 GitHub 활동 히트맵 (최근 7일)",
+          "description": "요일별, 시간대별 GitHub 활동 패턴 분석",
+          "matrix": [
+            {
+              "date": "2025-07-05",
+              "weekday": "토요일",
+              "timeparts": [
+                {
+                  "timepart": "🌅 오전수업",
+                  "activity_count": 2,
+                  "intensity_level": 1,
+                  "color": "#0E4429",
+                  "description": "🌅 오전수업: 2개 활동"
+                },
+                {
+                  "timepart": "🌞 오후수업",
+                  "activity_count": 2,
+                  "intensity_level": 1,
+                  "color": "#0E4429",
+                  "description": "🌞 오후수업: 2개 활동"
+                },
+                {
+                  "timepart": "🌙 저녁자율학습",
+                  "activity_count": 23,
+                  "intensity_level": 4,
+                  "color": "#39D353",
+                  "description": "🌙 저녁자율학습: 23개 활동"
+                }
+              ]
+            },
+            {
+              "date": "2025-07-04",
+              "weekday": "금요일",
+              "timeparts": [
+                {
+                  "timepart": "🌅 오전수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌅 오전수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌞 오후수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌞 오후수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌙 저녁자율학습",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌙 저녁자율학습: 0개 활동"
+                }
+              ]
+            },
+            {
+              "date": "2025-07-03",
+              "weekday": "목요일",
+              "timeparts": [
+                {
+                  "timepart": "🌅 오전수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌅 오전수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌞 오후수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌞 오후수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌙 저녁자율학습",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌙 저녁자율학습: 0개 활동"
+                }
+              ]
+            },
+            {
+              "date": "2025-07-02",
+              "weekday": "수요일",
+              "timeparts": [
+                {
+                  "timepart": "🌅 오전수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌅 오전수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌞 오후수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌞 오후수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌙 저녁자율학습",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌙 저녁자율학습: 0개 활동"
+                }
+              ]
+            },
+            {
+              "date": "2025-07-01",
+              "weekday": "화요일",
+              "timeparts": [
+                {
+                  "timepart": "🌅 오전수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌅 오전수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌞 오후수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌞 오후수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌙 저녁자율학습",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌙 저녁자율학습: 0개 활동"
+                }
+              ]
+            },
+            {
+              "date": "2025-06-30",
+              "weekday": "월요일",
+              "timeparts": [
+                {
+                  "timepart": "🌅 오전수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌅 오전수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌞 오후수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌞 오후수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌙 저녁자율학습",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌙 저녁자율학습: 0개 활동"
+                }
+              ]
+            },
+            {
+              "date": "2025-06-29",
+              "weekday": "일요일",
+              "timeparts": [
+                {
+                  "timepart": "🌅 오전수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌅 오전수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌞 오후수업",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌞 오후수업: 0개 활동"
+                },
+                {
+                  "timepart": "🌙 저녁자율학습",
+                  "activity_count": 0,
+                  "intensity_level": 0,
+                  "color": "#161B22",
+                  "description": "🌙 저녁자율학습: 0개 활동"
+                }
+              ]
+            }
+          ],
+          "timeparts": [
+            "🌅 오전수업",
+            "🌞 오후수업",
+            "🌙 저녁자율학습"
+          ],
+          "weekdays": [
+            "토요일",
+            "금요일",
+            "목요일",
+            "수요일",
+            "화요일",
+            "월요일",
+            "일요일"
+          ],
+          "intensity_legend": {
+            "0": "#161B22",
+            "1": "#0E4429",
+            "2": "#006D32",
+            "3": "#26A641",
+            "4": "#39D353"
+          },
+          "statistics": {
+            "total_activity": 27,
+            "max_single_activity": 23,
+            "average_daily": 3.857142857142857,
+            "best_timepart": {
+              "timepart": "🌙 저녁자율학습",
+              "activity": 23,
+              "date": "2025-07-05"
+            },
+            "timepart_stats": {
+              "🌅 오전수업": {
+                "total": 2,
+                "average": 0.2857142857142857,
+                "max": 2,
+                "active_days": 1
+              },
+              "🌞 오후수업": {
+                "total": 2,
+                "average": 0.2857142857142857,
+                "max": 2,
+                "active_days": 1
+              },
+              "🌙 저녁자율학습": {
+                "total": 23,
+                "average": 3.2857142857142856,
+                "max": 23,
+                "active_days": 1
+              }
+            }
+          },
+          "analysis": {
+            "가장_활발한_시간대": "🌙 저녁자율학습 (총 23개 활동)",
+            "가장_활발한_요일": "토요일 (총 27개 활동)",
+            "가장_일관된_시간대": "🌅 오전수업 (14.3% 활동률)",
+            "트렌드": "상승 (최근 평균 9.0 vs 이전 평균 0.0)"
+          },
+          "recommendations": [
+            "🌙 저녁자율학습에 가장 활발 - 중요한 코딩 작업을 이 시간에 배치하세요",
+            "🌅 오전수업의 GitHub 활동 부족 - 정기적인 커밋 습관 개발 필요",
+            "🌞 오후수업의 GitHub 활동 부족 - 정기적인 커밋 습관 개발 필요",
+            "🌙 저녁자율학습의 GitHub 활동 부족 - 정기적인 커밋 습관 개발 필요",
+            "특정 시간대에 활동이 집중됨 - 다른 시간대에도 골고루 활동 분산 권장"
+          ],
+          "created_at": "2025-07-05T15:34:33.023945",
+          "data_period": "7일간"
+        }
+      },
+      "priority": 2
+    },
+    {
+      "section_id": "optimization_analysis",
+      "title": "🎯 개인 최적화 분석",
+      "type": "analysis",
+      "content": {
+        "optimal_times": {
+          "analysis_type": "optimal_time_identification",
+          "title": "🎯 개인별 최적 학습 시간대 분석 (최근 14일)",
+          "analysis_period": "14일간",
+          "timepart_performance": {
+            "🌅 오전수업": {
+              "valid_days": 1,
+              "activity_rate": 7.142857142857142,
+              "understanding": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "concentration": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "condition": {
+                "average": 5.0,
+                "max": 5,
+                "min": 5,
+                "total": 5,
+                "consistency": 0
+              },
+              "github_activity": {
+                "average": 4.0,
+                "max": 4.0,
+                "min": 4.0,
+                "total": 4.0,
+                "consistency": 0
+              },
+              "learning_time": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "overall_score": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              }
+            },
+            "🌞 오후수업": {
+              "valid_days": 1,
+              "activity_rate": 7.142857142857142,
+              "understanding": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "concentration": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "condition": {
+                "average": 5.0,
+                "max": 5,
+                "min": 5,
+                "total": 5,
+                "consistency": 0
+              },
+              "github_activity": {
+                "average": 4.0,
+                "max": 4.0,
+                "min": 4.0,
+                "total": 4.0,
+                "consistency": 0
+              },
+              "learning_time": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "overall_score": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              }
+            },
+            "🌙 저녁자율학습": {
+              "valid_days": 1,
+              "activity_rate": 7.142857142857142,
+              "understanding": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "concentration": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "condition": {
+                "average": 5.0,
+                "max": 5,
+                "min": 5,
+                "total": 5,
+                "consistency": 0
+              },
+              "github_activity": {
+                "average": 20.0,
+                "max": 20,
+                "min": 20,
+                "total": 20,
+                "consistency": 0
+              },
+              "learning_time": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              },
+              "overall_score": {
+                "average": 0.0,
+                "max": 0,
+                "min": 0,
+                "total": 0,
+                "consistency": 0
+              }
+            }
+          },
+          "dimensional_analysis": {
+            "이해도": {
+              "best_timepart": "🌅 오전수업",
+              "score": 0.0,
+              "all_scores": {
+                "🌅 오전수업": 0.0,
+                "🌞 오후수업": 0.0,
+                "🌙 저녁자율학습": 0.0
+              }
+            },
+            "GitHub 활동": {
+              "best_timepart": "🌙 저녁자율학습",
+              "score": 20.0,
+              "all_scores": {
+                "🌅 오전수업": 4.0,
+                "🌞 오후수업": 4.0,
+                "🌙 저녁자율학습": 20.0
+              }
+            },
+            "컨디션": {
+              "best_timepart": "🌅 오전수업",
+              "score": 5.0,
+              "all_scores": {
+                "🌅 오전수업": 5.0,
+                "🌞 오후수업": 5.0,
+                "🌙 저녁자율학습": 5.0
+              }
+            },
+            "집중도": {
+              "best_timepart": "🌅 오전수업",
+              "score": 0.0,
+              "all_scores": {
+                "🌅 오전수업": 0.0,
+                "🌞 오후수업": 0.0,
+                "🌙 저녁자율학습": 0.0
+              }
+            },
+            "학습시간": {
+              "best_timepart": "🌅 오전수업",
+              "score": 0.0,
+              "all_scores": {
+                "🌅 오전수업": 0.0,
+                "🌞 오후수업": 0.0,
+                "🌙 저녁자율학습": 0.0
+              }
+            },
+            "종합점수": {
+              "best_timepart": "🌅 오전수업",
+              "score": 0.0,
+              "all_scores": {
+                "🌅 오전수업": 0.0,
+                "🌞 오후수업": 0.0,
+                "🌙 저녁자율학습": 0.0
+              }
+            }
+          },
+          "learning_type_optimal": {
+            "이론학습": {
+              "optimal_timepart": "🌙 저녁자율학습",
+              "weighted_score": 2.0,
+              "all_weighted_scores": {
+                "🌅 오전수업": 1.2,
+                "🌞 오후수업": 1.2,
+                "🌙 저녁자율학습": 2.0
+              }
+            },
+            "실습코딩": {
+              "optimal_timepart": "🌙 저녁자율학습",
+              "weighted_score": 7.8,
+              "all_weighted_scores": {
+                "🌅 오전수업": 2.1,
+                "🌞 오후수업": 2.1,
+                "🌙 저녁자율학습": 7.8
+              }
+            },
+            "프로젝트": {
+              "optimal_timepart": "🌙 저녁자율학습",
+              "weighted_score": 7.0,
+              "all_weighted_scores": {
+                "🌅 오전수업": 2.2,
+                "🌞 오후수업": 2.2,
+                "🌙 저녁자율학습": 7.0
+              }
+            },
+            "복습정리": {
+              "optimal_timepart": "🌙 저녁자율학습",
+              "weighted_score": 2.0,
+              "all_weighted_scores": {
+                "🌅 오전수업": 1.2,
+                "🌞 오후수업": 1.2,
+                "🌙 저녁자율학습": 2.0
+              }
+            }
+          },
+          "consistency_analysis": {
+            "🌅 오전수업": {
+              "consistency_score": 0,
+              "average_performance": 0.0,
+              "data_points": 1,
+              "reliability": "낮음"
+            },
+            "🌞 오후수업": {
+              "consistency_score": 0,
+              "average_performance": 0.0,
+              "data_points": 1,
+              "reliability": "낮음"
+            },
+            "🌙 저녁자율학습": {
+              "consistency_score": 0,
+              "average_performance": 0.0,
+              "data_points": 1,
+              "reliability": "낮음"
+            }
+          },
+          "weekday_patterns": {
+            "Saturday": {
+              "best_timepart": null,
+              "best_score": 0
+            },
+            "Friday": {
+              "best_timepart": null,
+              "best_score": 0
+            },
+            "Thursday": {
+              "best_timepart": null,
+              "best_score": 0
+            },
+            "Wednesday": {
+              "best_timepart": null,
+              "best_score": 0
+            },
+            "Tuesday": {
+              "best_timepart": null,
+              "best_score": 0
+            },
+            "Monday": {
+              "best_timepart": null,
+              "best_score": 0
+            },
+            "Sunday": {
+              "best_timepart": null,
+              "best_score": 0
+            }
+          },
+          "overall_recommendation": "🌙 저녁자율학습이 가장 종합적으로 우수한 시간대입니다. (9개 영역에서 최적)",
+          "personalized_recommendations": [
+            "이론학습: 🌙 저녁자율학습에서 가장 효과적",
+            "실습코딩: 🌙 저녁자율학습에서 가장 효과적",
+            "프로젝트: 🌙 저녁자율학습에서 가장 효과적",
+            "복습정리: 🌙 저녁자율학습에서 가장 효과적",
+            "GitHub 활동 특화: 🌙 저녁자율학습에서 우수한 성과 (20.0점)",
+            "활동 부족 시간대: 🌅 오전수업, 🌞 오후수업, 🌙 저녁자율학습 - 정기적인 학습 습관 구축 필요"
+          ],
+          "created_at": "2025-07-05T15:34:33.027111"
+        },
+        "learning_strategies": {
+          "recommended_schedule": {
+            "이론학습": "🌙 저녁자율학습",
+            "실습코딩": "🌙 저녁자율학습",
+            "프로젝트": "🌙 저녁자율학습",
+            "복습정리": "🌙 저녁자율학습"
+          },
+          "strength_areas": [
+            "GitHub 활동: 20.0점"
+          ],
+          "improvement_areas": [
+            "이해도: 0.0점",
+            "집중도: 0.0점",
+            "학습시간: 0.0점",
+            "종합점수: 0.0점"
+          ],
+          "weekly_goals": [
+            "일일 3-Part 완성률 90% 달성",
+            "최적 시간대 활용도 80% 달성",
+            "GitHub 활동 주 20개 커밋 목표"
+          ]
+        }
+      },
+      "priority": 3
+    },
+    {
+      "section_id": "trend_analysis",
+      "title": "📅 학습 효율성 트렌드",
+      "type": "trend",
+      "content": {
+        "efficiency_trend": {
+          "chart_type": "line_trend",
+          "title": "📈 시간대별 학습 효율성 트렌드 (최근 7일)",
+          "description": "날짜별 3개 시간대 효율성 변화 추이 및 학습 곡선 분석",
+          "date_labels": [
+            "2025-06-29",
+            "2025-06-30",
+            "2025-07-01",
+            "2025-07-02",
+            "2025-07-03",
+            "2025-07-04",
+            "2025-07-05"
+          ],
+          "trend_lines": {
+            "🌅 오전수업": {
+              "color": "#FFE066",
+              "data": [
+                {
+                  "date": "2025-06-29",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-06-30",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-01",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-02",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-03",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-04",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-05",
+                  "efficiency": 4.1,
+                  "grade": "낮음"
+                }
+              ],
+              "average": 0.5857142857142856
+            },
+            "🌞 오후수업": {
+              "color": "#FF8A56",
+              "data": [
+                {
+                  "date": "2025-06-29",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-06-30",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-01",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-02",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-03",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-04",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-05",
+                  "efficiency": 3.6,
+                  "grade": "낮음"
+                }
+              ],
+              "average": 0.5142857142857143
+            },
+            "🌙 저녁자율학습": {
+              "color": "#9B7EDE",
+              "data": [
+                {
+                  "date": "2025-06-29",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-06-30",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-01",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-02",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-03",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-04",
+                  "efficiency": 0.0,
+                  "grade": "매우 낮음"
+                },
+                {
+                  "date": "2025-07-05",
+                  "efficiency": 4.0,
+                  "grade": "낮음"
+                }
+              ],
+              "average": 0.5714285714285714
+            }
+          },
+          "trend_analysis": {
+            "🌅 오전수업": {
+              "trend_direction": "상승",
+              "change_amount": 4.1,
+              "change_percent": 0,
+              "highest_point": {
+                "date": "2025-07-05",
+                "efficiency": 4.1
+              },
+              "lowest_point": {
+                "date": "2025-06-29",
+                "efficiency": 0.0
+              },
+              "volatility": 4.1
+            },
+            "🌞 오후수업": {
+              "trend_direction": "상승",
+              "change_amount": 3.6,
+              "change_percent": 0,
+              "highest_point": {
+                "date": "2025-07-05",
+                "efficiency": 3.6
+              },
+              "lowest_point": {
+                "date": "2025-06-29",
+                "efficiency": 0.0
+              },
+              "volatility": 3.6
+            },
+            "🌙 저녁자율학습": {
+              "trend_direction": "상승",
+              "change_amount": 4.0,
+              "change_percent": 0,
+              "highest_point": {
+                "date": "2025-07-05",
+                "efficiency": 4.0
+              },
+              "lowest_point": {
+                "date": "2025-06-29",
+                "efficiency": 0.0
+              },
+              "volatility": 4.0
+            },
+            "overall": {
+              "best_performing_timepart": "🌅 오전수업",
+              "worst_performing_timepart": "🌞 오후수업",
+              "timepart_averages": {
+                "🌅 오전수업": 0.5857142857142856,
+                "🌞 오후수업": 0.5142857142857143,
+                "🌙 저녁자율학습": 0.5714285714285714
+              }
+            }
+          },
+          "improvement_analysis": {
+            "🌅 오전수업": {
+              "improvement_rate": 0,
+              "initial_average": 0.0,
+              "recent_average": 1.4,
+              "consistency_score": 8.6,
+              "trend_quality": "유지"
+            },
+            "🌞 오후수업": {
+              "improvement_rate": 0,
+              "initial_average": 0.0,
+              "recent_average": 1.2,
+              "consistency_score": 8.7,
+              "trend_quality": "유지"
+            },
+            "🌙 저녁자율학습": {
+              "improvement_rate": 0,
+              "initial_average": 0.0,
+              "recent_average": 1.3,
+              "consistency_score": 8.6,
+              "trend_quality": "유지"
+            }
+          },
+          "recommendations": [
+            "🌅 오전수업의 효율성이 가장 높음 - 중요한 학습을 이 시간에 집중",
+            "🌞 오후수업의 효율성 개선 필요 - 학습 방법이나 환경 점검 권장",
+            "🌅 오전수업 효율성 변동 큼 - 일관된 학습 패턴 개발 필요",
+            "🌞 오후수업 효율성 변동 큼 - 일관된 학습 패턴 개발 필요",
+            "🌙 저녁자율학습 효율성 변동 큼 - 일관된 학습 패턴 개발 필요"
+          ],
+          "created_at": "2025-07-05T15:34:33.029675",
+          "data_period": "7일간"
+        },
+        "progress_tracking": {
+          "current_week_progress": {
+            "🌅 오전수업": {
+              "current_efficiency": 4.1,
+              "grade": "낮음"
+            },
+            "🌞 오후수업": {
+              "current_efficiency": 3.6,
+              "grade": "낮음"
+            },
+            "🌙 저녁자율학습": {
+              "current_efficiency": 4.0,
+              "grade": "낮음"
+            }
+          },
+          "month_goals": {},
+          "improvement_metrics": {}
+        }
+      },
+      "priority": 4
+    },
+    {
+      "section_id": "weekly_insights",
+      "title": "📝 주간 인사이트 & 목표",
+      "type": "insights",
+      "content": {
+        "weekly_stats": {
+          "period": "최근 7일",
+          "timepart_stats": {
+            "🌅 오전수업": {
+              "active_days": 1,
+              "activity_rate": 14.285714285714285,
+              "average_score": 0.0,
+              "best_score": 0,
+              "total_github_activity": 2,
+              "consistency": 0
+            },
+            "🌞 오후수업": {
+              "active_days": 1,
+              "activity_rate": 14.285714285714285,
+              "average_score": 0.0,
+              "best_score": 0,
+              "total_github_activity": 2,
+              "consistency": 0
+            },
+            "🌙 저녁자율학습": {
+              "active_days": 1,
+              "activity_rate": 14.285714285714285,
+              "average_score": 0.0,
+              "best_score": 0,
+              "total_github_activity": 23,
+              "consistency": 0
+            }
+          },
+          "overall_trends": {
+            "trend_direction": "상승",
+            "improvement_rate": 15.2,
+            "best_timepart_trend": "🌙 저녁자율학습",
+            "consistency_trend": "개선 중"
+          },
+          "achievements": []
+        },
+        "action_items": [
+          {
+            "type": "improvement",
+            "priority": "high",
+            "description": "오전 컨디션 관리 필요 - 충분한 수면과 아침식사 권장",
+            "timeframe": "이번 주"
+          },
+          {
+            "type": "improvement",
+            "priority": "high",
+            "description": "오후 에너지 저하 - 적절한 휴식과 간식 섭취 필요",
+            "timeframe": "이번 주"
+          },
+          {
+            "type": "optimization",
+            "priority": "medium",
+            "description": "최적 시간대 활용: 🌙 저녁자율학습이 가장 종합적으로 우수한 시간대입니다. (9개 영역에서 최적)",
+            "timeframe": "지속적"
+          },
+          {
+            "type": "trend",
+            "priority": "medium",
+            "description": "🌅 오전수업의 효율성이 가장 높음 - 중요한 학습을 이 시간에 집중",
+            "timeframe": "다음 주"
+          }
+        ]
+      },
+      "priority": 5
+    }
+  ],
+  "navigation": {
+    "quick_links": [
+      {
+        "label": "오늘의 입력",
+        "section": "today_summary"
+      },
+      {
+        "label": "성과 비교",
+        "section": "performance_comparison"
+      },
+      {
+        "label": "최적화 분석",
+        "section": "optimization_analysis"
+      },
+      {
+        "label": "트렌드",
+        "section": "trend_analysis"
+      },
+      {
+        "label": "주간 리뷰",
+        "section": "weekly_insights"
+      }
+    ],
+    "external_links": [
+      {
+        "label": "3-Part 입력 시스템",
+        "url": "#"
+      },
+      {
+        "label": "GitHub 프로필",
+        "url": "#"
+      },
+      {
+        "label": "학습 자료",
+        "url": "#"
+      }
+    ]
+  },
+  "metadata": {
+    "total_data_points": 3,
+    "analysis_accuracy": "14.3%",
+    "last_updated": "2025-07-05T15:34:33.032792",
+    "next_update": "2025-07-05T16:34:33.032795"
+  },
+  "notion_blocks": [
+    {
+      "object": "block",
+      "type": "heading_1",
+      "heading_1": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🕐 3-Part Daily Reflection Dashboard"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "오전수업 · 오후수업 · 저녁자율학습 종합 분석 (7일간)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📊 오늘의 3-Part 요약"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📊 **완성률**: 100.0% (3/3)\n🏆 **하루 평가**: 충실한 하루\n📈 **평균 점수**: 0.0점"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌅 오전수업: 0점 (개선필요) - "
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌞 오후수업: 0점 (개선필요) - "
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌙 저녁자율학습: 0점 (개선필요) - 활발한 코딩 (20개 커밋)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📈 시간대별 성과 비교"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🕐 3-Part 시간대별 성과 비교 (최근 7일)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "오전수업/오후수업/저녁자율학습 시간대별 5개 지표 비교"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌅 오전수업 (데이터 1개)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "| 지표 | 점수 | 평가 |\n|------|------|------|\n| 이해도 | 5.0 | 🟡 보통 |\n| 집중도 | 5.0 | 🟡 보통 |\n| GitHub활동 | 0.0 | 🔴 개선필요 |\n| 컨디션 | 5.0 | 🟡 보통 |\n| 종합효율성 | 5.0 | 🟡 보통 |\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌞 오후수업 (데이터 1개)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "| 지표 | 점수 | 평가 |\n|------|------|------|\n| 이해도 | 5.0 | 🟡 보통 |\n| 집중도 | 5.0 | 🟡 보통 |\n| GitHub활동 | 0.0 | 🔴 개선필요 |\n| 컨디션 | 5.0 | 🟡 보통 |\n| 종합효율성 | 5.0 | 🟡 보통 |\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌙 저녁자율학습 (데이터 1개)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "| 지표 | 점수 | 평가 |\n|------|------|------|\n| 이해도 | 5.0 | 🟡 보통 |\n| 집중도 | 5.0 | 🟡 보통 |\n| GitHub활동 | 0.0 | 🔴 개선필요 |\n| 컨디션 | 5.0 | 🟡 보통 |\n| 종합효율성 | 5.0 | 🟡 보통 |\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📊 패턴 분석 결과"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "이해도_최고: 🌅 오전수업 (5.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "이해도_최저: 🌅 오전수업 (5.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "집중도_최고: 🌅 오전수업 (5.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "집중도_최저: 🌅 오전수업 (5.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "GitHub활동_최고: 🌅 오전수업 (0.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "GitHub활동_최저: 🌅 오전수업 (0.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "컨디션_최고: 🌅 오전수업 (5.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "컨디션_최저: 🌅 오전수업 (5.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "종합효율성_최고: 🌅 오전수업 (5.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "종합효율성_최저: 🌅 오전수업 (5.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "시간대별_순위: 🌅 오전수업 (20.0) > 🌞 오후수업 (20.0) > 🌙 저녁자율학습 (20.0)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "💡 개선 추천사항"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "오전 컨디션 관리 필요 - 충분한 수면과 아침식사 권장"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "오후 에너지 저하 - 적절한 휴식과 간식 섭취 필요"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "저녁 집중력 관리 - 규칙적인 휴식과 목표 설정 필요"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "현재 가장 효율적인 시간대: 🌅 오전수업 - 중요한 학습을 이 시간에 배치"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📈 시간대별 GitHub 활동 히트맵 (최근 7일)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "요일별, 시간대별 GitHub 활동 패턴 분석"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "| 날짜/요일 | 🌅 오전수업 | 🌞 오후수업 | 🌙 저녁자율학습 |\n|----------|------------|------------|---------------|\n| 2025-07-05(토요일) | 🔵 2개 | 🔵 2개 | 🔴 23개 |\n| 2025-07-04(금요일) | ⚫ 0개 | ⚫ 0개 | ⚫ 0개 |\n| 2025-07-03(목요일) | ⚫ 0개 | ⚫ 0개 | ⚫ 0개 |\n| 2025-07-02(수요일) | ⚫ 0개 | ⚫ 0개 | ⚫ 0개 |\n| 2025-07-01(화요일) | ⚫ 0개 | ⚫ 0개 | ⚫ 0개 |\n| 2025-06-30(월요일) | ⚫ 0개 | ⚫ 0개 | ⚫ 0개 |\n| 2025-06-29(일요일) | ⚫ 0개 | ⚫ 0개 | ⚫ 0개 |\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📊 활동 통계 요약"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "• 총 활동: 27개\n• 일평균 활동: 3.9개\n• 최대 단일 활동: 23개\n• 최고 활동 시간대: 🌙 저녁자율학습 (23개)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🔍 패턴 분석 결과"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "가장_활발한_시간대: 🌙 저녁자율학습 (총 23개 활동)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "가장_활발한_요일: 토요일 (총 27개 활동)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "가장_일관된_시간대: 🌅 오전수업 (14.3% 활동률)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "트렌드: 상승 (최근 평균 9.0 vs 이전 평균 0.0)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "💡 개선 추천사항"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌙 저녁자율학습에 가장 활발 - 중요한 코딩 작업을 이 시간에 배치하세요"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌅 오전수업의 GitHub 활동 부족 - 정기적인 커밋 습관 개발 필요"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌞 오후수업의 GitHub 활동 부족 - 정기적인 커밋 습관 개발 필요"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌙 저녁자율학습의 GitHub 활동 부족 - 정기적인 커밋 습관 개발 필요"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "특정 시간대에 활동이 집중됨 - 다른 시간대에도 골고루 활동 분산 권장"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🎯 개인 최적화 분석"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "callout",
+      "callout": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🎯 🌙 저녁자율학습이 가장 종합적으로 우수한 시간대입니다. (9개 영역에서 최적)"
+            }
+          }
+        ],
+        "icon": {
+          "emoji": "🎯"
+        }
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📚 학습 유형별 최적 시간대"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "이론학습: 🌙 저녁자율학습 (2.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "실습코딩: 🌙 저녁자율학습 (7.8점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "프로젝트: 🌙 저녁자율학습 (7.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "복습정리: 🌙 저녁자율학습 (2.0점)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📅 학습 효율성 트렌드"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📈 시간대별 효율성 평균"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌅 오전수업: 0.6점"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌞 오후수업: 0.5점"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🌙 저녁자율학습: 0.6점"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "📝 주간 인사이트 & 목표"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🎯 이번 주 실행 항목"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🔴 오전 컨디션 관리 필요 - 충분한 수면과 아침식사 권장 (이번 주)"
+            }
+          }
+        ],
+        "checked": false
+      }
+    },
+    {
+      "object": "block",
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🔴 오후 에너지 저하 - 적절한 휴식과 간식 섭취 필요 (이번 주)"
+            }
+          }
+        ],
+        "checked": false
+      }
+    },
+    {
+      "object": "block",
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🟡 최적 시간대 활용: 🌙 저녁자율학습이 가장 종합적으로 우수한 시간대입니다. (9개 영역에서 최적) (지속적)"
+            }
+          }
+        ],
+        "checked": false
+      }
+    },
+    {
+      "object": "block",
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "🟡 🌅 오전수업의 효율성이 가장 높음 - 중요한 학습을 이 시간에 집중 (다음 주)"
+            }
+          }
+        ],
+        "checked": false
+      }
+    }
+  ]
+}

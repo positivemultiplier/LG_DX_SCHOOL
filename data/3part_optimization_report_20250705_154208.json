@@ -1,0 +1,31 @@
+{
+  "optimization_summary": {
+    "memory_efficiency_percent": 90.97,
+    "error_recovery_rate_percent": 85,
+    "system_stability": "high"
+  },
+  "memory_statistics": {
+    "initial_memory_mb": 19.68359375,
+    "current_memory_mb": 21.4609375,
+    "peak_memory_mb": 20.29296875,
+    "memory_increase_mb": 1.77734375,
+    "memory_increase_percent": 9.029569358999803
+  },
+  "error_statistics": {
+    "total_errors": 1,
+    "timepart_distribution": {
+      "morning": 1
+    },
+    "severity_distribution": {
+      "medium": 1
+    },
+    "recovery_attempts": {
+      "error_1751697727_1": 1
+    },
+    "most_problematic_timepart": "morning"
+  },
+  "recommendations": [
+    "morning 시간대에서 에러가 가장 많이 발생합니다. 해당 시간대 로직을 점검하세요."
+  ],
+  "timestamp": "2025-07-05T15:42:08.882290"
+}

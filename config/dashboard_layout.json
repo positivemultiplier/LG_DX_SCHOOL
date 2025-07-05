@@ -1,0 +1,132 @@
+{
+  "dashboard_layout": {
+    "title": "🕐 3-Part Daily Reflection Dashboard",
+    "sections": [
+      {
+        "id": "today_summary",
+        "title": "📊 오늘의 3-Part 요약",
+        "order": 1,
+        "components": [
+          {
+            "type": "progress_bar",
+            "title": "일일 3-Part 완성도",
+            "show_percentage": true
+          },
+          {
+            "type": "score_cards",
+            "title": "시간대별 점수",
+            "layout": "horizontal"
+          },
+          {
+            "type": "github_summary", 
+            "title": "오늘의 GitHub 활동",
+            "show_commits": true,
+            "show_timepart_breakdown": true
+          }
+        ]
+      },
+      {
+        "id": "timepart_comparison",
+        "title": "📈 시간대별 성과 비교",
+        "order": 2,
+        "components": [
+          {
+            "type": "radar_chart",
+            "title": "3-Part 효율성 레이더",
+            "metrics": ["이해도", "집중도", "GitHub활동", "컨디션", "종합효율성"]
+          },
+          {
+            "type": "heatmap",
+            "title": "주간 시간대별 GitHub 활동",
+            "show_intensity": true
+          },
+          {
+            "type": "trend_chart",
+            "title": "시간대별 학습 발전 추이",
+            "period_days": 30
+          }
+        ]
+      },
+      {
+        "id": "optimization_analysis",
+        "title": "🎯 개인 최적화 분석",
+        "order": 3,
+        "components": [
+          {
+            "type": "optimal_time_recommendations",
+            "title": "최적 학습 시간대",
+            "show_confidence": true
+          },
+          {
+            "type": "personalized_strategy",
+            "title": "시간대별 맞춤 학습 전략",
+            "show_subject_matching": true
+          },
+          {
+            "type": "improvement_tracking",
+            "title": "최적화 진행 상황",
+            "show_before_after": true
+          }
+        ]
+      },
+      {
+        "id": "weekly_trends",
+        "title": "📅 주간 3-Part 트렌드",
+        "order": 4,
+        "components": [
+          {
+            "type": "weekly_overview",
+            "title": "주간 완성도 트렌드",
+            "show_goal_line": true
+          },
+          {
+            "type": "pattern_analysis",
+            "title": "개인 학습 패턴 분석",
+            "show_insights": true
+          },
+          {
+            "type": "next_week_recommendations",
+            "title": "다음 주 개선 제안",
+            "show_action_items": true
+          }
+        ]
+      }
+    ]
+  },
+  "visualization_settings": {
+    "color_scheme": {
+      "오전수업": "#FFE4B5",
+      "오후수업": "#87CEEB", 
+      "저녁자율학습": "#DDA0DD",
+      "primary": "#4F81BD",
+      "success": "#70AD47",
+      "warning": "#FFC000", 
+      "danger": "#C5504B"
+    },
+    "chart_options": {
+      "responsive": true,
+      "animation_duration": 1000,
+      "show_legends": true,
+      "show_tooltips": true,
+      "export_enabled": true
+    },
+    "update_frequency": {
+      "realtime_components": ["today_summary", "github_summary"],
+      "daily_components": ["timepart_comparison", "optimization_analysis"],
+      "weekly_components": ["weekly_trends"],
+      "auto_refresh_minutes": 30
+    }
+  },
+  "success_criteria": {
+    "completion_targets": {
+      "daily_3part_completion": 95,
+      "weekly_consistency": 90,
+      "monthly_improvement": 10
+    },
+    "performance_metrics": {
+      "optimal_time_accuracy": 90,
+      "github_sync_rate": 99,
+      "dashboard_load_time_seconds": 5
+    }
+  }
+}
