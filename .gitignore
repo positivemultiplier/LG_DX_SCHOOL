@@ -7,9 +7,12 @@ __pycache__/
 dist/
 build/
 .eggs/
+venv/
+.venv/
 
 # Jupyter Notebook
 .ipynb_checkpoints/
+*.nbconvert.ipynb
 
 # VSCode
 .vscode/
@@ -38,6 +41,7 @@ logs/
 node_modules/
 .idea/
 *.iml
+src/notion_automation/config.json
 
 # 개인 데이터/백업
 data/backups/
@@ -46,10 +50,6 @@ data/evening_reflections/
 data/morning_reflections/
 data/github_analysis/
 data/github_realtime/
-
-# 파이썬 가상환경
-venv/
-.venv/
 
 # Mac
 .AppleDouble
