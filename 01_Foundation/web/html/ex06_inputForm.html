@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        form : 사용자가 입력한 값을 묶어서 관리하는 태그
+          - 서버에게 값을 전달할 때 사용하는 태그
+          - 1. action 속성 : 서버의 주소를 지정하는 속성
+          - 2. method 속성 : 서버에게 값을 전달하는 방법을 지정하는 속성
+            - get : 주소창에 값을 전달하는 방법(default)
+              - 키포인트 : 주소창에 값이 보이기 때문에 보안에 취약하다.
+              - 주의점 : 주소창에 값이 보이기 때문에 민감한 정보는 전달하지 말 것.
+              - 예시 : 회원가입, 로그인 등
+            - post : 주소창에 값을 전달하지 않고, 서버에게 값을 전달하는 방법
+                - 키포인트 : 주소창에 값이 보이지 않기 때문에 보안에 강하다.
+                - 주의점 : 주소창에 값이 보이지 않기 때문에 민감한 정보는 전달하지 말 것.
+                - 예시 : 비밀번호, 카드번호 등
+           
+        input : 사용자에게 입력하는 공간을 제공하는 태그
+          - 키포인트 : type을 통해서 모습을 결정한다.
+        * 중요한점 : 반드시 input 태그는 form 안에 작성해야 한다.
+        * 주의점 : from태가라고 오타내지 말 것
+
+        ★★★★★★★★★★★★★★★ input은 모든 값을 value 공간에 저장한다.★★★★★★★★★★★★★★★
+        * 포인트 :  input은 모든 값을 value 공간에 저장한다. -> 사용자가 입력하기 때문에
+             1) placeholder : 입력 공간에 미리 보여지는 안내 문구
+                - 키포인트 : 사용자가 입력하기 전에 어떤 값을 입력해야 하는지 알려주는 역할
+                - 예시 : "ex)아이디를 입력하세요"
+             2) required : 사용자가 반드시 입력해야 하는 값임을 나타내는 속성
+                - 키포인트 : 사용자가 입력하지 않으면 폼을 제출할 수 없다
+             3) maxlength : 사용자가 입력할 수 있는 최대 글자 수를 지정하는 속성
+                - 키포인트 : 사용자가 입력할 수 있는 글자 수를 제한한다.
+                - 예시 : 비밀번호는 5글자까지만 입력할 수 있다.
+             4) br : line break : 줄바꿈을 하는 태그(태그끼리는 쓰면 안된다. 오직 content만 띄울때 쓰는것)
+                - 키포인트 : 줄바꿈을 하는 태그
+
+        ★★★★★★★★★★★★★★★ 구분자 : name 꼭 쓰자!!!!  name = key값 !!★★★★★★★★★★★★★★★
+
+        list와 dict의 차이 index 와 key값의 쓰임 = 배열과 객체
+        
+        list = [청형, 광주, 골프]
+         - 반드시 의미가 같은것끼리 묶어주는것. name이라고 해야한다.
+
+        dict = {이름 : 정형, 고향: 광주, 취미 : 골프}
+         - 의미가 달라도 key값을 구분한다.
+
+        ★★★★★★★★★★★★★★★ checkbox vs radio button ★★★★★★★★★★★★★★★
+        checkbox :  input이다.  중복이 가능 有 하다. ex) 동의서
+        radio  : input이다.  중복이 가능 無 하다 ex) 성별
+        핵심 : name 은 그룹을 의미하고 , value는 특정 값을 의미한다.
+
+
+
+
+
+        -->
+        <form action="/서버의주소" method="post">
+           아이디 :  <input type="text" placeholder="ex 아이디를 입력하세요" required name = "id"> <br>
+           비밀번호 : <input type = "password" placeholder ="ex 비밀번호를 입력하세요" required maxlength = "5" name = "pw"><br>
+           비밀번호확인 : <input type = "password" placeholder ="ex 비밀번호를 입력하세요" required maxlength = "5" name = "pw2"><br>     
+           취미 : 게임 <input type = "checkbox" name = hobby value="game"> 골프<input type = "checkbox" name = hobby value = "golf"><br>
+           성별 : 남자 <input type ="radio" name="sex" value = "man"> 여자 <input type="radio" name = "sex" value = "woman"> 중성 <input type="radio" name = "sex"><br>
+           <input type="submit" value="로그인하기">
+<!-- 다양한 기능들 -->
+                <input type="reset" value="초기화"><br>
+                <input type="file" ><br>
+             <input type ="range"><br>
+              <input type ="tatetime-local">
+              
+              <!-- option : value 설정을 안한다면 content가  value값으로 넘어간다.-->
+              <select>
+                <option value="1">naver.com</option>
+                <option value="2">google.com</option>
+                <option value="3">daum.net</option>
+                <option value="4"></option>
+                <option value="5">5</option>
+
+              </select>
+
+        </form>
+
+
+
+</body>
+</html>

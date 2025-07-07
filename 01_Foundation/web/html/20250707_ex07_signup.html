@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    ★★★★★★★★★★ 큰 틀을 기억하라!! ★★★★★★★★★★
+        1st form
+        2nd table
+        3rd table row
+        4th table header
+        5th table data
+        colspan : table header가 여러개일 때, 하나로 묶어주는 속성(column span)
+        background-color : 배경색을 지정하는 속성 = bgcolor
+        6th 마지막에 디자인 정리한다.
+
+    -->
+    <form action="/서버의 주소" method="get">
+        <table border="1px solid black">
+            <tr bgcolor="blue">
+                <th colspan="2">step1 : 아이디 / 비밀번호 입력</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td align="center">아이디</td>
+                <td><input type = "text" name ="id " placeholder="아이디를 입력하세요" required ></td>
+            </tr>
+            <tr>
+                <td align="center">비밀번호</td>
+                <td><input type="password" name="pw" placeholder="비밀번호를 입력하세요" required ></td>
+            </tr>
+            <tr>
+                <td align="center">비밀번호 확인</td>
+                <td><input type= "password" name="pw2" placeholder="비밀번호를 확인해주세요" required ></td>
+            </tr>
+            
+        </table>
+    </form>
+
+    
+</body>
+</html>
