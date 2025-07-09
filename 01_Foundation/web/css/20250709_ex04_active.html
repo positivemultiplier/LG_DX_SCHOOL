@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+/*
+  반응선택자 : 특정 이벤트(클릭, 호버)에 따라서 스타일을 변경하는 선택자
+   - hovor : 마우스를 올렸을 때 동작한다. (h1 :hover )
+   - active : 마우스를 클릭했을 때 동작한다. (h1 : active )
+   예시 1 : h1 태그에 마우스를 올렸을 때, 글자색은 빨간색으로 배경색은 노란색으로 변경
+
+   - tip : 스타일을 한번에 변경하지 않고, 천천히 or 빠르게 변경이 가능하다.
+   * transition  속성을 활용하면 디자인 변화의 속도를 조절이 가능하다. 
+   * transform 속성을 이용하면 요소의 위치를 변경도 가능하다. (시각적인 위치)
+        - 요소이동 : translateX, Y
+        - 요소확대 : scale
+        - 요소회전 : rotate
+    
+
+*/
+h1:hover{
+    color: red;
+    background-color: yellow;
+    transition: all 3s ;
+
+
+
+}
+
+h1:active{
+    color: green;
+    background-color: black;
+}
+@keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-300px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+ 
+      .animate {
+        animation: bounce 1s infinite;
+      }
+
+</style>
+</head>
+<body>
+    <!--
+    반응 선택자
+    : 사용자의 반응으로 생성되는 특정한 상태를 선택
+
+
+    active : 
+    hover : 마우스를 올린 태그를 선택
+    
+    
+    -->
+<h1>반응선택자 실습</h1>
+<img src="슬라임.png" class ="animate">
+
+</body>
+</html>

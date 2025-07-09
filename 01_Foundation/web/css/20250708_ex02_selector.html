@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+         selector 선택자 : 특정 태그를 지칭하는 방법
+         * 핵심 : 선택자는 우선 순위가 존재한다.
+         ★★★★★★★★★★* 우선순위는 범위가 좁으면 좁을수록 우선순위가 높아진다.★★★★★★★★★★
+         class 선택자(. 클래스명) = 특정 클래스에 스타일을 부여할 때 활용
+            중복 有
+         id 선택자(# 아이디명) = 특정 아이디에 스타일을 부여할 때 활용
+            중복 無 
+        * 전체 < 태그 < 클래스 < 아이디
+`
+
+
+         1) 전체선택자(*)  = 모든 태그에게 스타일을 부여할 때 활용
+         2) 태그선택자(태그명<table>등) = 특정 태그에서 스타일을 부여할 때 활용
+         3) 클래스(class = "중복가능 ")선택자 vs 아이디 (id = "중복불가 ") 선택자 
+            - 목적 : 태그에게 이름을 부여하기 위해서 사용된다 (구분하기 위해서)
+            - 차이점 : 클래스 (중복 有) vs 아이디 (중복 無)
+            - 우선순위 : 아이디 > 클래스
+            - 사용처 : 클래스 ( 여러 스타일을 묶어서 활용할 때 사용 -> 가장 많이 사용한다.)
+            - 사용처 : 아이디( 영역을 쪼갤때 활용한다 or 기능을 연결할 때 활용) 
+        4) 계층(hierarchical )선택자 : 서로의 포함 관계를 활용한 선택자
+            -포함관계 : 태가안에 태그가 존재한다.
+            - 나를 포함하고 있는 바로 위의 태그를 부모태그, 나에게 포함된 태그를 자식태그
+            - 기호 (>)를 활용해서 작성한다.
+            - whhy? 모든 태그에게 class 나 id 를 부여할 수 없다(관리가 어렵기 때문에)
+            - 순서를 작성할 때 맨 처음이 시작점 맨 마지막이 목적지, 중간은 다 경유지
+
+            - 부모(Parent) > 자식(Child)
+            - 부모(Parent) > 자손(Descendant)
+            - ★ depth(깊이) : 부모 > 자식 > 자손 가능하다! 
+            - ★ #lst50>td>div>div>div.ellipsis>span>a 가능하다!!
+            - 처음은 출발지고, 마지막은 목적지, 중간은 경유지(의미 無)
+            - 형제(Sibling) 관계
+            - 예시 : div > p (div 태그 안에 있는 p 태그를 선택)
+            - 예시 : div p (div 태그 안에 있는 모든 p 태그를 선택)
+            - 예시 : div + p (div 태그 바로 다음에 오는 p 태그를 선택)
+        */
+        * {
+            color : red;
+        }
+
+        P {
+            color : green;
+        }
+
+        p.text {
+            color : blue;
+        }
+        p#text2 {
+            color : orange
+        }
+        ol>li{
+            color : pink
+        }
+        ol>li>span {
+            color : purple
+        }
+    </style>
+</head>
+<body>
+    <p class="text">여기는 P태그의 영역입니다.</p>
+    <p class="text">여기는 P태그의 영역입니다.</p>
+    <p id="text2">여기는 P태그의 영역입니다.</p>
+    <p>여기는 P태그의 영역입니다.</p>
+    <span>이기는 span태그의 영역입니다.</span>
+<ul>
+    <li>텍스트</li>
+    <li>텍스트</li>
+    <li>텍스트</li>
+</ul>
+
+<ol>
+    <li><span>텍스트</span></li>
+    <li>텍스트</li>
+    <li>텍스트</li>
+</ol>
+</body>
+</html>
