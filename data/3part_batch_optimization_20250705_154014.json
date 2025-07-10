@@ -1,0 +1,95 @@
+{
+  "processing_info": {
+    "total_time_seconds": 0.0,
+    "processed_date_range": 7,
+    "processing_method": "parallel_batch",
+    "cache_enabled": true,
+    "timestamp": "2025-07-05T15:40:14.801602"
+  },
+  "github_stats": {
+    "morning": {
+      "total_commits": 36,
+      "total_prs": 10,
+      "total_issues": 12,
+      "avg_commits": 5.14,
+      "avg_prs": 1.43,
+      "avg_issues": 1.71,
+      "productivity_score": 12.86,
+      "activity_days": 7
+    },
+    "afternoon": {
+      "total_commits": 42,
+      "total_prs": 9,
+      "total_issues": 11,
+      "avg_commits": 6.0,
+      "avg_prs": 1.29,
+      "avg_issues": 1.57,
+      "productivity_score": 13.0,
+      "activity_days": 7
+    },
+    "evening": {
+      "total_commits": 28,
+      "total_prs": 7,
+      "total_issues": 7,
+      "avg_commits": 4.0,
+      "avg_prs": 1.0,
+      "avg_issues": 1.0,
+      "productivity_score": 9.0,
+      "activity_days": 7
+    }
+  },
+  "performance_stats": {
+    "morning": {
+      "avg_focus": 8.08,
+      "avg_understanding": 7.87,
+      "avg_fatigue": 1.63,
+      "avg_satisfaction": 8.22,
+      "avg_efficiency": 5.48,
+      "max_focus": 9.38591531764363,
+      "min_fatigue": 1.056314245877944,
+      "total_sessions": 7
+    },
+    "afternoon": {
+      "avg_focus": 7.31,
+      "avg_understanding": 6.77,
+      "avg_fatigue": 3.85,
+      "avg_satisfaction": 6.95,
+      "avg_efficiency": 1.91,
+      "max_focus": 8.746171068857347,
+      "min_fatigue": 3.2832847612727627,
+      "total_sessions": 7
+    },
+    "evening": {
+      "avg_focus": 6.48,
+      "avg_understanding": 6.19,
+      "avg_fatigue": 5.95,
+      "avg_satisfaction": 5.98,
+      "avg_efficiency": 1.11,
+      "max_focus": 7.3652069276481225,
+      "min_fatigue": 5.018717962771222,
+      "total_sessions": 7
+    }
+  },
+  "optimal_timeparts": {
+    "timepart_scores": {
+      "morning": 8.1,
+      "afternoon": 6.84,
+      "evening": 5.81
+    },
+    "best_timepart": "morning",
+    "worst_timepart": "evening",
+    "score_difference": 2.29
+  },
+  "summary": {
+    "total_analyzed_timeparts": 3,
+    "data_completeness": "high",
+    "key_insights": [
+      "GitHub 활동이 가장 활발한 시간대: afternoon",
+      "학습 효율이 가장 높은 시간대: morning",
+      "종합 추천 최적 시간대: morning"
+    ],
+    "most_productive_github_time": "afternoon",
+    "most_efficient_time": "morning",
+    "recommended_optimal_time": "morning"
+  }
+}

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 회원가입</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #2d2d2d;
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            color: white;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 40px;
+        }
+
+        .naver-logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .naver-logo h1 {
+            color: #03c75a;
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .form_section {
+            width: 100%;
+            max-width: 460px;
+            background-color: #2d2d2d;
+            padding: 0 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #999;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .form_list {
+            margin-bottom: 14px;
+        }
+
+        .form_item {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .input {
+            width: 100%;
+            height: 50px;
+            padding: 0 16px 0 42px;
+            background-color: #404040;
+            border: 1px solid #5a5a5a;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 400;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        .input:focus {
+            border-color: #03c75a;
+            background-color: #454545;
+        }
+
+        .form_item.user::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+            background-size: contain;
+            z-index: 1;
+        }
+
+        .form_item.lock::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M18,8h-1V6c0-2.76-2.24-5-5-5S7,3.24,7,6v2H6c-1.1,0-2,0.9-2,2v10c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V10C20,8.9,19.1,8,18,8z M12,17c-1.1,0-2-0.9-2-2s0.9-2,2-2s2,0.9,2,2S13.1,17,12,17z M15.1,8H8.9V6c0-1.71,1.39-3.1,3.1-3.1s3.1,1.39,3.1,3.1V8z'/%3E%3C/svg%3E");
+            background-size: contain;
+            z-index: 1;
+        }
+
+        .form_item.email::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M20,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V6C22,4.9,21.1,4,20,4z M20,8l-8,5L4,8V6l8,5l8-5V8z'/%3E%3C/svg%3E");
+            background-size: contain;
+            z-index: 1;
+        }
+
+        .form_item.calendar::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M9,10V12H7V10H9M13,10V12H11V10H13M17,10V12H15V10H17M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H6V1H8V3H16V1H18V3H19M19,19V8H5V19H19M9,14V16H7V14H9M13,14V16H11V14H13M17,14V16H15V14H17Z'/%3E%3C/svg%3E");
+            background-size: contain;
+            z-index: 1;
+        }
+
+        .form_item.phone::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z'/%3E%3C/svg%3E");
+            background-size: contain;
+            z-index: 1;
+        }
+
+        .form_item.telecom::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M12,3L2,12H5V20H19V12H22L12,3M12,8.75A2.25,2.25 0 0,1 14.25,11A2.25,2.25 0 0,1 12,13.25A2.25,2.25 0 0,1 9.75,11A2.25,2.25 0 0,1 12,8.75Z'/%3E%3C/svg%3E");
+            background-size: contain;
+            z-index: 1;
+        }
+
+        .id_naver {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 15px;
+            font-weight: 400;
+            pointer-events: none;
+        }
+
+        .btn_telecom {
+            width: 100%;
+            height: 50px;
+            padding: 0 16px 0 42px;
+            background-color: #404040;
+            border: 1px solid #5a5a5a;
+            border-radius: 4px;
+            color: #999;
+            font-size: 15px;
+            font-weight: 400;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .btn_telecom:hover {
+            border-color: #03c75a;
+            background-color: #454545;
+        }
+
+        .adult_list {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .radio_item {
+            list-style: none;
+            flex: 1;
+        }
+
+        .radio_item label {
+            display: block;
+            padding: 12px 16px;
+            background-color: #404040;
+            border: 1px solid #5a5a5a;
+            border-radius: 4px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .radio_item input[type="radio"]:checked + label {
+            background-color: #03c75a;
+            border-color: #03c75a;
+            color: white;
+            font-weight: 500;
+        }
+
+        .blind {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .check_box {
+            margin: 20px 0;
+        }
+
+        .agreement-section {
+            background-color: #353535;
+            border: 1px solid #4a4a4a;
+            border-radius: 6px;
+            padding: 18px;
+            margin: 16px 0;
+        }
+
+        .agreement-title {
+            color: #03c75a;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .agreement-title::before {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 6px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2303c75a' viewBox='0 0 24 24'%3E%3Cpath d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z'/%3E%3C/svg%3E");
+            background-size: contain;
+        }
+
+        .agreement-list {
+            list-style: none;
+            padding-left: 22px;
+        }
+
+        .agreement-list li {
+            color: #bbb;
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .agreement-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 12px;
+            height: 12px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2303c75a' viewBox='0 0 24 24'%3E%3Cpath d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z'/%3E%3C/svg%3E");
+            background-size: contain;
+        }
+
+        .submit-btn {
+            width: 100%;
+            height: 54px;
+            background-color: #03c75a;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #02b351;
+        }
+
+        .telecom_menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #404040;
+            border: 1px solid #5a5a5a;
+            border-radius: 4px;
+            z-index: 10;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 2px;
+        }
+
+        .telecom_menu .item {
+            list-style: none;
+        }
+
+        .telecom_menu .button {
+            width: 100%;
+            padding: 12px 16px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.2s ease;
+        }
+
+        .telecom_menu .button:hover {
+            background-color: #4a4a4a;
+        }
+
+        .join_toggle {
+            text-align: right;
+            margin-bottom: 16px;
+            font-size: 12px;
+        }
+
+        .join_toggle label {
+            color: #999;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 6px;
+            width: 14px;
+            height: 14px;
+        }
+
+        .placeholder_prefix {
+            color: #999;
+            font-size: 13px;
+            font-weight: 400;
+            position: absolute;
+            left: 42px;
+            top: 17px;
+            pointer-events: none;
+        }
+
+        .form_item.email .input {
+            padding-left: 84px;
+        }
+
+        /* 체크박스 스타일 개선 */
+        .title_area {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .check_circle {
+            display: flex;
+            align-items: center;
+        }
+
+        .check_circle input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .check_circle label {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .option.point {
+            color: #03c75a;
+            font-style: normal;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .btn_expand {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 4px;
+        }
+
+        .check_list {
+            list-style: none;
+            padding-left: 24px;
+            display: none;
+        }
+
+        .check_list.show {
+            display: block;
+        }
+
+        .check_list .item {
+            margin-bottom: 8px;
+        }
+
+        .check_normal {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .check_normal input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+        }
+
+        .check_normal label {
+            color: #bbb;
+            font-size: 13px;
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .link_arrow {
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .link_arrow:hover {
+            color: #03c75a;
+        }
+
+        .error_text {
+            color: #ff4757;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .error_text.show {
+            display: block;
+        }
+
+        /* 성별 선택 스타일 */
+        .gender_list {
+            display: flex;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="naver-logo">
+        <h1>NAVER</h1>
+    </div>
+    
+    <div class="subtitle">
+        실명 인증된 아이디로 가입 ✅
+    </div>
+    
+    <div class="form_section">
+
+                            <div class="join_toggle" id="divToggle">
+                                <input type="checkbox" id="join_toggle" checked="">
+                                <label for="join_toggle">실명 인증된 아이디로 가입</label>
+                            </div>
+
+                        <div class="form_list">
+                            <div class="form_item user" id="divId">
+                                <input type="text" id="id" name="id" placeholder="아이디" class="input" value="" maxlength="20" autocapitalize="off">
+                                <div class="id_naver">@naver.com</div>
+                            </div>
+                            <div class="form_item lock password" id="divPasswd">
+                                <input type="password" id="pswd1" name="pswd1" placeholder="비밀번호" class="input" value="" maxlength="20" autocomplete="new-password">
+                                <div class="password_info">
+                                    <em class="how_secure" id="secureLevel"></em>
+                                    <button type="button" class="btn_show hide">
+                                        <span class="blind">비밀번호 보기</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form_item email" id="divEmail">
+                                <span class="placeholder_prefix">[선택]</span>
+                                <input type="email" id="email" name="email" placeholder="이메일주소 (비밀번호 찾기 등 본인 확인용)" class="input" value="" maxlength="100">
+                            </div>
+                        </div>
+                        <div class="error_text item_style" id="idMsg" style="display: none"></div>
+                        <div class="error_text item_style" id="pswd1Msg" style="display: none"></div>
+                        <div class="error_text item_style" id="emailMsg" style="display: none"></div>
+
+                        <div class="form_list">
+
+                            <div class="form_item user" id="divName">
+                                <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="40">
+                            </div>
+                            <div class="form_item calendar" id="divBirthday">
+                                <input type="text" id="birthdayInput" placeholder="생년월일 8자리" class="input" value="" maxlength="13">
+                            </div>
+
+                            <div class="form_item telecom" id="divTelecom">
+                                <button type="button" id="btn_telecom" class="btn_telecom" aria-expanded="false" aria-controls="telecom_menu">
+                                    <span class="placeholder">통신사 선택</span>
+                                </button>
+                                <ul role="menu" id="telecom_menu" class="telecom_menu">
+                                    <li role="presentation" class="item">
+                                        <button type="button" role="menuitem" class="button" id="btnTelecom1">
+                                            <span class="text">SKT</span>
+                                        </button>
+                                    </li>
+                                    <li role="presentation" class="item">
+                                        <button type="button" role="menuitem" class="button" id="btnTelecom2">
+                                            <span class="text">SKT 알뜰폰</span>
+                                        </button>
+                                    </li>
+                                    <li role="presentation" class="item">
+                                        <button type="button" role="menuitem" class="button" id="btnTelecom3">
+                                            <span class="text">KT</span>
+                                        </button>
+                                    </li>
+                                    <li role="presentation" class="item">
+                                        <button type="button" role="menuitem" class="button" id="btnTelecom4">
+                                            <span class="text">KT 알뜰폰</span>
+                                        </button>
+                                    </li>
+                                    <li role="presentation" class="item">
+                                        <button type="button" role="menuitem" class="button" id="btnTelecom5">
+                                            <span class="text">LG U+</span>
+                                        </button>
+                                    </li>
+                                    <li role="presentation" class="item">
+                                        <button type="button" role="menuitem" class="button" id="btnTelecom6">
+                                            <span class="text">LG U+ 알뜰폰</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form_item adult" id="divIdentityGender">
+                                <ul class="adult_list" id="listIdentityGender">
+                                    <li class="radio_item">
+                                        <input type="radio" id="identityGender1" name="identityGender" value="M" class="blind">
+                                        <label for="identityGender1">남자</label>
+                                    </li>
+                                    <li class="radio_item">
+                                        <input type="radio" id="identityGender2" name="identityGender" value="F" class="blind">
+                                        <label for="identityGender2">여자</label>
+                                    </li>
+                                </ul>
+                                <ul class="adult_list" id="listForeigner">
+                                    <li class="radio_item">
+                                        <input type="radio" id="foreigner1" name="foreigner" value="K" checked="" class="blind">
+                                        <label for="foreigner1">내국인</label>
+                                    </li>
+                                    <li class="radio_item">
+                                        <input type="radio" id="foreigner2" name="foreigner" value="F" class="blind">
+                                        <label for="foreigner2">외국인</label>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="form_item gender" id="divGender" style="display: none;">
+                                <ul class="gender_list" id="listGender">
+                                    <li class="radio_item">
+                                        <input type="radio" id="gender1" name="gender" value="M" class="blind">
+                                        <label for="gender1">남자</label>
+                                    </li>
+                                    <li class="radio_item">
+                                        <input type="radio" id="gender2" name="gender" value="F" class="blind">
+                                        <label for="gender2">여자</label>
+                                    </li>
+                                    <li class="radio_item">
+                                        <input type="radio" id="gender3" name="gender" value="O" class="blind">
+                                        <label for="gender3">선택안함</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="error_text item_style" id="legalInfoMsg" style="display: none"></div>
+                        <div class="error_text item_style" id="nameMsg" style="display: none"></div>
+                        <div class="error_text item_style" id="birthdayMsg" style="display: none"></div>
+                        <div class="error_text item_style" id="genderMsg" style="display: none"></div>
+
+                        <div class="form_list" id="divPononeNoOuter">
+                            <div class="form_item globe" id="divNationNo" style="display: none;">
+                                <div class="select_box" id="selNationNo">
+                                    <select id="nationNo" name="nationNo" class="select">
+                                                    <option value="233">
+                                                        가나 +233
+                                                    </option>
+                                                   
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form_item phone" id="divPhoneNo">
+                                <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호" class="input" value="" maxlength="16">
+                            </div>
+                        </div>
+
+                        <div class="error_text item_style" id="telecomMsg" style="display: none"></div>
+                        <div class="error_text item_style" id="foreignerMsg" style="display: none"></div>
+                        <div class="error_text item_style" id="phoneNoMsg" style="display: none"></div>
+
+                        <div class="form_list" id="divTerm">
+                            <div class="form_item check_box" id="itemAgree">
+                                <div class="title_area">
+                                    <div class="check_circle">
+                                        <input type="checkbox" id="agree_all" class="blind">
+                                        <label for="agree_all">
+                                            <em class="option point">[필수]</em>
+                                            <span class="text">인증 약관 전체동의</span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="btn_expand" aria-expanded="false">
+                                        <span class="blind">약관 목록</span>
+                                    </button>
+                                </div>
+                                <ul class="check_list">
+                                    <li class="item">
+                                        <div class="check_normal">
+                                            <input type="checkbox" id="agree_01" class="blind">
+                                            <label for="agree_01">
+                                                <span class="text">개인정보 이용</span>
+                                            </label>
+                                            <a href="https://nid.naver.com/user2/common/terms/terms2?t=viewPersonalInfoTerms&amp;v=1" target="_blank" class="link_arrow">
+                                                <span class="blind">약관 전문보기</span>
+                                            </a>
+                                        </div>
+                                        1
+                                    </li>
+                                    <li class="item">
+                                        <div class="check_normal">
+                                            <input type="checkbox" id="agree_02" class="blind">
+                                            <label for="agree_02">
+                                                <span class="text">고유식별정보 처리</span>
+                                            </label>
+                                            <a href="https://nid.naver.com/user2/common/terms/terms2?t=viewUniqInfoTerms&amp;v=1" target="_blank" class="link_arrow">
+                                                <span class="blind">약관 전문보기</span>
+                                            </a>
+                                        </div>
+                                        2
+                                    </li>
+                                    <li class="item">
+                                        <div class="check_normal">
+                                            <input type="checkbox" id="agree_03" class="blind">
+                                            <label for="agree_03">
+                                                <span class="text">통신사 이용약관</span>
+                                            </label>
+                                            <a href="https://nid.naver.com/user2/common/terms/terms2?t=viewCellPhoneCarriersTerms&amp;v=1" target="_blank" class="link_arrow">
+                                                <span class="blind">약관 전문보기</span>
+                                            </a>
+                                        </div>
+                                        3
+                                    </li>
+                                    <li class="item">
+                                        <div class="check_normal">
+                                            <input type="checkbox" id="agree_04" class="blind">
+                                            <label for="agree_04">
+                                                <span class="text">인증사 이용약관</span>
+                                            </label>
+                                            <a href="https://nid.naver.com/user2/common/terms/terms2?t=viewServiceTerms&amp;v=1" target="_blank" class="link_arrow">
+                                                <span class="blind">약관 전문보기</span>
+                                            </a>
+                                        </div>
+                                        4
+                                    </li>
+                                    <li class="item">
+                                        <div class="check_normal">
+                                            <input type="checkbox" id="agree_05" class="blind">
+                                            <label for="agree_05">
+                                                <span class="text">네이버 개인정보수집</span>
+                                            </label>
+                                            <a href="https://nid.naver.com/user2/common/terms/terms2?t=viewNaverTerms&amp;v=2" target="_blank" class="link_arrow">
+                                                <span class="blind">약관 전문보기</span>
+                                            </a>
+                                        </div>
+                                        5
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="agreement-section">
+                            <div class="agreement-title">[필수] 인증 약관 전체동의</div>
+                            <ul class="agreement-list">
+                                <li>개인정보 이용 ></li>
+                                <li>고유식별정보 처리 ></li>
+                                <li>통신사 이용약관 ></li>
+                                <li>인증사 이용약관 ></li>
+                                <li>네이버 개인정보수집 ></li>
+                            </ul>
+                        </div>
+
+                        <button type="submit" class="submit-btn">인증요청</button>
+
+                    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공지사항 여백 연습</title>
+    <style>
+        body{
+            background-color: #f5f5f5;
+        }
+        .notice {
+            /*선의 두깨, , 색깔*/
+            background-color: #fff;
+            border: 1px solid #ccc;
+            width : 100%;
+            height: 100%;
+            /*
+            컨텐츠끼리 구분지을때는 margin을 사용한다.
+            태두리를 기준으로 밖으로 밀어내겠다
+            margin : 테두리 기준으로 바깥쪽에 공백을 추가하는 속성
+            - 특징 : 공백을 부여하면 태그들끼리 멀어진다. 
+            margin 값을 주면 상,하,좌,우 모든것이 반영된다. 
+            - 1) 값을 1개만 입력하면 상하좌우 모두 같은 양의 공백이 추가
+            - 2) 값을 2개만 입력하면 상하/좌우 각각 공백을 추가한다.
+            * 핵심 : 전체적인 크기는 그대로 유지, 위치가 변경
+            (margin : auto 有 // padding : auth 無)
+            */
+            /* margin: 100px; */
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+            
+            /*
+             padding : 테두리 안쪽에 공백을
+                - 사용법은 margin과 똑같다.
+                - 주의점 : 여백만큼 전체 크기가 증가한다. 
+                - 해결책 : box-sizing : border-box 변경 => 테두리 + 패딩 + 컨텐츠의 크기를 합산 = > 원본을 유지  
+            */
+            padding: 10px;
+
+            box-sizing: border-box;
+            /*
+             - 테두리를 깎는 방법
+
+            */
+            border-radius: 10px ;
+
+            /*
+            
+            박스모델 총정리
+            margin : 바깥쪽에 여백을 추가한다.
+             - 사용처 : 태그를 서로 간격을 조절할 때 사용
+             - 포인트 : 전체 컨텐츠의 크기는 유지 => 위치가 바뀐다.
+             - 웹 사용처 : 컨텐츠, 레이아웃, 게시글... 내용을 서로 밀어낼때 사용한다.
+
+            padding : 테두리 안쪽에 여백을 추가한다.
+              - 사용처 : 테두리와 컨텐츠에 공간을 추가할 때 사용
+              - 포인트 : 위치는 그대로, 전체 크기가 변한다 => box-sizing과 함께 사용하자.
+              - 웹 사용처 : 버튼, 입력창, 글자 등 내부 컨텐츠를 띄울때 사용한다.   
+
+            border : 요소의 테두리를 설정한다.
+             - 사용처 : 경계를 설정할때 활용한다.
+             - 포인트 : 두께, 종류, 색상을 고민한다. => 옅은 색의 테두리를 사용한다.
+             - radius : 테두리를 동그랗게 제작이 가능하다. 
+            
+             */
+        
+        }
+
+        /* 슬라임 애니메이션 정의 */
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* 메인 슬라임 - 왼쪽에서 중앙으로 */
+        @keyframes slimeJourney {
+            0% {
+                left: -120px;
+                top: 50vh;
+                transform: scale(0.6) rotate(0deg);
+                opacity: 1;
+            }
+            15% {
+                left: 20vw;
+                top: 30vh;
+                transform: scale(0.8) rotate(60deg);
+            }
+            30% {
+                left: 35vw;
+                top: 70vh;
+                transform: scale(0.5) rotate(-45deg);
+            }
+            45% {
+                left: 50vw;
+                top: 20vh;
+                transform: scale(0.9) rotate(120deg);
+            }
+            60% {
+                left: 65vw;
+                top: 60vh;
+                transform: scale(0.7) rotate(-90deg);
+            }
+            75% {
+                left: 52vw;
+                top: 45vh;
+                transform: scale(1) rotate(180deg);
+            }
+            90% {
+                left: 50vw;
+                top: 48vh;
+                transform: scale(1.1) rotate(270deg);
+            }
+            100% {
+                left: 50vw;
+                top: 50vh;
+                transform: scale(1.3) rotate(360deg);
+                opacity: 0.9;
+            }
+        }
+
+        /* 슬라임 1 - 오른쪽에서 등장 */
+        @keyframes slime1Journey {
+            0% {
+                right: -100px;
+                top: 20vh;
+                transform: scale(0.4) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                right: 80vw;
+                top: 60vh;
+                transform: scale(0.6) rotate(-45deg);
+            }
+            25% {
+                right: 60vw;
+                top: 15vh;
+                transform: scale(0.8) rotate(90deg);
+            }
+            40% {
+                right: 45vw;
+                top: 75vh;
+                transform: scale(0.5) rotate(-120deg);
+            }
+            60% {
+                right: 30vw;
+                top: 35vh;
+                transform: scale(0.7) rotate(180deg);
+            }
+            80% {
+                right: 48vw;
+                top: 52vh;
+                transform: scale(0.9) rotate(-270deg);
+            }
+            100% {
+                right: 45vw;
+                top: 55vh;
+                transform: scale(0.6) rotate(360deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* 슬라임 2 - 위에서 등장 */
+        @keyframes slime2Journey {
+            0% {
+                left: 30vw;
+                top: -100px;
+                transform: scale(0.7) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+                left: 70vw;
+                top: 25vh;
+                transform: scale(0.5) rotate(60deg);
+            }
+            30% {
+                left: 15vw;
+                top: 50vh;
+                transform: scale(0.7) rotate(-90deg);
+            }
+            50% {
+                left: 60vw;
+                top: 80vh;
+                transform: scale(0.4) rotate(150deg);
+            }
+            70% {
+                left: 40vw;
+                top: 30vh;
+                transform: scale(0.8) rotate(-180deg);
+            }
+            90% {
+                left: 53vw;
+                top: 47vh;
+                transform: scale(0.6) rotate(270deg);
+            }
+            100% {
+                left: 55vw;
+                top: 45vh;
+                transform: scale(0.4) rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* 슬라임 3 - 아래에서 등장 */
+        @keyframes slime3Journey {
+            0% {
+                left: 70vw;
+                bottom: -100px;
+                transform: scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                left: 20vw;
+                bottom: 60vh;
+                transform: scale(0.7) rotate(45deg);
+            }
+            40% {
+                left: 80vw;
+                bottom: 30vh;
+                transform: scale(0.4) rotate(-90deg);
+            }
+            60% {
+                left: 35vw;
+                bottom: 70vh;
+                transform: scale(0.8) rotate(135deg);
+            }
+            80% {
+                left: 47vw;
+                bottom: 45vh;
+                transform: scale(0.6) rotate(-180deg);
+            }
+            100% {
+                left: 45vw;
+                bottom: 50vh;
+                transform: scale(0.5) rotate(360deg);
+                opacity: 0.6;
+            }
+        }
+
+        /* 슬라임 4 - 대각선 경로 */
+        @keyframes slime4Journey {
+            0% {
+                left: 10vw;
+                top: 90vh;
+                transform: scale(0.6) rotate(0deg);
+                opacity: 0;
+            }
+            25% {
+                opacity: 1;
+                left: 30vw;
+                top: 60vh;
+                transform: scale(0.8) rotate(90deg);
+            }
+            50% {
+                left: 70vw;
+                top: 20vh;
+                transform: scale(0.5) rotate(-45deg);
+            }
+            75% {
+                left: 48vw;
+                top: 53vh;
+                transform: scale(0.7) rotate(180deg);
+            }
+            100% {
+                left: 52vw;
+                top: 48vh;
+                transform: scale(0.4) rotate(270deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* 슬라임 5 - 원형 경로 */
+        @keyframes slime5Journey {
+            0% {
+                left: 50vw;
+                top: 10vh;
+                transform: scale(0.3) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                left: 80vw;
+                top: 30vh;
+                transform: scale(0.5) rotate(72deg);
+            }
+            40% {
+                left: 70vw;
+                top: 70vh;
+                transform: scale(0.7) rotate(144deg);
+            }
+            60% {
+                left: 30vw;
+                top: 80vh;
+                transform: scale(0.4) rotate(216deg);
+            }
+            80% {
+                left: 20vw;
+                top: 40vh;
+                transform: scale(0.6) rotate(288deg);
+            }
+            100% {
+                left: 48vw;
+                top: 52vh;
+                transform: scale(0.5) rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* 슬라임들이 점점 커지는 애니메이션 */
+        @keyframes slimeGrowBig {
+            0% {
+                transform: scale(0.5);
+            }
+            50% {
+                transform: scale(2) rotate(180deg);
+            }
+            100% {
+                transform: scale(3) rotate(360deg);
+                filter: brightness(1.5) contrast(1.3);
+            }
+        }
+
+        /* 텍스트 변경 애니메이션 */
+        @keyframes textTransform {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+                color: white;
+            }
+            25% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            75% {
+                opacity: 1;
+                transform: scale(1.2);
+                color: #ff4757;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.5);
+                color: #ff3742;
+                text-shadow: 0 0 10px #ff3742;
+            }
+        }
+
+        /* 문의하지마 텍스트 애니메이션 */
+        @keyframes showWarningText {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+
+        /* 위협적인 흔들림 효과 */
+        @keyframes threateningShake {
+            0%, 100% { transform: translateX(0) scale(3); }
+            10% { transform: translateX(-5px) scale(3.1); }
+            20% { transform: translateX(5px) scale(3.2); }
+            30% { transform: translateX(-3px) scale(3.1); }
+            40% { transform: translateX(3px) scale(3.2); }
+            50% { transform: translateX(-2px) scale(3.3); }
+            60% { transform: translateX(2px) scale(3.2); }
+            70% { transform: translateX(-1px) scale(3.1); }
+            80% { transform: translateX(1px) scale(3.2); }
+            90% { transform: translateX(-0.5px) scale(3.3); }
+        }
+
+        .fixed-btn{
+            /* position : fixed = 특정 위치에 요소를 고정하겠다.
+             * 사용처 : 장바구니, 챗봇, 문의센터, 화면상단 */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 120px;
+            height: 50px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow: visible;
+            
+            /* 기본 float 애니메이션 */
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fixed-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff4757, #ff3742);
+            box-shadow: 0 6px 25px rgba(255, 71, 87, 0.6);
+            animation: none; /* 기존 float 애니메이션 중지 */
+        }
+
+        .fixed-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        /* 메인 슬라임 */
+        .slime-icon {
+            position: fixed;
+            left: -120px;
+            top: 50vh;
+            width: 60px;
+            height: 60px;
+            background-image: url('슬라임.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        /* 추가 슬라임들 */
+        .slime-1 {
+            position: fixed;
+            right: -100px;
+            top: 20vh;
+            width: 45px;
+            height: 45px;
+            background-image: url('슬라임.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 9998;
+            filter: hue-rotate(60deg);
+        }
+
+        .slime-2 {
+            position: fixed;
+            left: 30vw;
+            top: -100px;
+            width: 35px;
+            height: 35px;
+            background-image: url('슬라임.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 9997;
+            filter: hue-rotate(120deg);
+        }
+
+        .slime-3 {
+            position: fixed;
+            left: 70vw;
+            bottom: -100px;
+            width: 50px;
+            height: 50px;
+            background-image: url('슬라임.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 9996;
+            filter: hue-rotate(180deg);
+        }
+
+        .slime-4 {
+            position: fixed;
+            left: 10vw;
+            top: 90vh;
+            width: 40px;
+            height: 40px;
+            background-image: url('슬라임.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 9995;
+            filter: hue-rotate(240deg);
+        }
+
+        .slime-5 {
+            position: fixed;
+            left: 50vw;
+            top: 10vh;
+            width: 30px;
+            height: 30px;
+            background-image: url('슬라임.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 9994;
+            filter: hue-rotate(300deg);
+        }
+
+        /* 버튼 호버 시 모든 슬라임 애니메이션 */
+        .fixed-btn:hover .slime-icon {
+            opacity: 1;
+            animation: slimeJourney 10s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+                       slimeGrowBig 3s ease-in-out 10s forwards,
+                       threateningShake 2s ease-in-out 13s infinite;
+        }
+
+        .fixed-btn:hover ~ .slime-1 {
+            opacity: 1;
+            animation: slime1Journey 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+                       slimeGrowBig 3s ease-in-out 12s forwards,
+                       threateningShake 2s ease-in-out 15s infinite;
+            animation-delay: 0.5s, 12.5s, 15.5s;
+        }
+
+        .fixed-btn:hover ~ .slime-2 {
+            opacity: 1;
+            animation: slime2Journey 11s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+                       slimeGrowBig 3s ease-in-out 11s forwards,
+                       threateningShake 2s ease-in-out 14s infinite;
+            animation-delay: 1s, 12s, 15s;
+        }
+
+        .fixed-btn:hover ~ .slime-3 {
+            opacity: 1;
+            animation: slime3Journey 13s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+                       slimeGrowBig 3s ease-in-out 13s forwards,
+                       threateningShake 2s ease-in-out 16s infinite;
+            animation-delay: 1.5s, 14.5s, 17.5s;
+        }
+
+        .fixed-btn:hover ~ .slime-4 {
+            opacity: 1;
+            animation: slime4Journey 9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+                       slimeGrowBig 3s ease-in-out 9s forwards,
+                       threateningShake 2s ease-in-out 12s infinite;
+            animation-delay: 2s, 11s, 14s;
+        }
+
+        .fixed-btn:hover ~ .slime-5 {
+            opacity: 1;
+            animation: slime5Journey 14s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+                       slimeGrowBig 3s ease-in-out 14s forwards,
+                       threateningShake 2s ease-in-out 17s infinite;
+            animation-delay: 2.5s, 16.5s, 19.5s;
+        }
+
+        /* 텍스트 변경 애니메이션 */
+        .fixed-btn:hover .btn-text {
+            animation: textTransform 2s ease-in-out 10s forwards;
+        }
+
+        /* 문의하지마 텍스트 표시 */
+        .fixed-btn:hover .btn-text::after {
+            animation: showWarningText 2s ease-in-out 10s forwards;
+        }
+
+        /* 미니 슬라임들 제거 - 더 이상 필요 없음 */
+        .mini-slime {
+            display: none;
+        }
+
+        /* 문의하기 텍스트 스타일 */
+        .btn-text {
+            opacity: 1;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 5;
+            position: relative;
+        }
+
+        /* 문의하지마 텍스트 (숨김 상태) */
+        .btn-text::after {
+            content: "😈 문의하지마!";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ff4757;
+            text-shadow: 0 0 10px #ff4757;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        /* hover 시 버튼 색상 변경 */
+        .fixed-btn:hover .btn-text {
+            color: #f8f9fa;
+        }
+
+        /* 호버 시 버튼 배경색 변경 */
+        .fixed-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff4757, #ff3742);
+            box-shadow: 0 6px 25px rgba(255, 71, 87, 0.6);
+            animation: none; /* 기존 float 애니메이션 중지 */
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .fixed-btn {
+                width: 100px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 12px;
+            }
+            
+            .slime-icon {
+                width: 30px;
+                height: 30px;
+                top: -25px;
+            }
+            
+            .fixed-btn:hover .slime-icon {
+                top: -40px;
+                transform: translateX(-50%) scale(1.2);
+            }
+            
+            .btn-text {
+                font-size: 12px;
+            }
+        }
+
+    </style>
+  </head>
+  <body>
+    <h2>📢 공지사항</h2>
+
+    <input type="text" placeholder="검색어를 입력하세요" />
+
+    <div class="notice">
+      <strong>[공지] 사이트 점검 안내</strong>
+      <p>7월 15일(월) 오전 2시부터 5시까지 서비스 점검이 있습니다.</p>
+    </div>
+
+    <div class="notice">
+      <strong>[이벤트] 여름 맞이 쿠폰 증정</strong>
+      <p>전 회원 대상 쿠폰을 발급 중입니다. 마이페이지에서 확인하세요!</p>
+    </div>
+
+    <div class="notice">
+      <strong>[신규] 모바일 앱 출시 안내</strong>
+      <p>이제 앱으로 더 편리하게 이용해보세요!</p>
+    </div>
+       <div class="notice">
+      <strong>[신규] 모바일 앱 출시 안내</strong>
+      <p>이제 앱으로 더 편리하게 이용해보세요!</p>
+    </div>
+       <div class="notice">
+      <strong>[신규] 모바일 앱 출시 안내</strong>
+      <p>이제 앱으로 더 편리하게 이용해보세요!</p>
+    </div>
+       <div class="notice">
+      <strong>[신규] 모바일 앱 출시 안내</strong>
+      <p>이제 앱으로 더 편리하게 이용해보세요!</p>
+    </div>
+       <div class="notice">
+      <strong>[신규] 모바일 앱 출시 안내</strong>
+      <p>이제 앱으로 더 편리하게 이용해보세요!</p>
+    </div>
+       <div class="notice">
+      <strong>[신규] 모바일 앱 출시 안내</strong>
+      <p>이제 앱으로 더 편리하게 이용해보세요!</p>
+    </div>
+
+    <!-- 
+    position fixed
+    -->
+    <button class="fixed-btn">
+        <span class="btn-text">💬 문의하기</span>
+        <div class="slime-icon"></div>
+    </button>
+    
+    <!-- 다양한 슬라임들 -->
+    <div class="slime-1"></div>
+    <div class="slime-2"></div>
+    <div class="slime-3"></div>
+    <div class="slime-4"></div>
+    <div class="slime-5"></div>
+  </body>
+</html>

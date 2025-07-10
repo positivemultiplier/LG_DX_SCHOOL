@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #table, tr, td, th{
+            border: 1px solid black;
+        }
+        .tr_style {
+            background-color: green;
+        }
+        .tr_style2 {
+            background-color: brown;
+        }
+        .td_style{
+            text-align: center;
+        }
+
+      /*
+      [HTML 계층 구조 용어 정리]
+      
+      부모(Parent):
+        - 다른 요소를 직접 포함하는 요소
+        - 예: <div>가 <p>를 포함할 때, div는 p의 부모
+
+      자식(Child):
+        - 부모 요소에 직접 포함된 요소 (1촌 관계)
+        - 예: <p>는 <div>의 자식
+
+      자손(Descendant):
+        - 부모 요소에 포함된 모든 하위 요소 (2촌 이상 포함)
+        - 예: <strong>은 <div>의 자손 (p의 자식이기도 함)
+
+      형제(Sibling):
+        - 같은 부모를 가진 동급의 요소들
+        - 예: <p>와 <ul>이 같은 <div> 안에 있으면 서로 형제
+
+      <div>   <!-- 부모(Parent) -->
+        <p>   <!-- 자식(Child) -->
+          <strong>텍스트</strong> <!-- 자손(Descendant) -->
+        </p>
+      </div>
+      */  
+    </style>
+
+
+
+</head>
+<body>
+ 
+    <form action="/서버의주소" method="get">
+        <table id="table">
+            <tr class="tr_style2">
+                <th colspan="2">step 1 : 아이디 / 비밀번호 입력</th>
+            </tr>
+            <tr>
+                <td class="td_style">아이디</td>
+                <td><input type="text" name="id" required></td>
+            </tr>
+            <tr>
+                <td class="td_style">비밀번호</td>
+                <td><input type="password" name="pw" required></td>
+            </tr>
+            <tr>
+                <td class="td_style">비밀번호 확인</td>
+                <td><input type="password" name="pw2" required></td>
+            </tr>
+ 
+            <tr class="tr_style2">
+                <th colspan="2">step2 : 추가정보</th>
+            </tr>
+            <tr>
+                <td class="td_style">이메일</td>
+                <td>
+                    <input type="text" name="email" > @
+                    <select name="email_select">
+                        <option > naver.com</option>
+                        <option > daum.net</option>
+                        <option > gmail.com</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="td_style">성별</td>
+                <td>
+                    <input type="radio" name="gender" value="men">남자
+                    <input type="radio" name="gender" value="women">여자
+                </td>
+            </tr>
+            <tr>
+                <td class="td_style">취미</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="men">영화시청
+                    <input type="checkbox" name="hobby" value="women">노래
+                    <input type="checkbox" name="hobby" value="women">게임
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="td_style"> <input type="submit" value="회원가입"></td>
+            </tr>
+        </table>        
+    </form>
+</body>
+</html>

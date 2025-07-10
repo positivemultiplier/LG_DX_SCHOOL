@@ -1,0 +1,237 @@
+{
+  "parent": {
+    "type": "page_id",
+    "page_id": "temp_parent_id"
+  },
+  "title": [
+    {
+      "type": "text",
+      "text": {
+        "content": "🕐 3-Part Daily Reflection Dashboard"
+      }
+    }
+  ],
+  "description": [
+    {
+      "type": "text",
+      "text": {
+        "content": "오전수업/오후수업/저녁자율학습 3개 시간대별 일일 반성 및 학습 성과 추적 데이터베이스"
+      }
+    }
+  ],
+  "properties": {
+    "title": {
+      "title": {}
+    },
+    "reflection_date": {
+      "date": {}
+    },
+    "time_part": {
+      "select": {
+        "options": [
+          {
+            "name": "🌅 오전수업",
+            "color": "yellow"
+          },
+          {
+            "name": "🌞 오후수업",
+            "color": "orange"
+          },
+          {
+            "name": "🌙 저녁자율학습",
+            "color": "purple"
+          }
+        ]
+      }
+    },
+    "morning_condition": {
+      "select": {
+        "options": [
+          {
+            "name": "매우좋음",
+            "color": "green"
+          },
+          {
+            "name": "좋음",
+            "color": "blue"
+          },
+          {
+            "name": "보통",
+            "color": "yellow"
+          },
+          {
+            "name": "나쁨",
+            "color": "orange"
+          },
+          {
+            "name": "매우나쁨",
+            "color": "red"
+          }
+        ]
+      }
+    },
+    "afternoon_condition": {
+      "select": {
+        "options": [
+          {
+            "name": "매우좋음",
+            "color": "green"
+          },
+          {
+            "name": "좋음",
+            "color": "blue"
+          },
+          {
+            "name": "보통",
+            "color": "yellow"
+          },
+          {
+            "name": "나쁨",
+            "color": "orange"
+          },
+          {
+            "name": "매우나쁨",
+            "color": "red"
+          }
+        ]
+      }
+    },
+    "evening_condition": {
+      "select": {
+        "options": [
+          {
+            "name": "매우좋음",
+            "color": "green"
+          },
+          {
+            "name": "좋음",
+            "color": "blue"
+          },
+          {
+            "name": "보통",
+            "color": "yellow"
+          },
+          {
+            "name": "나쁨",
+            "color": "orange"
+          },
+          {
+            "name": "매우나쁨",
+            "color": "red"
+          }
+        ]
+      }
+    },
+    "learning_difficulty": {
+      "number": {
+        "format": "number"
+      }
+    },
+    "learning_hours": {
+      "number": {
+        "format": "number"
+      }
+    },
+    "self_study_hours": {
+      "number": {
+        "format": "number"
+      }
+    },
+    "review_effectiveness": {
+      "number": {
+        "format": "number"
+      }
+    },
+    "github_commits": {
+      "number": {
+        "format": "number"
+      }
+    },
+    "github_prs": {
+      "number": {
+        "format": "number"
+      }
+    },
+    "github_issues": {
+      "number": {
+        "format": "number"
+      }
+    },
+    "time_part_score": {
+      "formula": {
+        "expression": "round(((prop(\"learning_hours\") * 2) + prop(\"review_effectiveness\") + (prop(\"github_commits\") / 2)) / 4 * 10) / 10"
+      }
+    },
+    "memo": {
+      "rich_text": {}
+    },
+    "achievements": {
+      "rich_text": {}
+    },
+    "tomorrow_goals": {
+      "rich_text": {}
+    },
+    "tags": {
+      "multi_select": {
+        "options": [
+          {
+            "name": "복습",
+            "color": "blue"
+          },
+          {
+            "name": "프로젝트",
+            "color": "green"
+          },
+          {
+            "name": "과제",
+            "color": "yellow"
+          },
+          {
+            "name": "시험준비",
+            "color": "red"
+          },
+          {
+            "name": "발표준비",
+            "color": "purple"
+          },
+          {
+            "name": "토론",
+            "color": "pink"
+          },
+          {
+            "name": "실습",
+            "color": "brown"
+          },
+          {
+            "name": "강의듣기",
+            "color": "gray"
+          }
+        ]
+      }
+    },
+    "created_time": {
+      "created_time": {}
+    },
+    "last_edited_time": {
+      "last_edited_time": {}
+    },
+    "optimal_flag": {
+      "checkbox": {}
+    },
+    "week_number": {
+      "formula": {
+        "expression": "week(prop(\"reflection_date\"))"
+      }
+    },
+    "month_number": {
+      "formula": {
+        "expression": "month(prop(\"reflection_date\"))"
+      }
+    },
+    "day_of_week": {
+      "formula": {
+        "expression": "formatDate(prop(\"reflection_date\"), \"dddd\")"
+      }
+    }
+  }
+}

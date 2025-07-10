@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# VSCode
+.vscode/
+
+# 환경설정/보안
+.env
+.env.*
+.env.local
+*.secret
+
+# OS/에디터 임시파일
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# 로그/백업/데이터
+logs/
+*.log
+*.bak
+*.tmp
+*.db
+*.sqlite3
+
+# 기타
+node_modules/
+.idea/
+*.iml
+src/notion_automation/config.json
+
+# 개인 데이터/백업
+data/backups/
+data/afternoon_reflections/
+data/evening_reflections/
+data/morning_reflections/
+data/github_analysis/
+data/github_realtime/
+
+# Mac
+.AppleDouble
+.LSOverride
+
+# Windows
+$RECYCLE.BIN/
+*.lnk
+
+# 프로젝트별 추가 제외 항목은 필요시 추가

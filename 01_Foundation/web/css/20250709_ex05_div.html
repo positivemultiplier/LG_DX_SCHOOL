@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    /* px는 고정값이다. 다라서 반응형으로 만들어야한다. %,vh 는 반응형이다. view height : vh */
+    #container {
+        height: 100vh;
+    }
+    #header {
+        background-color: red;
+        height: 15vh;
+
+    }
+    #content {
+        background-color:green;
+        height: 70vh;
+        display: flex;
+
+    }
+    #footer {
+        background-color:blue ;
+        height: 15vh;
+        display: none;
+
+    }
+    #left{
+        background-color: pink;
+        width: 30%;
+        height: 100%;
+    }
+    #right {
+        background-color: gray;
+        width: 30%;
+        height: 100%;
+    }
+
+    /*
+         공간분할을 할 때 차지하는 공간이 태그마다 다르다. (display)
+         * block : 한줄 전체를 차지하는 태그 (div, h1, p ...) => 자동으로 줄 바꿈 발생 有
+         * inline : 쓴 만큼만 공간을 차지하는 태그 (a, span, img ...) => 줄 바꿈 발생 無
+         * flex : 플렉스는 block요소를 자유롭게 배치가 가능하게 조절 (담고있는 부모에게 작성)
+         
+         flex-direction
+         flex-wrap
+         align-content
+         justify-content : 배치를 움직일 수 있다.
+         align-item
+         
+         * 사용 Tip : 모든 속성을 외우지말고 개발자 도구에서 클릭으로 확인하자.
+         * 코드를 복사해서 CSS 반영 => 배경색을 지우고 내용을 채우자.
+         
+    
+    
+    */
+    ul {
+        display: none;
+        list-style: none;
+    }
+
+    /*
+         실습 : 아이디가 header인 공간에 마우스를 올렸을 때, ul의 display를 block로 바꿔줘
+    */
+    #heade:hover>ul {
+        display: block;
+    }
+</style>
+
+</head>
+<body>
+    <!--
+    HTML에서 가장 처음으로 고민해야 하는것은 레이아웃 구성이다. (매우중요)
+    - 레이아웃 : 요소를 어떻게 배치할 것인가.
+    ★★★★★★ span a img > 옆으로 붙는다
+    ★★★★★★ div > newline 개행된다.
+
+    ★★★★★공간 분할 태그 division ★★★★★
+    header content footer
+    <div>, <p>, <span>
+    
+    -->
+
+        <div id=""container>
+
+            <div id="header" ></div>
+            <ul>
+                <li>메뉴1</li>
+                <li>메뉴2</li>
+                <li>메뉴3</li>
+            </ul>
+
+            <div id="content">
+                <div id ="left"></div>
+                <div id ="right"></div>
+            </div>
+            <div id="footer"></div>
+        </div>
+
+
+</body>
+</html>

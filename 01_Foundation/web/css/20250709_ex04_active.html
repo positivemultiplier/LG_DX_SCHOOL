@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+/*
+  반응선택자 : 특정 이벤트(클릭, 호버)에 따라서 스타일을 변경하는 선택자
+   - hovor : 마우스를 올렸을 때 동작한다. (h1 :hover )
+   - active : 마우스를 클릭했을 때 동작한다. (h1 : active )
+   예시 1 : h1 태그에 마우스를 올렸을 때, 글자색은 빨간색으로 배경색은 노란색으로 변경
+
+   - tip : 스타일을 한번에 변경하지 않고, 천천히 or 빠르게 변경이 가능하다.
+   * transition  속성을 활용하면 디자인 변화의 속도를 조절이 가능하다. 
+   * transform 속성을 이용하면 요소의 위치를 변경도 가능하다. (시각적인 위치)
+        - 요소이동 : translateX, Y
+        - 요소확대 : scale
+        - 요소회전 : rotate
+    
+
+*/
+h1:hover{
+    color: red;
+    background-color: yellow;
+    transition: all 3s ;
+
+
+
+}
+
+h1:active{
+    color: green;
+    background-color: black;
+}
+@keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-300px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+ 
+      .animate {
+        animation: bounce 1s infinite;
+      }
+
+      /* 문의하기 버튼 스타일 */
+      .fixed-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 80px;
+        height: 80px;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #74b9ff, #0984e3);
+        box-shadow: 0 4px 15px rgba(116, 185, 255, 0.4);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: white;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        overflow: hidden;
+      }
+
+      .fixed-btn::before {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-image: url('슬라임.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.3;
+        z-index: -1;
+      }
+
+      .fixed-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(116, 185, 255, 0.6);
+        animation: bounce-gentle 0.6s ease-in-out;
+      }
+
+      .fixed-btn:active {
+        transform: scale(0.95);
+        box-shadow: 0 2px 10px rgba(116, 185, 255, 0.3);
+      }
+
+      /* 부드러운 bounce 애니메이션 */
+      @keyframes bounce-gentle {
+        0%, 100% {
+          transform: scale(1.1) translateY(0);
+        }
+        50% {
+          transform: scale(1.1) translateY(-10px);
+        }
+      }
+
+      /* 슬라임 이미지에 pulse 효과 추가 */
+      .slime-pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+      }
+
+      /* 반응형 디자인 */
+      @media (max-width: 768px) {
+        .fixed-btn {
+          width: 60px;
+          height: 60px;
+          bottom: 20px;
+          right: 20px;
+          font-size: 14px;
+        }
+        
+        .fixed-btn::before {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      /* 추가 스타일 개선 */
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      h1 {
+        text-align: center;
+        color: white;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+
+      .animate {
+        display: block;
+        margin: 0 auto;
+        max-width: 200px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      }
+
+</style>
+</head>
+<body>
+    <!--
+    반응 선택자
+    : 사용자의 반응으로 생성되는 특정한 상태를 선택
+
+
+    active : 마우스를 클릭했을때 사용한다.
+    hover : 마우스를 올린 태그를 선택
+    
+    
+    -->
+<h1>반응선택자 실습</h1>
+<img src="슬라임.png" class="animate slime-pulse">
+
+<!-- 슬라임 테마 문의하기 버튼 -->
+<button class="fixed-btn">💬</button>
+
+</body>
+</html>
