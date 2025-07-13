@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(rm:*)",
+      "Bash(npm install)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "mcp__ide__executeCode",
+      "Bash(grep:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(npm install:*)",
+      "Bash(winget install:*)",
+      "Bash(npx:*)",
+      "Bash(npm run build:*)",
+      "Bash(dir \"C:\\LG_DX_SCHOOL\\lg-dx-dashboard\"\" | findstr \".env \")",
+      "Bash(ls:*)",
+      "Bash(touch:*)",
+      "WebFetch(domain:uqytgcqbigejqvhgmafg.supabase.co)",
+      "WebFetch(domain:localhost)",
+      "Bash(node:*)"
+    ],
+    "deny": []
+  }
+}
