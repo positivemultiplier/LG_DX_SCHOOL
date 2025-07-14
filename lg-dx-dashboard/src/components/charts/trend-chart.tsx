@@ -120,12 +120,13 @@ export function LearningTrendChart({
           {payload.map((entry: any, index: number) => {
             if (entry.dataKey.includes('score')) {
               const timePart = entry.dataKey.replace('_score', '')
-              const timePartName = {
+              const timePartNames: Record<string, string> = {
                 morning: '🌅 오전',
                 afternoon: '🌞 오후', 
                 evening: '🌙 저녁',
                 total: '📊 종합'
-              }[timePart] || timePart
+              }
+              const timePartName = timePartNames[timePart] || timePart
               
               return (
                 <p 

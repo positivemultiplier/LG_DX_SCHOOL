@@ -1,4 +1,9 @@
 // Analytics Engine Exports
+import { insightsEngine } from './insights-engine'
+import { patternAnalyzer } from './pattern-analyzer'
+import { predictor } from './predictor'
+import { recommender } from './recommender'
+
 export { InsightsEngine, insightsEngine } from './insights-engine'
 export type { 
   AnalyticsInsight, 

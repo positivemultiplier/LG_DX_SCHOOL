@@ -8,7 +8,7 @@ import { Switch } from '@/components/ui/switch'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { 
   GitBranch, 
@@ -20,9 +20,7 @@ import {
   CheckCircle,
   Clock,
   Github,
-  Zap,
-  Shield,
-  Bell
+  Zap
 } from 'lucide-react'
 
 interface GitHubIntegration {
@@ -71,14 +69,13 @@ export default function GitHubSettingsPage() {
   const [isConnecting, setIsConnecting] = useState(false)
   const [isSyncing, setIsSyncing] = useState(false)
   const [pageLoading, setPageLoading] = useState(true)
+  const [showTokenInput, setShowTokenInput] = useState(false)
+  const [githubToken, setGithubToken] = useState('')
+  const [isConnectingDirect, setIsConnectingDirect] = useState(false)
 
-  useEffect(() => {
-    if (user) {
-      loadGitHubData()
-    }
-  }, [user])
-
-  const loadGitHubData = async () => {
+  const loadGitHubData = useCallback(async () => {
+    if (!user) return
+    
     try {
       setPageLoading(true)
       
@@ -102,9 +99,17 @@ export default function GitHubSettingsPage() {
     } finally {
       setPageLoading(false)
     }
-  }
+  }, [user])
+
+  useEffect(() => {
+    if (user) {
+      loadGitHubData()
+    }
+  }, [user, loadGitHubData])
 
   const handleConnectGitHub = () => {
+    if (!user) return
+    
     setIsConnecting(true)
     
     // GitHub OAuth 연동 시작
@@ -122,7 +127,47 @@ export default function GitHubSettingsPage() {
     window.location.href = authUrl
   }
 
+  const handleConnectWithToken = async () => {
+    if (!user) return
+    
+    if (!githubToken.trim()) {
+      alert('GitHub Personal Access Token을 입력해주세요.')
+      return
+    }
+
+    setIsConnectingDirect(true)
+
+    try {
+      const response = await fetch('/api/github/connect-direct', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          github_token: githubToken.trim(),
+          user_id: user.id 
+        })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        alert('GitHub 계정이 성공적으로 연결되었습니다!')
+        setGithubToken('')
+        setShowTokenInput(false)
+        await loadGitHubData()
+      } else {
+        alert(`연결 실패: ${data.error}`)
+      }
+    } catch (error) {
+      console.error('GitHub direct connect error:', error)
+      alert('연결 중 오류가 발생했습니다.')
+    } finally {
+      setIsConnectingDirect(false)
+    }
+  }
+
   const handleDisconnectGitHub = async () => {
+    if (!user) return
+    
     try {
       const response = await fetch('/api/github/connect', {
         method: 'DELETE',
@@ -140,6 +185,8 @@ export default function GitHubSettingsPage() {
   }
 
   const handleManualSync = async () => {
+    if (!user) return
+    
     try {
       setIsSyncing(true)
       
@@ -165,6 +212,31 @@ export default function GitHubSettingsPage() {
   const updateSettings = async (newSettings: Partial<GitHubSettings>) => {
     setSettings(prev => ({ ...prev, ...newSettings }))
     // TODO: API 호출로 설정 저장
+  }
+
+  const generateTestData = async () => {
+    if (!user) return
+
+    try {
+      const response = await fetch('/api/github/generate-test-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: user.id })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        alert(`테스트 데이터가 생성되었습니다!\n- 활동 기록: ${data.data.activities_created}개\n- 저장소: ${data.data.repositories_created}개\n- 총 커밋: ${data.data.total_commits}개`)
+        // 데이터 새로고침
+        await loadGitHubData()
+      } else {
+        alert(`테스트 데이터 생성 실패: ${data.error}`)
+      }
+    } catch (error) {
+      console.error('Failed to generate test data:', error)
+      alert('테스트 데이터 생성 중 오류가 발생했습니다.')
+    }
   }
 
   if (loading || pageLoading) {
@@ -279,6 +351,17 @@ export default function GitHubSettingsPage() {
                     </div>
                     <div className="flex gap-2">
                       <Button
+                        asChild
+                        variant="default"
+                        size="sm"
+                        className="bg-purple-600 hover:bg-purple-700"
+                      >
+                        <Link href="/github/analytics">
+                          <Zap className="h-4 w-4 mr-2" />
+                          고급 분석
+                        </Link>
+                      </Button>
+                      <Button
                         onClick={handleManualSync}
                         disabled={isSyncing || syncStatus?.sync_status === 'syncing'}
                         size="sm"
@@ -341,18 +424,92 @@ export default function GitHubSettingsPage() {
                   <p className="text-gray-600 mb-6">
                     GitHub 활동을 자동으로 추적하고 대시보드에서 분석할 수 있습니다
                   </p>
-                  <Button 
-                    onClick={handleConnectGitHub}
-                    disabled={isConnecting}
-                    className="bg-gray-900 hover:bg-gray-800"
-                  >
-                    {isConnecting ? (
-                      <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-                    ) : (
-                      <Github className="h-4 w-4 mr-2" />
-                    )}
-                    GitHub 계정 연결
-                  </Button>
+                  
+                  {!showTokenInput ? (
+                    <div className="space-y-4">
+                      <Button 
+                        onClick={handleConnectGitHub}
+                        disabled={isConnecting}
+                        className="bg-gray-900 hover:bg-gray-800 w-full"
+                      >
+                        {isConnecting ? (
+                          <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+                        ) : (
+                          <Github className="h-4 w-4 mr-2" />
+                        )}
+                        GitHub OAuth로 연결 (권장)
+                      </Button>
+                      
+                      <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                          <span className="w-full border-t" />
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                          <span className="bg-background px-2 text-muted-foreground">또는</span>
+                        </div>
+                      </div>
+                      
+                      <Button 
+                        variant="outline"
+                        onClick={() => setShowTokenInput(true)}
+                        className="w-full"
+                      >
+                        Personal Access Token으로 연결
+                      </Button>
+                      
+                      <p className="text-xs text-gray-500 mt-2">
+                        OAuth 설정이 완료되지 않은 경우 Personal Access Token을 사용할 수 있습니다
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="space-y-4 max-w-md mx-auto">
+                      <div>
+                        <Label htmlFor="github-token" className="text-sm font-medium">
+                          GitHub Personal Access Token
+                        </Label>
+                        <Input
+                          id="github-token"
+                          type="password"
+                          placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                          value={githubToken}
+                          onChange={(e) => setGithubToken(e.target.value)}
+                          className="mt-1"
+                        />
+                        <p className="text-xs text-gray-500 mt-1">
+                          <a 
+                            href="https://github.com/settings/tokens/new" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:underline"
+                          >
+                            새 토큰 생성하기
+                          </a>
+                        </p>
+                      </div>
+                      
+                      <div className="flex space-x-2">
+                        <Button 
+                          onClick={handleConnectWithToken}
+                          disabled={isConnectingDirect || !githubToken.trim()}
+                          className="flex-1"
+                        >
+                          {isConnectingDirect ? (
+                            <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+                          ) : (
+                            <Github className="h-4 w-4 mr-2" />
+                          )}
+                          연결하기
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          onClick={() => setShowTokenInput(false)}
+                          className="flex-1"
+                        >
+                          취소
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </CardContent>
@@ -493,9 +650,38 @@ export default function GitHubSettingsPage() {
                   </div>
                 </div>
               </CardContent>
+            </Card>          )}
+
+          {/* 개발자 도구 (테스트 데이터 생성) */}
+          {integration && process.env.NODE_ENV === 'development' && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  🧪 개발자 도구
+                </CardTitle>
+                <CardDescription>
+                  테스트 및 개발용 도구입니다. 프로덕션 환경에서는 표시되지 않습니다.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="p-4 border border-yellow-200 bg-yellow-50 rounded-lg">
+                  <h4 className="font-medium text-yellow-800 mb-2">테스트 데이터 생성</h4>
+                  <p className="text-sm text-yellow-700 mb-3">
+                    고급 분석 대시보드를 테스트하기 위한 샘플 GitHub 활동 데이터를 생성합니다.
+                    기존 데이터는 모두 삭제되고 새로운 30일간의 테스트 데이터로 대체됩니다.
+                  </p>
+                  <Button
+                    onClick={generateTestData}
+                    variant="outline"
+                    size="sm"
+                    className="text-yellow-700 border-yellow-300 hover:bg-yellow-100"
+                  >
+                    테스트 데이터 생성
+                  </Button>
+                </div>
+              </CardContent>
             </Card>
           )}
-
         </div>
       </main>
     </div>

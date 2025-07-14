@@ -44,32 +44,60 @@ const toastConfig = {
 }
 
 // 사용자 정의 Toast 컴포넌트들
-export const showSuccessToast = (message: string, icon?: React.ReactNode) => {
-  toast.success(message, {
-    ...toastConfig,
-    icon: icon || <CheckCircle className="h-5 w-5" />
-  })
+export const showSuccessToast = (message: string, customIcon?: React.ReactNode) => {
+  if (customIcon !== undefined) {
+    toast.success(message, {
+      ...toastConfig,
+      icon: customIcon as any
+    })
+  } else {
+    toast.success(message, {
+      ...toastConfig,
+      icon: <CheckCircle className="h-5 w-5" />
+    })
+  }
 }
 
-export const showErrorToast = (message: string, icon?: React.ReactNode) => {
-  toast.error(message, {
-    ...toastConfig,
-    icon: icon || <XCircle className="h-5 w-5" />
-  })
+export const showErrorToast = (message: string, customIcon?: React.ReactNode) => {
+  if (customIcon !== undefined) {
+    toast.error(message, {
+      ...toastConfig,
+      icon: customIcon as any
+    })
+  } else {
+    toast.error(message, {
+      ...toastConfig,
+      icon: <XCircle className="h-5 w-5" />
+    })
+  }
 }
 
-export const showWarningToast = (message: string, icon?: React.ReactNode) => {
-  toast(message, {
-    ...toastConfig,
-    icon: icon || <AlertTriangle className="h-5 w-5 text-yellow-500" />
-  })
+export const showWarningToast = (message: string, customIcon?: React.ReactNode) => {
+  if (customIcon !== undefined) {
+    toast(message, {
+      ...toastConfig,
+      icon: customIcon as any
+    })
+  } else {
+    toast(message, {
+      ...toastConfig,
+      icon: <AlertTriangle className="h-5 w-5 text-yellow-500" />
+    })
+  }
 }
 
-export const showInfoToast = (message: string, icon?: React.ReactNode) => {
-  toast(message, {
-    ...toastConfig,
-    icon: icon || <Info className="h-5 w-5 text-blue-500" />
-  })
+export const showInfoToast = (message: string, customIcon?: React.ReactNode) => {
+  if (customIcon !== undefined) {
+    toast(message, {
+      ...toastConfig,
+      icon: customIcon as any
+    })
+  } else {
+    toast(message, {
+      ...toastConfig,
+      icon: <Info className="h-5 w-5 text-blue-500" />
+    })
+  }
 }
 
 // 특정 이벤트용 Toast 함수들

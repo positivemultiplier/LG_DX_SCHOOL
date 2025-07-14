@@ -32,9 +32,9 @@ export async function POST(request: NextRequest) {
     const { import_type = 'all' } = await request.json();
 
     const results = {
-      subjects: { success: false, count: 0, error: null },
-      reflections: { success: false, count: 0, error: null },
-      github_activities: { success: false, count: 0, error: null }
+      subjects: { success: false, count: 0, error: null as string | null },
+      reflections: { success: false, count: 0, error: null as string | null },
+      github_activities: { success: false, count: 0, error: null as string | null }
     };
 
     // 과목 데이터 마이그레이션

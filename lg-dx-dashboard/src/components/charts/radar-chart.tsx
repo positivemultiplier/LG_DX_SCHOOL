@@ -77,11 +77,12 @@ export function ThreePartRadarChart({
         >
           <p className="font-semibold mb-2">{label}</p>
           {payload.map((entry: any, index: number) => {
-            const timePartName = {
+            const timePartNames: Record<string, string> = {
               morning: '🌅 오전수업',
               afternoon: '🌞 오후수업', 
               evening: '🌙 저녁자율학습'
-            }[entry.dataKey] || entry.dataKey
+            }
+            const timePartName = timePartNames[entry.dataKey] || entry.dataKey
             
             return (
               <p 

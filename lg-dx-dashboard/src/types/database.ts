@@ -489,7 +489,7 @@ export interface Database {
         Returns: number
       }
       cleanup_old_github_records: {
-        Args: {}
+        Args: Record<string, never>
         Returns: number
       }
       calculate_daily_statistics: {

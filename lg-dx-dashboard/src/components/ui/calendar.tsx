@@ -10,11 +10,11 @@ import {
   getNextMonth,
   getPreviousMonth,
   formatDate,
-  formatDateKorean,
   isSameDateAs,
   isInSameMonth,
   isDateToday
 } from '@/lib/utils/date'
+import { format } from 'date-fns'
 
 interface CalendarProps {
   mode?: 'single' | 'range'
@@ -120,7 +120,7 @@ export function Calendar({
         </Button>
         
         <h2 className="text-sm font-semibold">
-          {formatDateKorean(currentMonth, 'yyyy년 M월')}
+          {format(currentMonth, 'yyyy년 M월')}
         </h2>
         
         <Button

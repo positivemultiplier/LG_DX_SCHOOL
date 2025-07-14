@@ -1,24 +1,28 @@
 /**
- * GitHub 활동 데이터 조회 API
- * 저장된 GitHub 활동 데이터를 조회하고 차트용으로 포맷팅
+ * Phase 3: Enhanced GitHub Activities API
+ * GitHub 활동 데이터 조회 및 고급 분석 API
  */
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase/server'
 
-// GitHub Activity 데이터 타입 정의
+// GitHub Activity 데이터 타입 정의 (기존 호환성 유지)
 interface GitHubActivity {
   id: string
   user_id: string
   date: string
   commits_count: number
-  repositories: string[]
+  repositories: string[] // 기존 호환성
   repositories_count: number
-  languages: string[]
-  additions: number
-  deletions: number
-  files_changed: number
+  languages: string[] // 기존 호환성
+  languages_used?: string[] // 새로운 필드
   activity_level: number
+  pull_requests?: number
+  issues?: number
+  reviews?: number
+  additions?: number
+  deletions?: number
+  files_changed?: number
 }
 
 interface HeatmapData {
@@ -168,9 +172,9 @@ function formatForChart(activities: GitHubActivity[]): ChartData[] {
     date: activity.date,
     commits: activity.commits_count,
     repositories: activity.repositories_count,
-    additions: activity.additions,
-    deletions: activity.deletions,
-    files_changed: activity.files_changed,
+    additions: activity.additions || 0,
+    deletions: activity.deletions || 0,
+    files_changed: activity.files_changed || 0,
     languages: activity.languages.length
   }))
 }

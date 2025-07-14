@@ -219,7 +219,7 @@ export class AnalyticsDataFetcher {
     try {
       const reflections = await this.getReflections(userId, dateRange)
       
-      const timePartData = {
+      const timePartData: Record<string, { scores: number[], count: number, average: number }> = {
         morning: { scores: [], count: 0, average: 7.2 }, // 기본값 설정
         afternoon: { scores: [], count: 0, average: 8.1 },
         evening: { scores: [], count: 0, average: 6.8 }

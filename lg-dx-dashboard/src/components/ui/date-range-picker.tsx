@@ -9,12 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils/cn'
 import { 
   formatDate, 
-  formatDateKorean, 
-  parseDate, 
-  dateToString,
-  isValidDate,
-  getPresetDateRanges,
-  isValidDateRange
+  getPresetDateRanges
 } from '@/lib/utils/date'
 
 interface DateRange {
@@ -52,8 +47,8 @@ export function DateRangePicker({
   // 선택된 기간이 변경될 때 input 값 업데이트
   React.useEffect(() => {
     if (value?.start && value?.end) {
-      const startStr = formatDateKorean(value.start, 'M월 d일')
-      const endStr = formatDateKorean(value.end, 'M월 d일')
+      const startStr = formatDate(value.start, 'M월 d일')
+      const endStr = formatDate(value.end, 'M월 d일')
       setInputValue(`${startStr} - ${endStr}`)
     } else {
       setInputValue('')
@@ -77,8 +72,8 @@ export function DateRangePicker({
     }
   }, [isOpen])
 
-  const handleRangeSelect = (range: { start: Date; end: Date } | undefined) => {
-    if (range && range.start && range.end) {
+  const handleRangeSelect = (range: Date | { start: Date; end: Date } | undefined) => {
+    if (range && typeof range === 'object' && 'start' in range && 'end' in range && range.start && range.end) {
       onChange?.(range as DateRange)
     }
   }
@@ -185,7 +180,7 @@ export function DateRangePicker({
                     <div className="text-xs text-muted-foreground">선택된 기간</div>
                     <div className="flex items-center gap-2">
                       <Badge variant="outline" className="text-xs">
-                        {formatDateKorean(value.start, 'M/d')} - {formatDateKorean(value.end, 'M/d')}
+                        {formatDate(value.start, 'M/d')} - {formatDate(value.end, 'M/d')}
                       </Badge>
                       <Badge variant="secondary" className="text-xs">
                         {Math.ceil((value.end.getTime() - value.start.getTime()) / (1000 * 60 * 60 * 24)) + 1}일

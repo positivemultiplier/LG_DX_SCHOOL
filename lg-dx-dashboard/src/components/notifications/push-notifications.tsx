@@ -85,17 +85,23 @@ export function usePushNotifications() {
       error: '/icons/notification-error.png'
     }
 
-    const notification = new Notification(title, {
+    const notificationOptions: NotificationOptions = {
       body,
       icon: iconMap[type] || '/favicon.ico',
       badge: '/favicon.ico',
       tag: `lg-dx-${type}-${Date.now()}`,
-      requireInteraction: type === 'error',
-      actions: actions?.map(action => ({
+      requireInteraction: type === 'error'
+    }
+
+    // actions는 ServiceWorker에서만 지원됨
+    if ('serviceWorker' in navigator && actions) {
+      (notificationOptions as any).actions = actions.map(action => ({
         action: action.action,
         title: action.title
       }))
-    })
+    }
+
+    const notification = new Notification(title, notificationOptions)
 
     // 자동 닫기 (에러가 아닌 경우)
     if (type !== 'error') {

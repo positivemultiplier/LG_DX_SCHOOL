@@ -346,7 +346,7 @@ ON CONFLICT (name) DO NOTHING;`
                 3단계: 설정 완료 확인
               </h3>
               <p className="text-purple-800 text-sm mb-3">
-                SQL 스크립트 실행 후 위의 "상태 확인" 버튼을 클릭하여 설정이 완료되었는지 확인하세요.
+                SQL 스크립트 실행 후 위의 &ldquo;상태 확인&rdquo; 버튼을 클릭하여 설정이 완료되었는지 확인하세요.
               </p>
             </div>
           </CardContent>

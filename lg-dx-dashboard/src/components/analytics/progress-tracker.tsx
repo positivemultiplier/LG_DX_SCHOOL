@@ -450,7 +450,7 @@ export function ProgressTracker({
                             {goal.likelihood}% 가능성
                           </span>
                           <span className="text-muted-foreground">
-                            (예상: {goal.projectedScore}점)
+                            (예상: {'projectedScore' in goal ? goal.projectedScore : goal.targetScore}점)
                           </span>
                         </div>
                       </div>

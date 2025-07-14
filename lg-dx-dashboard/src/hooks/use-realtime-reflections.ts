@@ -3,17 +3,17 @@
 import { useEffect, useState } from 'react'
 import { RealtimeChannel } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase/client'
-import { DailyReflection } from '@/types/database'
+import { Reflection } from '@/types/reflection'
 import { useAuth } from './use-auth'
 
 interface RealtimeReflectionsState {
-  reflections: DailyReflection[]
+  reflections: Reflection[]
   isConnected: boolean
   lastUpdate: Date | null
   error: string | null
 }
 
-export function useRealtimeReflections(initialReflections: DailyReflection[] = []) {
+export function useRealtimeReflections(initialReflections: Reflection[] = []) {
   const { user } = useAuth()
   const [state, setState] = useState<RealtimeReflectionsState>({
     reflections: initialReflections,
@@ -38,7 +38,7 @@ export function useRealtimeReflections(initialReflections: DailyReflection[] = [
           filter: `user_id=eq.${user.id}`
         },
         (payload) => {
-          const newReflection = payload.new as DailyReflection
+          const newReflection = payload.new as Reflection
           setState(prev => ({
             ...prev,
             reflections: [...prev.reflections, newReflection],
@@ -56,7 +56,7 @@ export function useRealtimeReflections(initialReflections: DailyReflection[] = [
           filter: `user_id=eq.${user.id}`
         },
         (payload) => {
-          const updatedReflection = payload.new as DailyReflection
+          const updatedReflection = payload.new as Reflection
           setState(prev => ({
             ...prev,
             reflections: prev.reflections.map(reflection =>
@@ -76,7 +76,7 @@ export function useRealtimeReflections(initialReflections: DailyReflection[] = [
           filter: `user_id=eq.${user.id}`
         },
         (payload) => {
-          const deletedReflection = payload.old as DailyReflection
+          const deletedReflection = payload.old as Reflection
           setState(prev => ({
             ...prev,
             reflections: prev.reflections.filter(reflection =>
@@ -119,7 +119,7 @@ export function useRealtimeReflections(initialReflections: DailyReflection[] = [
   }
 
   // 실시간 리플렉션 추가 (로컬 업데이트)
-  const addRealtimeReflection = (reflection: DailyReflection) => {
+  const addRealtimeReflection = (reflection: Reflection) => {
     setState(prev => ({
       ...prev,
       reflections: [...prev.reflections, reflection],
@@ -128,7 +128,7 @@ export function useRealtimeReflections(initialReflections: DailyReflection[] = [
   }
 
   // 실시간 리플렉션 업데이트 (로컬 업데이트)
-  const updateRealtimeReflection = (id: string, updates: Partial<DailyReflection>) => {
+  const updateRealtimeReflection = (id: string, updates: Partial<Reflection>) => {
     setState(prev => ({
       ...prev,
       reflections: prev.reflections.map(reflection =>

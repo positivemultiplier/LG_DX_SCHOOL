@@ -108,6 +108,17 @@ export default function InsightsPage() {
     }
   }
 
+  const getPredictionIcon = (type: string) => {
+    switch (type) {
+      case 'productivity': return <TrendingUp className="h-4 w-4" />
+      case 'score': return <Target className="h-4 w-4" />
+      case 'consistency': return <Activity className="h-4 w-4" />
+      case 'goal_achievement': return <Target className="h-4 w-4" />
+      case 'risk': return <AlertTriangle className="h-4 w-4" />
+      default: return <Brain className="h-4 w-4" />
+    }
+  }
+
   const getInsightColor = (type: AnalyticsInsight['type'], priority: string) => {
     if (type === 'warning') return 'border-red-200 bg-red-50'
     if (priority === 'high') return 'border-blue-200 bg-blue-50'
@@ -323,7 +334,7 @@ export default function InsightsPage() {
                       <div className="flex items-start justify-between">
                         <div>
                           <CardTitle className="text-lg flex items-center gap-2">
-                            {getInsightIcon(prediction.type)}
+                            {getPredictionIcon(prediction.type)}
                             {prediction.description.split(' ')[0]} 예측
                           </CardTitle>
                           <CardDescription>{prediction.description}</CardDescription>

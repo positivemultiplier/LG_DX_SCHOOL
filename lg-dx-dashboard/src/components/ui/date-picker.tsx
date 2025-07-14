@@ -81,8 +81,13 @@ export function DatePicker({
     }
   }
 
-  const handleDateSelect = (date: Date | undefined) => {
-    onChange?.(date)
+  const handleDateSelect = (date: Date | { start: Date; end: Date; } | undefined) => {
+    if (date && !(date instanceof Date) && 'start' in date) {
+      // range 모드인 경우 start 날짜를 사용
+      onChange?.(date.start)
+    } else {
+      onChange?.(date as Date | undefined)
+    }
     setIsOpen(false)
   }
 

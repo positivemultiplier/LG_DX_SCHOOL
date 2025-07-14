@@ -20,6 +20,34 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // 🔧 환경변수 검증 추가
+    const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID
+    const clientSecret = process.env.GITHUB_CLIENT_SECRET
+    
+    if (!clientId || !clientSecret) {
+      console.error('GitHub OAuth credentials not configured:', {
+        clientId: !!clientId,
+        clientSecret: !!clientSecret
+      })
+      return NextResponse.json(
+        { 
+          error: 'GitHub integration not configured',
+          details: 'OAuth credentials missing'
+        },
+        { status: 500 }
+      )
+    }
+
+    if (clientId === 'test_client_id' || clientSecret === 'test_client_secret') {
+      return NextResponse.json(
+        { 
+          error: 'GitHub OAuth not properly configured',
+          details: 'Please set up actual GitHub OAuth credentials'
+        },
+        { status: 500 }
+      )
+    }
+
     // GitHub OAuth 토큰 교환
     const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
@@ -28,8 +56,8 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        client_id: process.env.GITHUB_CLIENT_ID,
-        client_secret: process.env.GITHUB_CLIENT_SECRET,
+        client_id: clientId,
+        client_secret: clientSecret,
         code,
         state
       })

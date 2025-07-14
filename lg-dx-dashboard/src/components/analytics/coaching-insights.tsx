@@ -120,7 +120,7 @@ export function CoachingInsights({
     }
 
     // 성격 특성 기반 코칭
-    if (profile?.personality.conscientiousness < 5) {
+    if (profile?.personality?.conscientiousness && profile.personality.conscientiousness < 5) {
       insights.push({
         id: 'self-discipline',
         type: 'opportunity',
@@ -166,7 +166,7 @@ export function CoachingInsights({
     }
 
     // 사회적 학습 추천
-    if (profile?.personality.extraversion > 7) {
+    if (profile?.personality?.extraversion && profile.personality.extraversion > 7) {
       insights.push({
         id: 'collaborative-learning',
         type: 'recommendation',

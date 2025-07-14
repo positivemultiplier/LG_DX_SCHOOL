@@ -15,7 +15,11 @@ import { getTodayString } from '@/lib/utils/date'
 
 export default function DashboardPage() {
   const { user, signOut, loading } = useAuthContext()
-  const [dashboardData, setDashboardData] = useState({
+  const [dashboardData, setDashboardData] = useState<{
+    todayReflections: any[]
+    weeklyData: any[]
+    loading: boolean
+  }>({
     todayReflections: [],
     weeklyData: [],
     loading: true
@@ -99,6 +103,8 @@ export default function DashboardPage() {
   }
 
   const checkMigrationStatus = async () => {
+    if (!user) return
+    
     try {
       const { data: subjects } = await supabase
         .from('subjects')
