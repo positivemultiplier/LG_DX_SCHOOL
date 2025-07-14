@@ -21,7 +21,8 @@
       "Bash(touch:*)",
       "WebFetch(domain:uqytgcqbigejqvhgmafg.supabase.co)",
       "WebFetch(domain:localhost)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(cat:*)"
     ],
     "deny": []
   }
