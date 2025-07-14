@@ -32,6 +32,10 @@ export function GitHubHeatmap({
   period = 84 // 12주 (84일)
 }: GitHubHeatmapProps) {
 
+  // 데이터 검증 및 기본값 처리
+  const chartData = data && data.length > 0 ? data : generateSampleGitHubData(period)
+  const hasRealData = data && data.length > 0
+
   if (loading) {
     return (
       <Card>
@@ -121,6 +125,12 @@ export function GitHubHeatmap({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
+        {!hasRealData && (
+          <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="text-sm text-blue-800 font-medium">📊 샘플 데이터</div>
+            <div className="text-xs text-blue-600">GitHub 연동이 되지 않아 샘플 데이터를 표시합니다. GitHub을 연결하면 실제 커밋 히스토리가 나타납니다.</div>
+          </div>
+        )}
         {/* 통계 요약 */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <div className="text-center space-y-1">

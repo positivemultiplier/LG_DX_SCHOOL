@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { reflectionService } from '@/lib/services/reflection';
 import { useAuth } from '@/hooks/use-auth';
+import { getTodayString } from '@/lib/utils/date';
 import type {
   Reflection,
   CreateReflectionData,
@@ -82,17 +83,20 @@ export function useReflectionByDateAndTimePart(date: string, timePart: TimePart)
 
     setIsLoading(true);
     setError(null);
+    setReflection(null); // 이전 데이터 클리어
 
     try {
       const result = await reflectionService.getReflectionByDateAndTimePart(date, timePart);
       
       if (result.error) {
         setError(result.error);
+        setReflection(null);
       } else {
         setReflection(result.data);
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch reflection');
+      setReflection(null);
     } finally {
       setIsLoading(false);
     }
@@ -123,17 +127,20 @@ export function useReflectionsByDate(date: string) {
 
     setIsLoading(true);
     setError(null);
+    setDailySummary(null); // 이전 데이터 클리어
 
     try {
       const result = await reflectionService.getReflectionsByDate(date);
       
       if (result.error) {
         setError(result.error);
+        setDailySummary(null);
       } else {
         setDailySummary(result.data);
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch daily reflections');
+      setDailySummary(null);
     } finally {
       setIsLoading(false);
     }
@@ -252,11 +259,11 @@ export function useRealtimeReflections() {
 }
 
 /**
- * 오늘의 리플렉션 상태를 조회하는 훅
+ * 특정 날짜의 리플렉션 상태를 조회하는 훅 (기본값: 오늘)
  */
-export function useTodayReflections() {
-  const today = new Date().toISOString().split('T')[0];
-  const { dailySummary, isLoading, error, refetch } = useReflectionsByDate(today);
+export function useTodayReflections(date?: string) {
+  const targetDate = date || getTodayString();
+  const { dailySummary, isLoading, error, refetch } = useReflectionsByDate(targetDate);
 
   const timeSlots = [
     { key: 'morning' as TimePart, label: '오전 수업', icon: '🌅' },

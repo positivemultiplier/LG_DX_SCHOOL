@@ -53,6 +53,10 @@ export function LearningTrendChart({
   targetScore = 7.5
 }: LearningTrendChartProps) {
 
+  // 데이터 검증 및 기본값 처리
+  const chartData = data && data.length > 0 ? data : generateSampleTrendData(21)
+  const hasRealData = data && data.length > 0
+
   if (loading) {
     return (
       <Card>
@@ -68,32 +72,12 @@ export function LearningTrendChart({
       </Card>
     )
   }
-
-  if (!data || data.length === 0) {
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>{description}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="h-[400px] flex items-center justify-center">
-            <div className="text-center space-y-2">
-              <div className="text-sm text-muted-foreground">트렌드 데이터가 없습니다</div>
-              <div className="text-xs text-muted-foreground">더 많은 리플렉션 데이터가 필요합니다</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    )
-  }
-
   // 트렌드 분석
   const trendAnalysis = () => {
-    if (data.length < 2) return { direction: 'stable', change: 0 }
+    if (chartData.length < 2) return { direction: 'stable', change: 0 }
     
-    const recent = data.slice(-3).map(d => d.total_score)
-    const previous = data.slice(-6, -3).map(d => d.total_score)
+    const recent = chartData.slice(-3).map(d => d.total_score)
+    const previous = chartData.slice(-6, -3).map(d => d.total_score)
     
     const recentAvg = recent.reduce((sum, score) => sum + score, 0) / recent.length
     const previousAvg = previous.reduce((sum, score) => sum + score, 0) / previous.length
@@ -108,11 +92,11 @@ export function LearningTrendChart({
 
   // 통계 계산
   const stats = {
-    avgTotal: Math.round(data.reduce((sum, d) => sum + d.total_score, 0) / data.length * 10) / 10,
-    avgEfficiency: Math.round(data.reduce((sum, d) => sum + d.efficiency, 0) / data.length * 10) / 10,
-    avgConsistency: Math.round(data.reduce((sum, d) => sum + d.consistency, 0) / data.length * 10) / 10,
-    maxScore: Math.max(...data.map(d => d.total_score)),
-    totalCommits: data.reduce((sum, d) => sum + d.github_commits, 0)
+    avgTotal: Math.round(chartData.reduce((sum, d) => sum + d.total_score, 0) / chartData.length * 10) / 10,
+    avgEfficiency: Math.round(chartData.reduce((sum, d) => sum + d.efficiency, 0) / chartData.length * 10) / 10,
+    avgConsistency: Math.round(chartData.reduce((sum, d) => sum + d.consistency, 0) / chartData.length * 10) / 10,
+    maxScore: Math.max(...chartData.map(d => d.total_score)),
+    totalCommits: chartData.reduce((sum, d) => sum + d.github_commits, 0)
   }
 
   const CustomTooltip = ({ active, payload, label }: any) => {
@@ -219,6 +203,12 @@ export function LearningTrendChart({
         </CardDescription>
       </CardHeader>
       <CardContent>
+        {!hasRealData && (
+          <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="text-sm text-blue-800 font-medium">📊 샘플 데이터</div>
+            <div className="text-xs text-blue-600">실제 데이터가 없어 샘플 트렌드를 표시합니다. 더 많은 리플렉션을 작성하면 실제 트렌드가 나타납니다.</div>
+          </div>
+        )}
         {/* 요약 통계 */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
           <div className="text-center space-y-1">
@@ -246,7 +236,7 @@ export function LearningTrendChart({
         {/* 차트 */}
         <div className="h-[400px]">
           <ResponsiveContainer width="100%" height="100%">
-            <Chart data={data} margin={chartTheme.defaults.margin}>
+            <Chart data={chartData} margin={chartTheme.defaults.margin}>
               <CartesianGrid 
                 strokeDasharray={chartTheme.grid.strokeDasharray}
                 stroke={chartTheme.grid.stroke}

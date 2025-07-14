@@ -39,6 +39,10 @@ export function ThreePartRadarChart({
   period = "이번 주"
 }: ThreePartRadarChartProps) {
   
+  // 데이터 검증 및 기본값 처리
+  const chartData = data && data.length > 0 ? data : generateSampleRadarData()
+  const hasRealData = data && data.length > 0
+  
   if (loading) {
     return (
       <Card>
@@ -55,24 +59,7 @@ export function ThreePartRadarChart({
     )
   }
 
-  if (!data || data.length === 0) {
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>{description}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="h-[400px] flex items-center justify-center">
-            <div className="text-center space-y-2">
-              <div className="text-sm text-muted-foreground">분석할 데이터가 없습니다</div>
-              <div className="text-xs text-muted-foreground">리플렉션을 작성하면 성과 분석이 나타납니다</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    )
-  }
+  // 빈 데이터 처리는 제거하고 항상 차트를 표시
 
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
@@ -122,9 +109,15 @@ export function ThreePartRadarChart({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
+        {!hasRealData && (
+          <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="text-sm text-blue-800 font-medium">📊 샘플 데이터</div>
+            <div className="text-xs text-blue-600">실제 데이터가 없어 샘플 데이터를 표시합니다. 리플렉션을 작성하면 실제 데이터가 나타납니다.</div>
+          </div>
+        )}
         <div className="h-[400px]">
           <ResponsiveContainer width="100%" height="100%">
-            <RadarChart data={data} margin={chartTheme.defaults.margin}>
+            <RadarChart data={chartData} margin={chartTheme.defaults.margin}>
               <PolarGrid 
                 stroke={customChartStyles.radar.grid.stroke}
                 strokeWidth={customChartStyles.radar.grid.strokeWidth}

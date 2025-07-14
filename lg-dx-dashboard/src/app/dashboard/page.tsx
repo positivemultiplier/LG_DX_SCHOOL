@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { Calendar, Settings, LogOut, Database, RefreshCw } from 'lucide-react'
+import { getTodayString } from '@/lib/utils/date'
 
 export default function DashboardPage() {
   const { user, signOut, loading } = useAuthContext()
@@ -38,7 +39,7 @@ export default function DashboardPage() {
 
     try {
       // 오늘의 리플렉션 데이터 로드
-      const today = new Date().toISOString().split('T')[0]
+      const today = getTodayString()
       
       const { data: todayData, error: todayError } = await supabase
         .from('daily_reflections')

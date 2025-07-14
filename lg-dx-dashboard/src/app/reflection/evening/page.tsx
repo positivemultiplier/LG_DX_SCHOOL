@@ -16,6 +16,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'react-hot-toast';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { DatePicker } from '@/components/ui/date-picker';
+import { getTodayString, formatDateKorean, parseDate, addDays, subDays, dateToString } from '@/lib/utils/date';
 
 export default function EveningReflectionPage() {
   const router = useRouter();
@@ -24,8 +27,8 @@ export default function EveningReflectionPage() {
   const { user } = useAuth();
   const { createReflection, updateReflection, isLoading } = useCreateReflection();
   
-  const today = new Date().toISOString().split('T')[0];
-  const { reflection: existingReflection, isLoading: isFetching } = useReflectionByDateAndTimePart(today, 'evening');
+  const selectedDate = searchParams.get('date') || getTodayString();
+  const { reflection: existingReflection, isLoading: isFetching } = useReflectionByDateAndTimePart(selectedDate, 'evening');
   
   const [achievements, setAchievements] = useState<string[]>(['']);
   const [challenges, setChallenges] = useState<string[]>(['']);
@@ -59,8 +62,20 @@ export default function EveningReflectionPage() {
       setAchievements(existingReflection.achievements.length > 0 ? existingReflection.achievements : ['']);
       setChallenges(existingReflection.challenges.length > 0 ? existingReflection.challenges : ['']);
       setTomorrowGoals(existingReflection.tomorrow_goals.length > 0 ? existingReflection.tomorrow_goals : ['']);
+    } else {
+      // 기존 리플렉션이 없으면 폼을 기본값으로 리셋
+      form.reset({
+        understanding_score: 5,
+        concentration_score: 5,
+        achievement_score: 5,
+        condition: '보통',
+        notes: '',
+      });
+      setAchievements(['']);
+      setChallenges(['']);
+      setTomorrowGoals(['']);
     }
-  }, [existingReflection, form]);
+  }, [existingReflection, form, selectedDate]); // selectedDate 종속성 추가
 
   const onSubmit = async (data: ReflectionFormInput) => {
     if (!user) {
@@ -74,7 +89,7 @@ export default function EveningReflectionPage() {
 
     const reflectionData = {
       user_id: user.id,
-      date: today,
+      date: selectedDate,
       time_part: 'evening' as const,
       understanding_score: data.understanding_score,
       concentration_score: data.concentration_score,
@@ -113,6 +128,35 @@ export default function EveningReflectionPage() {
     setter(prev => prev.filter((_, i) => i !== index));
   };
 
+  // 날짜 네비게이션 함수들
+  const navigateToDate = (newDate: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('date', newDate);
+    router.push(`/reflection/evening?${params.toString()}`);
+  };
+
+  const goToPreviousDay = () => {
+    const currentDate = parseDate(selectedDate);
+    if (currentDate) {
+      const previousDay = subDays(currentDate, 1);
+      navigateToDate(dateToString(previousDay));
+    }
+  };
+
+  const goToNextDay = () => {
+    const currentDate = parseDate(selectedDate);
+    if (currentDate) {
+      const nextDay = addDays(currentDate, 1);
+      navigateToDate(dateToString(nextDay));
+    }
+  };
+
+  const handleDateChange = (date: Date | undefined) => {
+    if (date) {
+      navigateToDate(dateToString(date));
+    }
+  };
+
   if (isFetching) {
     return (
       <div className="container mx-auto p-6">
@@ -122,16 +166,70 @@ export default function EveningReflectionPage() {
   }
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
+    <div key={selectedDate} className="container mx-auto p-6 max-w-4xl">
       {/* 헤더 */}
-      <div className="text-center space-y-2 mb-8">
+      <div className="text-center space-y-4 mb-8">
         <h1 className="text-3xl font-bold flex items-center justify-center gap-2">
           🌙 저녁 자율학습 리플렉션
         </h1>
         <p className="text-muted-foreground">
           {isViewMode ? '저녁 자율학습 리플렉션을 확인합니다' : '저녁 자율학습을 마치고 하루의 학습을 되돌아보세요'}
         </p>
-        <Badge variant="outline">{today}</Badge>
+        
+        {/* 날짜 선택 및 네비게이션 */}
+        <div className="flex items-center justify-center gap-4 max-w-md mx-auto">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={goToPreviousDay}
+            disabled={isViewMode}
+          >
+            <ChevronLeft className="h-4 w-4" />
+            이전일
+          </Button>
+          
+          <div className="flex-1 min-w-[200px]">
+            <DatePicker
+              value={parseDate(selectedDate) || undefined}
+              onChange={handleDateChange}
+              placeholder="날짜 선택"
+              disabled={isViewMode}
+              className="w-full"
+            />
+          </div>
+          
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={goToNextDay}
+            disabled={isViewMode}
+          >
+            다음일
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+        
+        {/* 선택된 날짜 표시 및 안내 메시지 */}
+        <div className="text-sm text-muted-foreground space-y-2">
+          <div>
+            {formatDateKorean(selectedDate)}
+            {selectedDate === getTodayString() && (
+              <Badge variant="default" className="ml-2 text-xs">오늘</Badge>
+            )}
+          </div>
+          {selectedDate < getTodayString() && !isViewMode && (
+            <div className="text-amber-600 text-xs">
+              💡 과거 날짜의 리플렉션을 작성하고 있습니다.
+            </div>
+          )}
+          {selectedDate > getTodayString() && !isViewMode && (
+            <div className="text-blue-600 text-xs">
+              📅 미래 날짜의 리플렉션을 작성하고 있습니다.
+            </div>
+          )}
+        </div>
       </div>
 
       <Form {...form}>

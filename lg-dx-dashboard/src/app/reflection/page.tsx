@@ -1,16 +1,61 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useTodayReflections } from '@/hooks/use-reflection';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { DatePicker } from '@/components/ui/date-picker';
+import { getTodayString, formatDateKorean, parseDate, addDays, subDays, dateToString } from '@/lib/utils/date';
+import { useAutoDateUpdate } from '@/hooks/use-date-update';
 
 export default function ReflectionPage() {
   const router = useRouter();
-  const { completionStatus, overallProgress, isLoading, error } = useTodayReflections();
+  const searchParams = useSearchParams();
+  const selectedDate = searchParams.get('date') || getTodayString();
+  const { completionStatus, overallProgress, isLoading, error } = useTodayReflections(selectedDate);
+
+  // 날짜 네비게이션 함수들
+  const navigateToDate = (newDate: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('date', newDate);
+    router.push(`/reflection?${params.toString()}`);
+  };
+
+  const goToPreviousDay = () => {
+    const currentDate = parseDate(selectedDate);
+    if (currentDate) {
+      const previousDay = subDays(currentDate, 1);
+      navigateToDate(dateToString(previousDay));
+    }
+  };
+
+  const goToNextDay = () => {
+    const currentDate = parseDate(selectedDate);
+    if (currentDate) {
+      const nextDay = addDays(currentDate, 1);
+      navigateToDate(dateToString(nextDay));
+    }
+  };
+
+  const handleDateChange = (date: Date | undefined) => {
+    if (date) {
+      navigateToDate(dateToString(date));
+    }
+  };
+
+  // 자정 넘어갈 때 자동 날짜 업데이트 (오늘 날짜를 보고 있을 때만)
+  useAutoDateUpdate(
+    selectedDate,
+    (newDate) => {
+      // 자정이 넘어갔을 때 새로운 날짜로 자동 이동
+      navigateToDate(newDate);
+    },
+    selectedDate === getTodayString() // 오늘 날짜를 보고 있을 때만 활성화
+  );
 
   if (isLoading) {
     return (
@@ -35,13 +80,53 @@ export default function ReflectionPage() {
   }
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <div key={selectedDate} className="container mx-auto p-6 space-y-6">
       {/* 헤더 */}
-      <div className="text-center space-y-2">
+      <div className="text-center space-y-4">
         <h1 className="text-3xl font-bold">일일 리플렉션</h1>
         <p className="text-muted-foreground">
-          오늘의 학습을 3-Part 시스템으로 기록해보세요
+          3-Part 시스템으로 학습을 기록해보세요
         </p>
+        
+        {/* 날짜 선택 및 네비게이션 */}
+        <div className="flex items-center justify-center gap-4 max-w-md mx-auto">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={goToPreviousDay}
+          >
+            <ChevronLeft className="h-4 w-4" />
+            이전일
+          </Button>
+          
+          <div className="flex-1 min-w-[200px]">
+            <DatePicker
+              value={parseDate(selectedDate) || undefined}
+              onChange={handleDateChange}
+              placeholder="날짜 선택"
+              className="w-full"
+            />
+          </div>
+          
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={goToNextDay}
+          >
+            다음일
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+        
+        {/* 선택된 날짜 표시 */}
+        <div className="text-sm text-muted-foreground">
+          {formatDateKorean(selectedDate)}
+          {selectedDate === getTodayString() && (
+            <Badge variant="default" className="ml-2 text-xs">오늘</Badge>
+          )}
+        </div>
       </div>
 
       {/* 전체 진행률 */}
@@ -122,7 +207,7 @@ export default function ReflectionPage() {
               
               <div className="flex gap-2">
                 <Button 
-                  onClick={() => router.push(`/reflection/${timeSlot.key}`)}
+                  onClick={() => router.push(`/reflection/${timeSlot.key}?date=${selectedDate}`)}
                   className="flex-1"
                   variant={timeSlot.completed ? "outline" : "default"}
                 >
@@ -130,7 +215,7 @@ export default function ReflectionPage() {
                 </Button>
                 {timeSlot.completed && (
                   <Button 
-                    onClick={() => router.push(`/reflection/${timeSlot.key}?view=true`)}
+                    onClick={() => router.push(`/reflection/${timeSlot.key}?date=${selectedDate}&view=true`)}
                     variant="ghost"
                     size="sm"
                   >

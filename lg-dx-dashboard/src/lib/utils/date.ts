@@ -32,16 +32,25 @@ export function formatDateKorean(date: Date | string): string {
   return format(dateObj, 'yyyy년 M월 d일 (EEEEEE)', { locale: ko });
 }
 
+// 한국 시간대(KST)로 현재 날짜를 가져오는 헬퍼 함수
+function getKoreanTime(): Date {
+  const now = new Date();
+  // UTC+9 시간대로 조정
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const kst = new Date(utc + (9 * 3600000));
+  return kst;
+}
+
 export function getTodayString(): string {
-  return format(new Date(), 'yyyy-MM-dd');
+  return format(getKoreanTime(), 'yyyy-MM-dd');
 }
 
 export function getYesterdayString(): string {
-  return format(subDays(new Date(), 1), 'yyyy-MM-dd');
+  return format(subDays(getKoreanTime(), 1), 'yyyy-MM-dd');
 }
 
 export function getTomorrowString(): string {
-  return format(addDays(new Date(), 1), 'yyyy-MM-dd');
+  return format(addDays(getKoreanTime(), 1), 'yyyy-MM-dd');
 }
 
 export function getDateRange(days: number): { start: string; end: string } {
@@ -158,7 +167,7 @@ export function isValidDateRange(startDate: Date, endDate: Date): boolean {
 
 // 사전 정의된 기간 옵션
 export function getPresetDateRanges() {
-  const today = new Date()
+  const today = new Date() // 일반 Date 객체 사용
   
   return {
     today: {
@@ -203,3 +212,38 @@ export function getPresetDateRanges() {
     }
   }
 }
+
+// 캐시 방지를 위한 유니크 키 생성
+export function getDateCacheKey(date?: string): string {
+  const targetDate = date || getTodayString();
+  const timestamp = Math.floor(Date.now() / (1000 * 60 * 5)); // 5분마다 갱신
+  return `${targetDate}_${timestamp}`;
+}
+
+// 실시간 날짜 확인 (자정 넘어갔는지 체크)
+export function hasDateChanged(lastDate: string): boolean {
+  return lastDate !== getTodayString();
+}
+
+// date-fns 함수들을 다시 export (다른 파일에서 사용하기 위해)
+export { 
+  addDays, 
+  subDays, 
+  format, 
+  parseISO, 
+  parse, 
+  isValid,
+  startOfDay,
+  endOfDay,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  addMonths,
+  subMonths,
+  isSameDay,
+  isSameMonth,
+  differenceInDays,
+  addWeeks,
+  subWeeks
+} from 'date-fns';
