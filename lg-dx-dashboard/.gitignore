@@ -25,6 +25,15 @@ yarn-error.log*
 # Local env files
 .env*.local
 .env
+.env.development
+.env.production
+.env.staging
+
+# 🔒 민감한 스크립트/설정 파일
+scripts/*_mcp.py
+scripts/sync_*.py
+*.secret
+config.json
 
 # Vercel
 .vercel
