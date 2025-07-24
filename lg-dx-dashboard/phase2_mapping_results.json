@@ -1,0 +1,293 @@
+[
+  {
+    "supabase_id": "sample1",
+    "notion_properties": {
+      "name": {
+        "title": [
+          {
+            "text": {
+              "content": "🌅 Python 기초 - 2025-07-23"
+            }
+          }
+        ]
+      },
+      "reflection_date": {
+        "date": {
+          "start": "2025-07-23"
+        }
+      },
+      "time_part": {
+        "select": {
+          "name": "🌅 오전수업"
+        }
+      },
+      "understanding": {
+        "number": 8
+      },
+      "difficulty": {
+        "number": 7
+      },
+      "condition": {
+        "select": {
+          "name": "😊 좋음"
+        }
+      },
+      "focus_level": {
+        "select": {
+          "name": "😐 보통"
+        }
+      },
+      "github_commits": {
+        "number": 3
+      },
+      "github_issues": {
+        "number": 1
+      },
+      "github_prs": {
+        "number": 0
+      },
+      "subject": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "Python 기초"
+            }
+          }
+        ]
+      },
+      "key_learning": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "변수, 데이터타입"
+            }
+          }
+        ]
+      },
+      "challenges": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "타입 변환 어려움"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "전반적으로 잘 이해함"
+            }
+          }
+        ]
+      },
+      "github_activities": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "커밋: 3, 이슈: 1, PR: 0"
+            }
+          }
+        ]
+      },
+      "optimal_flag": {
+        "checkbox": true
+      }
+    }
+  },
+  {
+    "supabase_id": "sample2",
+    "notion_properties": {
+      "name": {
+        "title": [
+          {
+            "text": {
+              "content": "🌞 JavaScript DOM - 2025-07-23"
+            }
+          }
+        ]
+      },
+      "reflection_date": {
+        "date": {
+          "start": "2025-07-23"
+        }
+      },
+      "time_part": {
+        "select": {
+          "name": "🌞 오후수업"
+        }
+      },
+      "understanding": {
+        "number": 6
+      },
+      "difficulty": {
+        "number": 5
+      },
+      "condition": {
+        "select": {
+          "name": "😐 보통"
+        }
+      },
+      "focus_level": {
+        "select": {
+          "name": "😐 보통"
+        }
+      },
+      "github_commits": {
+        "number": 2
+      },
+      "github_issues": {
+        "number": 2
+      },
+      "github_prs": {
+        "number": 1
+      },
+      "subject": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "JavaScript DOM"
+            }
+          }
+        ]
+      },
+      "key_learning": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "DOM 조작, 이벤트"
+            }
+          }
+        ]
+      },
+      "challenges": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "비동기 처리 복잡함"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "더 많은 연습 필요"
+            }
+          }
+        ]
+      },
+      "github_activities": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "커밋: 2, 이슈: 2, PR: 1"
+            }
+          }
+        ]
+      },
+      "optimal_flag": {
+        "checkbox": false
+      }
+    }
+  },
+  {
+    "supabase_id": "sample3",
+    "notion_properties": {
+      "name": {
+        "title": [
+          {
+            "text": {
+              "content": "🌙 데이터 분석 - 2025-07-23"
+            }
+          }
+        ]
+      },
+      "reflection_date": {
+        "date": {
+          "start": "2025-07-23"
+        }
+      },
+      "time_part": {
+        "select": {
+          "name": "🌙 저녁자율학습"
+        }
+      },
+      "understanding": {
+        "number": 9
+      },
+      "difficulty": {
+        "number": 8
+      },
+      "condition": {
+        "select": {
+          "name": "😊 좋음"
+        }
+      },
+      "focus_level": {
+        "select": {
+          "name": "😐 보통"
+        }
+      },
+      "github_commits": {
+        "number": 5
+      },
+      "github_issues": {
+        "number": 0
+      },
+      "github_prs": {
+        "number": 2
+      },
+      "subject": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "데이터 분석"
+            }
+          }
+        ]
+      },
+      "key_learning": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "pandas, matplotlib"
+            }
+          }
+        ]
+      },
+      "challenges": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "데이터 전처리"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "매우 만족스러운 학습"
+            }
+          }
+        ]
+      },
+      "github_activities": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "커밋: 5, 이슈: 0, PR: 2"
+            }
+          }
+        ]
+      },
+      "optimal_flag": {
+        "checkbox": true
+      }
+    }
+  }
+]

@@ -1,0 +1,104 @@
+{
+  "name": {
+    "title": [
+      {
+        "text": {
+          "content": "🌙 Python 조건문 학습 - 2025-07-23"
+        }
+      }
+    ]
+  },
+  "reflection_date": {
+    "date": {
+      "start": "2025-07-23"
+    }
+  },
+  "time_part": {
+    "select": {
+      "name": "🌙 저녁자율학습"
+    }
+  },
+  "subject": {
+    "rich_text": [
+      {
+        "text": {
+          "content": "Python 조건문 학습"
+        }
+      }
+    ]
+  },
+  "understanding": {
+    "number": 4
+  },
+  "difficulty": {
+    "number": 3
+  },
+  "condition": {
+    "select": {
+      "name": "😊 좋음"
+    }
+  },
+  "focus_level": {
+    "select": {
+      "name": "😊 매우좋음"
+    }
+  },
+  "key_learning": {
+    "rich_text": [
+      {
+        "text": {
+          "content": "if-elif-else 구조 이해"
+        }
+      }
+    ]
+  },
+  "challenges": {
+    "rich_text": [
+      {
+        "text": {
+          "content": "중첩 조건문이 어려움"
+        }
+      }
+    ]
+  },
+  "reflection": {
+    "rich_text": [
+      {
+        "text": {
+          "content": "더 많은 연습이 필요함"
+        }
+      }
+    ]
+  },
+  "github_commits": {
+    "number": 2
+  },
+  "github_issues": {
+    "number": 1
+  },
+  "github_prs": {
+    "number": 0
+  },
+  "memo": {
+    "rich_text": [
+      {
+        "text": {
+          "content": "내일 추가 학습 예정"
+        }
+      }
+    ]
+  },
+  "tags": {
+    "multi_select": [
+      {
+        "name": "Python"
+      },
+      {
+        "name": "조건문"
+      },
+      {
+        "name": "복습필요"
+      }
+    ]
+  }
+}
