@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const supabase = createServerClient()
+    const supabase = await createServerClient()
 
     // 🔧 상세한 연동 상태 조회
     const { data: integration, error } = await supabase

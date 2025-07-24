@@ -1,0 +1,81 @@
+# 🚀 Notion-Supabase 자동 동기화 워크플로우
+name: 📊 Daily Notion Sync
+
+on:
+  schedule:
+    # 매일 한국시간 오전 9시 (UTC 00:00)
+    - cron: '0 0 * * *'
+    # 매일 한국시간 오후 6시 (UTC 09:00)
+    - cron: '0 9 * * *'
+  workflow_dispatch:  # 수동 실행 허용
+    inputs:
+      sync_type:
+        description: '동기화 유형'
+        required: true
+        default: 'today'
+        type: choice
+        options:
+        - today
+        - week
+        - full
+
+env:
+  PYTHON_VERSION: '3.13'
+
+jobs:
+  notion-sync:
+    name: 📋 Notion 데이터 동기화
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 🔄 코드 체크아웃
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Python ${{ env.PYTHON_VERSION }} 설정
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+        
+    - name: 📦 의존성 설치
+      run: |
+        python -m pip install --upgrade pip
+        pip install supabase python-dotenv requests
+        
+    - name: 🔧 환경변수 설정
+      run: |
+        echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env.local
+        echo "SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}" >> .env.local
+        echo "NOTION_TOKEN=${{ secrets.NOTION_TOKEN }}" >> .env.local
+        echo "NOTION_DATABASE_ID=${{ secrets.NOTION_DATABASE_ID }}" >> .env.local
+        
+    - name: 🚀 자동 동기화 실행
+      run: |
+        cd scripts
+        python supabase_mcp.py auto-schedule --dry-run=false
+        
+    - name: 📊 동기화 리포트 생성
+      run: |
+        cd scripts
+        python supabase_mcp.py sync-report --format=github
+        
+    - name: 📈 성능 메트릭 수집
+      if: always()
+      run: |
+        echo "🎯 동기화 완료 시각: $(date)"
+        echo "📊 처리된 레코드 수: ${SYNC_COUNT:-0}"
+        echo "⏱️ 실행 시간: ${SYNC_DURATION:-unknown}"
+        
+    - name: 🔔 Slack 알림 (실패시)
+      if: failure()
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_MESSAGE: '❌ Notion 동기화 실패: ${{ github.workflow }}'
+        SLACK_COLOR: danger
+        
+    - name: ✅ 성공 알림
+      if: success()
+      run: |
+        echo "✅ Notion 동기화 성공적으로 완료"
+        echo "📅 실행 일시: $(date)"

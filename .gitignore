@@ -39,6 +39,16 @@ yarn-error.log*
 .env.production.local
 *.secret
 
+# 🔒 MCP 관련 스크립트 (민감한 데이터 포함)
+supabase_notion_sync_mcp.py
+*_sync_mcp.py
+*mcp*.py
+
+# 🔒 임시/테스트 동기화 스크립트
+sync_*.py
+notion_sync*.py
+supabase_sync*.py
+
 # OS/에디터 임시파일
 .DS_Store
 Thumbs.db
@@ -57,6 +67,21 @@ logs/
 .idea/
 *.iml
 src/notion_automation/config.json
+
+# 🔒 API 키/토큰 관련 파일
+*api-key*
+*token*
+*secret*
+*credentials*
+auth.json
+keys.json
+
+# 🔒 데이터베이스 관련
+*.db
+*.sqlite
+*.sqlite3
+database.json
+db_config.json
 
 # 개인 데이터/백업
 data/backups/

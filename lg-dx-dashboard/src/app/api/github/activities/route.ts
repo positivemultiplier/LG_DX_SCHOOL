@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const supabase = createServerClient()
+    const supabase = await createServerClient()
 
     // 기간 계산
     const periodDays = parseInt(period)

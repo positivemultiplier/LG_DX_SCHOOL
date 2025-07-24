@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
     const userResponse = await githubClient.getCurrentUser()
     const githubUser = userResponse.data
 
-    const supabase = createServerClient()
+    const supabase = await createServerClient()
 
     // 기존 연동 정보 확인
     const { data: existingIntegration } = await supabase
@@ -198,7 +198,7 @@ export async function DELETE(request: NextRequest) {
       )
     }
 
-    const supabase = createServerClient()
+    const supabase = await createServerClient()
 
     // GitHub 연동 해제
     const { error: disconnectError } = await supabase
@@ -256,7 +256,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const supabase = createServerClient()
+    const supabase = await createServerClient()
 
     // 연동 상태 조회
     const { data: integration, error } = await supabase

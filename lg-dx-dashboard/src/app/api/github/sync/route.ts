@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const supabase = createServerClient()
+    const supabase = await createServerClient()
 
     // GitHub 연동 정보 조회
     const { data: integration, error: integrationError } = await supabase
@@ -285,7 +285,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const supabase = createServerClient()
+    const supabase = await createServerClient()
 
     // 동기화 상태 조회
     const { data: syncStatus, error } = await supabase
