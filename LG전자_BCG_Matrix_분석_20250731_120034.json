@@ -1,0 +1,221 @@
+{
+  "analysis_date": "2025-07-31 12:00:34",
+  "company": "LG전자",
+  "analysis_year": 2024,
+  "business_units_analysis": [
+    {
+      "Business_Unit": "Home Appliance & Air Solution (H&A)",
+      "Revenue_2024": 29.5,
+      "Revenue_2023": 28.1,
+      "Operating_Profit_2024": 2.8,
+      "Operating_Profit_2023": 2.5,
+      "Market_Share_Global": 15.2,
+      "Market_Growth_Rate": 4.2,
+      "Leading_Competitor_Share": 18.5,
+      "Relative_Market_Share": 0.8216216216216216,
+      "Revenue_Growth_Rate": 4.982206405693945,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Business_Unit": "Vehicle Solution (VS)",
+      "Revenue_2024": 9.8,
+      "Revenue_2023": 8.9,
+      "Operating_Profit_2024": 0.1,
+      "Operating_Profit_2023": -0.2,
+      "Market_Share_Global": 8.5,
+      "Market_Growth_Rate": 18.5,
+      "Leading_Competitor_Share": 25.3,
+      "Relative_Market_Share": 0.3359683794466403,
+      "Revenue_Growth_Rate": 10.112359550561802,
+      "BCG_Position": "Question Mark"
+    },
+    {
+      "Business_Unit": "Business Solution (BS)",
+      "Revenue_2024": 7.2,
+      "Revenue_2023": 6.8,
+      "Operating_Profit_2024": 0.9,
+      "Operating_Profit_2023": 0.8,
+      "Market_Share_Global": 12.3,
+      "Market_Growth_Rate": 6.8,
+      "Leading_Competitor_Share": 15.8,
+      "Relative_Market_Share": 0.7784810126582279,
+      "Revenue_Growth_Rate": 5.882352941176476,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Business_Unit": "Home Entertainment (HE)",
+      "Revenue_2024": 12.1,
+      "Revenue_2023": 11.9,
+      "Operating_Profit_2024": 0.5,
+      "Operating_Profit_2023": 0.4,
+      "Market_Share_Global": 11.8,
+      "Market_Growth_Rate": -2.1,
+      "Leading_Competitor_Share": 22.4,
+      "Relative_Market_Share": 0.5267857142857143,
+      "Revenue_Growth_Rate": 1.680672268907557,
+      "BCG_Position": "Dog"
+    }
+  ],
+  "competitors_analysis": [
+    {
+      "Company": "Samsung Electronics (H&A)",
+      "Business_Segment": "H&A",
+      "Market_Share": 18.5,
+      "Revenue_Billions_USD": 45.2,
+      "Market_Growth_Rate": 4.2,
+      "Relative_Market_Share": 1.0,
+      "BCG_Position": "Cash Cow"
+    },
+    {
+      "Company": "Whirlpool",
+      "Business_Segment": "H&A",
+      "Market_Share": 12.8,
+      "Revenue_Billions_USD": 19.8,
+      "Market_Growth_Rate": 4.2,
+      "Relative_Market_Share": 0.6918918918918919,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Company": "Electrolux",
+      "Business_Segment": "H&A",
+      "Market_Share": 9.2,
+      "Revenue_Billions_USD": 14.1,
+      "Market_Growth_Rate": 4.2,
+      "Relative_Market_Share": 0.49729729729729727,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Company": "Bosch",
+      "Business_Segment": "H&A",
+      "Market_Share": 7.5,
+      "Revenue_Billions_USD": 11.6,
+      "Market_Growth_Rate": 4.2,
+      "Relative_Market_Share": 0.40540540540540543,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Company": "Bosch Mobility",
+      "Business_Segment": "VS",
+      "Market_Share": 25.3,
+      "Revenue_Billions_USD": 52.1,
+      "Market_Growth_Rate": 18.5,
+      "Relative_Market_Share": 1.0,
+      "BCG_Position": "Star"
+    },
+    {
+      "Company": "Continental AG",
+      "Business_Segment": "VS",
+      "Market_Share": 22.1,
+      "Revenue_Billions_USD": 45.8,
+      "Market_Growth_Rate": 18.5,
+      "Relative_Market_Share": 0.8735177865612649,
+      "BCG_Position": "Question Mark"
+    },
+    {
+      "Company": "Magna International",
+      "Business_Segment": "VS",
+      "Market_Share": 15.8,
+      "Revenue_Billions_USD": 32.5,
+      "Market_Growth_Rate": 18.5,
+      "Relative_Market_Share": 0.624505928853755,
+      "BCG_Position": "Question Mark"
+    },
+    {
+      "Company": "Aptiv",
+      "Business_Segment": "VS",
+      "Market_Share": 13.2,
+      "Revenue_Billions_USD": 27.3,
+      "Market_Growth_Rate": 18.5,
+      "Relative_Market_Share": 0.5217391304347826,
+      "BCG_Position": "Question Mark"
+    },
+    {
+      "Company": "Samsung Display",
+      "Business_Segment": "BS",
+      "Market_Share": 15.8,
+      "Revenue_Billions_USD": 23.8,
+      "Market_Growth_Rate": 6.8,
+      "Relative_Market_Share": 1.0,
+      "BCG_Position": "Cash Cow"
+    },
+    {
+      "Company": "BOE Technology",
+      "Business_Segment": "BS",
+      "Market_Share": 14.2,
+      "Revenue_Billions_USD": 21.4,
+      "Market_Growth_Rate": 6.8,
+      "Relative_Market_Share": 0.8987341772151898,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Company": "Sharp NEC",
+      "Business_Segment": "BS",
+      "Market_Share": 11.5,
+      "Revenue_Billions_USD": 17.3,
+      "Market_Growth_Rate": 6.8,
+      "Relative_Market_Share": 0.7278481012658228,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Company": "ViewSonic",
+      "Business_Segment": "BS",
+      "Market_Share": 9.8,
+      "Revenue_Billions_USD": 14.8,
+      "Market_Growth_Rate": 6.8,
+      "Relative_Market_Share": 0.620253164556962,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Company": "Samsung Electronics (HE)",
+      "Business_Segment": "HE",
+      "Market_Share": 22.4,
+      "Revenue_Billions_USD": 35.7,
+      "Market_Growth_Rate": -2.1,
+      "Relative_Market_Share": 1.0,
+      "BCG_Position": "Cash Cow"
+    },
+    {
+      "Company": "Sony",
+      "Business_Segment": "HE",
+      "Market_Share": 18.9,
+      "Revenue_Billions_USD": 30.2,
+      "Market_Growth_Rate": -2.1,
+      "Relative_Market_Share": 0.84375,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Company": "TCL",
+      "Business_Segment": "HE",
+      "Market_Share": 12.1,
+      "Revenue_Billions_USD": 19.3,
+      "Market_Growth_Rate": -2.1,
+      "Relative_Market_Share": 0.5401785714285714,
+      "BCG_Position": "Dog"
+    },
+    {
+      "Company": "Hisense",
+      "Business_Segment": "HE",
+      "Market_Share": 10.3,
+      "Revenue_Billions_USD": 16.4,
+      "Market_Growth_Rate": -2.1,
+      "Relative_Market_Share": 0.45982142857142866,
+      "BCG_Position": "Dog"
+    }
+  ],
+  "portfolio_summary": {
+    "total_revenue": 58.6,
+    "bcg_distribution": {
+      "Dog": 48.8,
+      "Question Mark": 9.8
+    },
+    "growth_businesses_ratio": 16.72354948805461,
+    "cash_cow_ratio": 0.0
+  },
+  "strategic_recommendations": [
+    "Vehicle Solution 사업에 대한 집중 투자로 Star 포지션 전환",
+    "Home Appliance & Air Solution의 현금창출력 극대화",
+    "Home Entertainment 사업 구조조정 검토",
+    "Business Solution 디지털 전환으로 성장 동력 확보",
+    "경쟁사 대비 시장점유율 격차 해소를 위한 차별화 전략 필요"
+  ]
+}
