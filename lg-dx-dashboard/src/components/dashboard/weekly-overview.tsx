@@ -2,8 +2,8 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, TrendingDown, Minus, Calendar, BarChart3 } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import { TrendingUp, TrendingDown, Minus, BarChart3 } from 'lucide-react';
+import { Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 
 interface WeeklyData {
   date: string;
@@ -122,7 +122,7 @@ export function WeeklyOverview({ data, loading = false }: WeeklyOverviewProps) {
                   fontSize={12}
                 />
                 <Tooltip 
-                  formatter={(value: any, name: string) => [
+                  formatter={(value: number, name: string) => [
                     value === null ? '-' : value,
                     name === 'total_score' ? '총점' : 
                     name === 'morning_score' ? '오전' :

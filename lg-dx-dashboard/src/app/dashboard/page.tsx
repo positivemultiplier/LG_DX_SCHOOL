@@ -4,6 +4,7 @@ import { useAuthContext } from '@/components/providers/auth-provider'
 import { TodaySummary } from '@/components/dashboard/today-summary'
 import { WeeklyOverview } from '@/components/dashboard/weekly-overview'
 import { QuickActions } from '@/components/dashboard/quick-actions'
+import { GitHubConnectCard } from '@/components/dashboard/GitHubConnectCard'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -236,11 +237,14 @@ export default function DashboardPage() {
             </div>
 
             {/* 빠른 액션 (1/3 width) */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 space-y-6">
               <QuickActions 
                 todayReflections={todayReflectionStatus}
                 currentTimePart="morning"
               />
+              
+              {/* GitHub 연동 카드 */}
+              <GitHubConnectCard userId={user?.id || ''} />
             </div>
           </div>
 
