@@ -1,0 +1,5 @@
+﻿id,title,selftext,created_utc,combined_text,text_len,cleaned,tokens,sentiment,polarity
+demo1,LG Styler is amazing,Great for removing odors,0,"LG Styler is amazing
+Great for removing odors",45,lg styler is amazing great for removing odors,"['is', 'amazing', 'great', 'for', 'removing', 'odors']",positive,positive
+demo2,Styler noise issue,It became loud after 6 months,0,"Styler noise issue
+It became loud after 6 months",48,styler noise issue it became loud after 6 months,"['noise', 'issue', 'it', 'became', 'loud', 'after', 'months']",0.7000000000000001,0.1

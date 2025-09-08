@@ -1,0 +1,22 @@
+Column,Description
+CLIENTNUM,고객별 고유 식별 번호
+Attrition_Flag,고객 이탈 여부를 나타내는 지표
+Customer_Age,고객의 나이
+Gender,고객의 성별
+Dependent_count,고객이 경제적으로 부양하는 가족의 수
+Education_Level,고객의 교육 수준
+Marital_Status,고객의 결혼 상태
+Income_Category,고객의 연간 소득 범위를 나타내는 카테고리
+Card_Category,고객이 소지한 신용카드의 유형
+Months_on_book,계좌를 유지한 기간
+Total_Relationship_Count,고객이 신용카드 회사와 맺고 있는 총 상품 또는 서비스 수
+Months_Inactive_12_mon,지난 12개월 동안 고객 계정의 비활성화된 월 수
+Contacts_Count_12_mon,최근 12개월간 고객과 회사 간 연락 횟수
+Credit_Limit,고객의 신용 한도
+Total_Revolving_Bal,현재 기간이 지난 잔여월도 남아있는 채무의 총액
+Avg_Open_To_Buy,평균 구매 가능한 잔여한도
+Total_Amt_Chng_Q4_Q1,1분기 대비 4분기 총 금액 변동 비율
+Total_Trans_Amt,총 거래 금액
+Total_Trans_Ct,총 거래 횟수
+Total_Ct_Chng_Q4_Q1,1분기 대비 4분기 총 거래 횟수 변동 비율
+Avg_Utilization_Ratio,"신용 한도 대비 사용한 한도의 비율, Total_Revolving_Bal / Credit_Limi"

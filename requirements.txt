@@ -2,3 +2,10 @@ notion-client
 requests
 python-dotenv
 jupyter 
+praw
+textblob
+pandas
+tenacity
+wordcloud
+matplotlib
+seaborn
