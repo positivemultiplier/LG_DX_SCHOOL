@@ -8,7 +8,7 @@ dist/
 build/
 .eggs/
 venv/
-.venv/
+.venv*/
 
 # Jupyter Notebook
 .ipynb_checkpoints/
@@ -100,3 +100,48 @@ $RECYCLE.BIN/
 *.lnk
 
 # 프로젝트별 추가 제외 항목은 필요시 추가
+
+# Python 가상환경 (윈도우 포함)
+env*/
+.env*/
+
+# 생성형 데이터/아티팩트 폴더 통째로 제외
+**/outputs/**
+**/artifacts/**
+**/checkpoints/**
+
+# data 디렉터리 하위의 일반 산출물(텍스트/표/배열)
+**/data/**/*.csv
+**/data/**/*.tsv
+**/data/**/*.json
+**/data/**/*.jsonl
+**/data/**/*.parquet
+**/data/**/*.npz
+**/data/**/*.npy
+**/data/**/*.xlsx
+**/data/**/*.xls
+**/data/**/*.txt
+
+# data 디렉터리 하위의 이미지 산출물
+**/data/**/*.[Pp][Nn][Gg]
+**/data/**/*.[Jj][Pp][Gg]
+**/data/**/*.[Jj][Pp][Ee][Gg]
+**/data/**/*.[Gg][Ii][Ff]
+**/data/**/*.[Ss][Vv][Gg]
+
+# 압축/인스톨러 바이너리 (대형 파일 방지)
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.exe
+*.msi
+
+# 노트북 임시 파일
+*.ipynb.tmp
+*.ipynb~*
+
+# 설치 스크립트(로컬 전용)
+get-pip.py
