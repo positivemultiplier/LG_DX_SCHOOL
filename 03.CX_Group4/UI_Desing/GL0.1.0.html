@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시니어 전용 ThinQ UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 커스텀 폰트 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            touch-action: manipulation; /* 모바일에서 더블 탭 확대 방지 */
+        }
+        /* 화면 전환 효과 */
+        .screen-view {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .hidden-screen {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none; /* 숨겨진 화면 클릭 방지 */
+        }
+        .visible-screen {
+            opacity: 1;
+            transform: scale(1);
+        }
+        /* 세탁기 회전 애니메이션 */
+        .animate-spin-slow {
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <!-- 가상 디바이스 컨테이너 -->
+    <div class="w-full max-w-sm mx-auto">
+        <div class="bg-white p-6 rounded-3xl shadow-lg text-center">
+            <p class="text-lg font-bold text-gray-700 mb-4">LG ThinQ</p>
+            <!-- UI 화면 -->
+            <div id="deviceScreen" class="relative w-full aspect-[9/16] bg-white rounded-2xl shadow-inner border-4 border-gray-200 overflow-hidden">
+                
+                <!-- 1. 홈 화면 (평상시) -->
+                <div id="homeScreen" class="screen-view visible-screen absolute inset-0 flex flex-col items-center justify-center p-4 bg-white cursor-pointer">
+                    <!-- 얼굴 -->
+                    <div class="relative">
+                        <!-- 눈 -->
+                        <div class="flex space-x-12">
+                            <div class="w-12 h-12 bg-black rounded-full"></div>
+                            <div class="w-12 h-12 bg-black rounded-full"></div>
+                        </div>
+                        <!-- 볼터치 -->
+                        <div class="absolute -left-6 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-pink-300 rounded-full opacity-70 blur-sm"></div>
+                        <div class="absolute -right-6 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-pink-300 rounded-full opacity-70 blur-sm"></div>
+                    </div>
+                    <!-- 입 -->
+                    <div class="w-24 h-12 border-4 border-black rounded-b-full mt-8 border-t-transparent"></div>
+                    <p class="text-gray-500 mt-auto text-sm">화면을 터치하세요</p>
+                </div>
+
+                <!-- 2. 시니어 전용 메뉴 -->
+                <div id="menuScreen" class="screen-view hidden-screen absolute inset-0 grid grid-cols-2 gap-2 p-2 bg-gray-50">
+                    <!-- TV -->
+                    <button id="tvButton" class="bg-orange-400 text-white rounded-xl flex flex-col items-center justify-center hover:bg-orange-500 transition-colors">
+                        <div class="text-6xl mb-2">📺</div>
+                        <span class="font-bold text-xl">TV</span>
+                    </button>
+                     <!-- 냉장고 -->
+                    <button id="refrigeratorButton" class="bg-green-400 text-white rounded-xl flex flex-col items-center justify-center hover:bg-green-500 transition-colors">
+                        <div class="text-6xl mb-2">🧊</div>
+                        <span class="font-bold text-xl">냉장고</span>
+                    </button>
+                     <!-- 에어컨 -->
+                    <button id="airconButton" class="bg-purple-400 text-white rounded-xl flex flex-col items-center justify-center hover:bg-purple-500 transition-colors">
+                        <div class="text-6xl mb-2">❄️</div>
+                        <span class="font-bold text-xl">에어컨</span>
+                    </button>
+                     <!-- 세탁기 -->
+                    <button id="washerButton" class="bg-blue-400 text-white rounded-xl flex flex-col items-center justify-center hover:bg-blue-500 transition-colors">
+                        <div class="text-6xl mb-2">🌀</div>
+                        <span class="font-bold text-xl">세탁기</span>
+                    </button>
+                    <!-- 취침 -->
+                    <button id="sleepButton" class="bg-gray-700 text-white rounded-xl flex flex-col items-center justify-center hover:bg-gray-800 transition-colors">
+                        <div class="text-6xl mb-2">🌙</div>
+                        <span class="font-bold text-xl">취침</span>
+                    </button>
+                    <!-- 외출 -->
+                    <button id="goOutButton" class="bg-teal-400 text-white rounded-xl flex flex-col items-center justify-center hover:bg-teal-500 transition-colors">
+                         <div class="text-6xl mb-2">🚪</div>
+                        <span class="font-bold text-xl">외출</span>
+                    </button>
+                    <!-- 홈으로 -->
+                    <button id="backButton" class="bg-pink-400 text-white rounded-xl flex flex-col items-center justify-center hover:bg-pink-500 transition-colors">
+                        <div class="text-6xl mb-2">🏠</div>
+                        <span class="font-bold text-xl">홈으로</span>
+                    </button>
+                    <!-- 고객센터 -->
+                    <button id="customerCenterButton" class="bg-yellow-400 text-white rounded-xl flex flex-col items-center justify-center hover:bg-yellow-500 transition-colors">
+                        <div class="text-6xl mb-2">🎧</div>
+                        <span class="font-bold text-xl">고객센터</span>
+                    </button>
+                </div>
+
+                <!-- 3. TV 제어 화면 -->
+                <div id="tvScreen" class="screen-view hidden-screen absolute inset-0 flex flex-col p-4 bg-gray-50 text-gray-800">
+                    <!-- 헤더: 뒤로가기, 제목, 전원 버튼 -->
+                    <div class="flex items-center justify-between mb-4 flex-shrink-0">
+                        <button id="tvBackButton" class="p-2 rounded-full hover:bg-gray-200 transition-colors text-3xl">
+                            <span>⬅️</span>
+                        </button>
+                        <h2 class="text-3xl font-bold">TV 제어</h2>
+                        <button class="p-2 rounded-full text-red-500 hover:bg-red-100 transition-colors text-3xl">
+                             <span>⏻</span>
+                        </button>
+                    </div>
+
+                    <!-- 컨트롤러 -->
+                    <div class="flex-grow flex flex-col items-center justify-center space-y-6">
+                        <!-- 채널 & 볼륨 -->
+                        <div class="flex items-center justify-center space-x-2">
+                            <!-- 채널 컨트롤 -->
+                            <div class="w-40 h-40 bg-white rounded-full shadow-lg flex flex-col items-center justify-center p-2">
+                                <button class="w-full flex-1 rounded-t-full flex items-center justify-center active:bg-gray-200 transition-colors text-4xl"><span>⬆️</span></button>
+                                <span class="text-xl font-bold text-gray-700 py-1">채널</span>
+                                <button class="w-full flex-1 rounded-b-full flex items-center justify-center active:bg-gray-200 transition-colors text-4xl"><span>⬇️</span></button>
+                            </div>
+                            <!-- 볼륨 컨트롤 -->
+                            <div class="w-40 h-40 bg-white rounded-full shadow-lg flex flex-col items-center justify-center p-2">
+                                <button class="w-full flex-1 rounded-t-full flex items-center justify-center active:bg-gray-200 transition-colors text-4xl"><span>➕</span></button>
+                                <span class="text-xl font-bold text-gray-700 py-1">음량</span>
+                                <button class="w-full flex-1 rounded-b-full flex items-center justify-center active:bg-gray-200 transition-colors text-4xl"><span>➖</span></button>
+                            </div>
+                        </div>
+                        <!-- 재생/일시정지 -->
+                        <button class="w-28 h-28 bg-white rounded-full shadow-lg flex items-center justify-center active:bg-gray-200 border-4 border-gray-300 text-5xl">
+                             <span>▶️</span>
+                        </button>
+                    </div>
+
+                    <!-- 하단 버튼 -->
+                    <div class="flex justify-center space-x-4 pb-4 flex-shrink-0">
+                        <button class="bg-blue-500 text-white w-24 h-16 rounded-2xl flex items-center justify-center shadow-lg active:bg-blue-600 transition-colors text-4xl"><span>🏠</span></button>
+                        <button class="bg-red-500 text-white w-24 h-16 rounded-2xl flex items-center justify-center shadow-lg active:bg-red-600 transition-colors text-4xl"><span>▶️</span></button>
+                    </div>
+                </div>
+                
+                <!-- 4. 취침 모드 화면 -->
+                <div id="sleepScreen" class="screen-view hidden-screen absolute inset-0 flex flex-col p-4 bg-gray-800 text-white">
+                    <!-- 헤더 -->
+                    <div class="flex items-center justify-between mb-6 flex-shrink-0">
+                        <button id="sleepBackButton" class="p-2 rounded-full hover:bg-gray-700 transition-colors text-3xl">
+                            <span>⬅️</span>
+                        </button>
+                        <h2 class="text-3xl font-bold">취침 모드</h2>
+                        <div class="w-12"></div> <!-- Spacer -->
+                    </div>
+
+                    <!-- 설정 목록 -->
+                    <div class="flex-grow space-y-4 px-4">
+                        <!-- 에어컨 -->
+                        <div class="bg-gray-700 rounded-xl p-4 flex items-center">
+                            <div class="bg-purple-500 p-3 rounded-lg mr-4 w-16 h-16 flex items-center justify-center">
+                                <div class="text-4xl">❄️</div>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold">에어컨</p>
+                                <p class="text-gray-300">60분 후 종료</p>
+                            </div>
+                        </div>
+                        <!-- 공기청정기 -->
+                        <div class="bg-gray-700 rounded-xl p-4 flex items-center">
+                            <div class="bg-green-500 p-3 rounded-lg mr-4 w-16 h-16 flex items-center justify-center">
+                                <div class="text-4xl">🌬️</div>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold">공기청정기</p>
+                                <p class="text-gray-300">수면 모드</p>
+                            </div>
+                        </div>
+                        <!-- 세탁기 -->
+                        <div class="bg-gray-700 rounded-xl p-4 flex items-center">
+                            <div class="bg-blue-500 p-3 rounded-lg mr-4 w-16 h-16 flex items-center justify-center">
+                                <div class="text-4xl">🌀</div>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold">세탁기</p>
+                                <p class="text-gray-300">무소음 모드</p>
+                            </div>
+                        </div>
+                        <!-- 조명 -->
+                        <div class="bg-gray-700 rounded-xl p-4 flex items-center">
+                            <div class="bg-yellow-500 p-3 rounded-lg mr-4 w-16 h-16 flex items-center justify-center">
+                                <div class="text-4xl">💡</div>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold">조명</p>
+                                <p class="text-gray-300">모두 끄기</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 실행 버튼 -->
+                    <div class="p-4 flex-shrink-0">
+                        <button class="w-full bg-blue-600 text-white font-bold py-6 rounded-2xl text-2xl hover:bg-blue-700 transition-colors">
+                            취침 시작
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 5. 에어컨 제어 화면 -->
+                <div id="airconScreen" class="screen-view hidden-screen absolute inset-0 flex flex-col p-4 bg-blue-50 text-gray-800">
+                     <!-- 헤더 -->
+                    <div class="flex items-center justify-between mb-4 flex-shrink-0">
+                        <button id="airconBackButton" class="p-2 rounded-full hover:bg-blue-100 transition-colors text-3xl">
+                            <span>⬅️</span>
+                        </button>
+                        <h2 class="text-3xl font-bold">에어컨 제어</h2>
+                        <button class="p-2 rounded-full text-red-500 hover:bg-red-100 transition-colors text-3xl">
+                             <span>⏻</span>
+                        </button>
+                    </div>
+
+                    <!-- 상태 표시 -->
+                    <div class="text-center my-4">
+                        <p class="text-2xl text-blue-600 font-bold">냉방 중</p>
+                        <p class="text-8xl font-bold text-gray-800">26<span class="text-4xl align-top">℃</span></p>
+                    </div>
+
+                    <!-- 컨트롤러 -->
+                    <div class="flex-grow flex items-center justify-around pb-4">
+                        <!-- 온도 조절 -->
+                        <div class="flex flex-col items-center space-y-2">
+                            <button class="w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center active:bg-gray-200 transition-colors text-5xl"><span>⬆️</span></button>
+                            <span class="text-2xl font-bold text-gray-700 py-2">온도</span>
+                            <button class="w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center active:bg-gray-200 transition-colors text-5xl"><span>⬇️</span></button>
+                        </div>
+
+                        <!-- 기능 버튼 -->
+                        <div class="flex flex-col space-y-4">
+                            <button class="w-44 bg-white text-xl font-bold py-5 rounded-xl shadow-md hover:bg-gray-100 transition-colors">바람세기</button>
+                            <button class="w-44 bg-white text-xl font-bold py-5 rounded-xl shadow-md hover:bg-gray-100 transition-colors">모드</button>
+                            <button class="w-44 bg-white text-xl font-bold py-5 rounded-xl shadow-md hover:bg-gray-100 transition-colors">예약</button>
+                            <button class="w-44 bg-white text-xl font-bold py-5 rounded-xl shadow-md hover:bg-gray-100 transition-colors">취침</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. 세탁기 제어 화면 -->
+                <div id="washerScreen" class="screen-view hidden-screen absolute inset-0 flex flex-col p-4 bg-white text-gray-800">
+                    <!-- 헤더 -->
+                    <div class="flex items-center justify-between mb-4 flex-shrink-0">
+                        <button id="washerBackButton" class="p-2 rounded-full hover:bg-gray-100 transition-colors text-3xl">
+                            <span>⬅️</span>
+                        </button>
+                        <h2 class="text-3xl font-bold">세탁기</h2>
+                        <div class="w-12"></div> <!-- Spacer -->
+                    </div>
+
+                    <!-- 상태 표시 -->
+                    <div class="text-center my-6">
+                        <p class="text-3xl font-bold text-blue-600">세탁 <span class="text-5xl">60</span>분 남음</p>
+                    </div>
+
+                    <!-- 세탁기 애니메이션 -->
+                    <div class="flex-grow flex items-center justify-center">
+                        <div class="relative w-80 h-80 bg-gray-200 rounded-full flex items-center justify-center shadow-inner border-8 border-gray-300">
+                            <div class="relative w-64 h-64 bg-gray-400 rounded-full overflow-hidden shadow-inner">
+                                <div class="absolute inset-0 bg-blue-200 opacity-50"></div>
+                                <!-- 회전하는 드럼 -->
+                                <div class="absolute w-full h-full animate-spin-slow">
+                                     <!-- 옷가지 표현 -->
+                                    <div class="absolute w-20 h-16 bg-blue-500 rounded-full opacity-70" style="top: 20%; left: 30%;"></div>
+                                    <div class="absolute w-16 h-12 bg-green-500 rounded-lg opacity-70" style="bottom: 25%; left: 55%;"></div>
+                                    <div class="absolute w-24 h-10 bg-red-400 rounded-xl opacity-70" style="top: 55%; right: 30%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <!-- 하단 버튼 -->
+                    <div class="p-4 flex-shrink-0">
+                        <button class="w-full bg-blue-600 text-white font-bold py-6 rounded-2xl text-2xl hover:bg-blue-700 transition-colors">
+                            일시정지
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 7. 냉장고 제어 화면 -->
+                <div id="refrigeratorScreen" class="screen-view hidden-screen absolute inset-0 flex flex-col p-4 bg-gray-50 text-gray-800">
+                    <!-- 헤더 -->
+                    <div class="flex items-center justify-between mb-4 flex-shrink-0">
+                        <button id="refrigeratorBackButton" class="p-2 rounded-full hover:bg-gray-100 transition-colors text-3xl">
+                            <span>⬅️</span>
+                        </button>
+                        <h2 class="text-3xl font-bold">김치 냉장고 현황</h2>
+                        <div class="w-12"></div> <!-- Spacer -->
+                    </div>
+
+                    <!-- 모드 선택 그리드 -->
+                    <div class="flex-grow grid grid-cols-2 gap-3 p-2">
+                        <!-- 김장철 모드 -->
+                        <div class="bg-red-50 rounded-xl p-3 flex flex-col border-2 border-red-200 cursor-pointer hover:shadow-lg transition-shadow">
+                            <h3 class="font-bold text-lg text-red-800 mb-2">김장철에는<br>김치로 가득</h3>
+                            <div class="flex-grow grid grid-cols-2 gap-2 text-sm">
+                                <div class="bg-red-200 text-red-800 rounded flex items-center justify-center font-semibold p-1">김치</div>
+                                <div class="bg-red-200 text-red-800 rounded flex items-center justify-center font-semibold p-1">김치</div>
+                                <div class="bg-red-200 text-red-800 rounded flex items-center justify-center font-semibold p-1">김치</div>
+                                <div class="bg-red-200 text-red-800 rounded flex items-center justify-center font-semibold p-1">김치</div>
+                            </div>
+                        </div>
+
+                        <!-- 봄나물 모드 -->
+                        <div class="bg-green-50 rounded-xl p-3 flex flex-col border-2 border-green-200 cursor-pointer hover:shadow-lg transition-shadow">
+                            <h3 class="font-bold text-lg text-green-800 mb-2">봄에는 산나물,<br>봄나물 신선보관</h3>
+                            <div class="flex-grow grid grid-cols-2 gap-2 text-sm">
+                                <div class="bg-green-200 text-green-800 rounded flex items-center justify-center font-semibold p-1">냉동</div>
+                                <div class="bg-green-200 text-green-800 rounded flex items-center justify-center font-semibold p-1">냉장</div>
+                                <div class="bg-green-200 text-green-800 rounded flex items-center justify-center font-semibold p-1 text-center">야채/과일</div>
+                                <div class="bg-red-200 text-red-800 rounded flex items-center justify-center font-semibold p-1">김치</div>
+                            </div>
+                        </div>
+
+                        <!-- 여름철 모드 -->
+                        <div class="bg-blue-50 rounded-xl p-3 flex flex-col border-2 border-blue-200 cursor-pointer hover:shadow-lg transition-shadow">
+                            <h3 class="font-bold text-lg text-blue-800 mb-2">한 여름에는<br>냉동실로 꽁꽁</h3>
+                            <div class="flex-grow grid grid-cols-2 gap-2 text-sm">
+                                <div class="bg-blue-200 text-blue-800 rounded flex items-center justify-center font-semibold p-1">냉동</div>
+                                <div class="bg-blue-200 text-blue-800 rounded flex items-center justify-center font-semibold p-1">냉동</div>
+                                <div class="bg-blue-200 text-blue-800 rounded flex items-center justify-center font-semibold p-1">냉동</div>
+                                <div class="bg-blue-200 text-blue-800 rounded flex items-center justify-center font-semibold p-1">냉동</div>
+                            </div>
+                        </div>
+
+                        <!-- 가을/겨울 모드 -->
+                        <div class="bg-yellow-50 rounded-xl p-3 flex flex-col border-2 border-yellow-300 cursor-pointer hover:shadow-lg transition-shadow">
+                            <h3 class="font-bold text-lg text-yellow-800 mb-2">가을/겨울에는<br>곡류/장류 보관</h3>
+                             <div class="flex-grow grid grid-cols-2 gap-2 text-sm">
+                                <div class="bg-yellow-200 text-yellow-800 rounded flex items-center justify-center font-semibold p-1">쌀</div>
+                                <div class="bg-yellow-200 text-yellow-800 rounded flex items-center justify-center font-semibold p-1">잡곡</div>
+                                <div class="bg-red-200 text-red-800 rounded flex items-center justify-center font-semibold p-1">김치</div>
+                                <div class="bg-green-200 text-green-800 rounded flex items-center justify-center font-semibold p-1">야채</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. 외출 모드 화면 -->
+                <div id="goOutScreen" class="screen-view hidden-screen absolute inset-0 flex flex-col p-4 bg-teal-50 text-gray-800">
+                    <!-- 헤더 -->
+                    <div class="flex items-center justify-between mb-4 flex-shrink-0">
+                        <button id="goOutBackButton" class="p-2 rounded-full hover:bg-teal-100 transition-colors text-3xl">
+                           <span>⬅️</span>
+                        </button>
+                        <h2 class="text-3xl font-bold">외출 모드</h2>
+                        <div class="w-12"></div> <!-- Spacer -->
+                    </div>
+                    <!-- 컨텐츠 -->
+                    <div class="flex-grow flex flex-col items-center justify-center text-center px-4">
+                        <!-- 이 부분은 JS에서 동적으로 채워집니다. -->
+                    </div>
+                </div>
+
+                <!-- 9. 고객센터 화면 -->
+                <div id="customerCenterScreen" class="screen-view hidden-screen absolute inset-0 flex flex-col p-4 bg-orange-50 text-gray-800">
+                    <!-- 헤더 -->
+                    <div class="flex items-center justify-between mb-4 flex-shrink-0">
+                        <button id="customerCenterBackButton" class="p-2 rounded-full hover:bg-orange-100 transition-colors text-3xl">
+                           <span>⬅️</span>
+                        </button>
+                        <h2 class="text-3xl font-bold">고객센터</h2>
+                        <div class="w-12"></div> <!-- Spacer -->
+                    </div>
+
+                    <!-- 컨텐츠 -->
+                    <div class="flex-grow flex flex-col items-center justify-center text-center px-4">
+                        <!-- 최종 상담사 아이콘 (색상 및 크기 수정) -->
+                        <div class="relative w-60 h-60 mb-12">
+                            <!-- 연결중 애니메이션 -->
+                            <div class="absolute inset-0 rounded-full bg-orange-400 opacity-20 animate-[pulse_2s_ease-out_infinite]"></div>
+                            
+                            <!-- 아이콘 컨테이너 -->
+                            <div class="w-full h-full bg-orange-500 rounded-full flex items-center justify-center shadow-lg border-4 border-white p-4 box-border">
+                                <svg viewBox="0 0 100 100" class="w-full h-full" xmlns="http://www.w.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="headGradient" x1="0.5" y1="0" x2="0.5" y2="1">
+                                            <stop offset="0%" stop-color="#FFFFF"/>
+                                            <stop offset="100%" stop-color="#FFEADD"/>
+                                        </linearGradient>
+                                        <linearGradient id="headsetGradient" x1="0.5" y1="0" x2="0.5" y2="1">
+                                            <stop offset="0%" stop-color="#FFFFFF"/>
+                                            <stop offset="100%" stop-color="#D1D5DB"/>
+                                        </linearGradient>
+                                        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feDropShadow dx="1" dy="2" stdDeviation="1" flood-color="#000000" flood-opacity="0.1"/>
+                                        </filter>
+                                    </defs>
+                                
+                                    <!-- 전체 그룹에 그림자 필터 적용 -->
+                                    <g filter="url(#shadow)">
+                                        <!-- Headset Band -->
+                                        <path d="M 22 55 A 28 28 0 0 1 78 55" stroke="url(#headsetGradient)" stroke-width="14" fill="none" stroke-linecap="round"/>
+                                
+                                        <!-- Head -->
+                                        <circle cx="50" cy="60" r="28" fill="url(#headGradient)"/>
+                                
+                                        <!-- Hair -->
+                                        <path d="M 35,38 C 40,28 60,28 65,38 Q 50 45 35 38 Z" fill="url(#headGradient)"/>
+                                
+                                        <!-- Eyes (Punched out) -->
+                                        <circle cx="41" cy="58" r="4.5" fill="#F97316"/>
+                                        <circle cx="59" cy="58" r="4.5" fill="#F97316"/>
+                                
+                                        <!-- Smile -->
+                                        <path d="M 45 70 Q 50 75 55 70" stroke="#F97316" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                
+                                        <!-- Mic Arm -->
+                                        <path d="M25,68 Q22,85 40,84" stroke="url(#headsetGradient)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                                
+                                        <!-- Mic Head -->
+                                        <rect x="40" y="78" width="20" height="12" rx="6" fill="url(#headsetGradient)"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- 연결중 텍스트 -->
+                        <p class="text-3xl font-bold text-gray-700 animate-pulse">상담사와 연결중입니다...</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM 요소 가져오기
+            const homeScreen = document.getElementById('homeScreen');
+            const menuScreen = document.getElementById('menuScreen');
+            const tvScreen = document.getElementById('tvScreen');
+            const sleepScreen = document.getElementById('sleepScreen');
+            const airconScreen = document.getElementById('airconScreen');
+            const washerScreen = document.getElementById('washerScreen');
+            const refrigeratorScreen = document.getElementById('refrigeratorScreen');
+            const goOutScreen = document.getElementById('goOutScreen');
+            const customerCenterScreen = document.getElementById('customerCenterScreen');
+            
+            const backButton = document.getElementById('backButton');
+            const tvButton = document.getElementById('tvButton');
+            const sleepButton = document.getElementById('sleepButton');
+            const airconButton = document.getElementById('airconButton');
+            const washerButton = document.getElementById('washerButton');
+            const refrigeratorButton = document.getElementById('refrigeratorButton');
+            const goOutButton = document.getElementById('goOutButton');
+            const customerCenterButton = document.getElementById('customerCenterButton');
+
+            const tvBackButton = document.getElementById('tvBackButton');
+            const sleepBackButton = document.getElementById('sleepBackButton');
+            const airconBackButton = document.getElementById('airconBackButton');
+            const washerBackButton = document.getElementById('washerBackButton');
+            const refrigeratorBackButton = document.getElementById('refrigeratorBackButton');
+            const goOutBackButton = document.getElementById('goOutBackButton');
+            const customerCenterBackButton = document.getElementById('customerCenterBackButton');
+
+            // 모든 화면 요소를 배열에 저장
+            const allScreens = [homeScreen, menuScreen, tvScreen, sleepScreen, airconScreen, washerScreen, refrigeratorScreen, goOutScreen, customerCenterScreen];
+
+            /**
+             * 지정된 화면만 보여주고 나머지는 숨기는 함수
+             * @param {HTMLElement} screenToShow - 보여줄 화면 요소
+             */
+            function showScreen(screenToShow) {
+                allScreens.forEach(screen => {
+                    // screen이 null이 아닌 경우에만 classList에 접근하도록 수정
+                    if (screen) { 
+                        if (screen === screenToShow) {
+                            screen.classList.remove('hidden-screen');
+                            screen.classList.add('visible-screen');
+                        } else {
+                            screen.classList.remove('visible-screen');
+                            screen.classList.add('hidden-screen');
+                        }
+                    }
+                });
+            }
+
+            // 이벤트 리스너 등록
+            // 1. 홈 화면을 클릭하면 메뉴 화면으로 전환
+            homeScreen.addEventListener('click', () => showScreen(menuScreen));
+            
+            // 2. 메뉴 화면의 '홈으로' 버튼을 클릭하면 홈 화면으로 전환
+            backButton.addEventListener('click', (event) => {
+                event.stopPropagation(); // 이벤트 버블링 방지
+                showScreen(homeScreen);
+            });
+
+            // 3. 메뉴 화면의 'TV' 버튼을 클릭하면 TV 제어 화면으로 전환
+            tvButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(tvScreen);
+            });
+
+            // 4. TV 제어 화면의 '뒤로가기' 버튼을 클릭하면 메뉴 화면으로 전환
+            tvBackButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(menuScreen);
+            });
+
+            // 5. 메뉴 화면의 '취침' 버튼을 클릭하면 취침 모드 화면으로 전환
+            sleepButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(sleepScreen);
+            });
+
+            // 6. 취침 모드 화면의 '뒤로가기' 버튼을 클릭하면 메뉴 화면으로 전환
+            sleepBackButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(menuScreen);
+            });
+
+            // 7. 메뉴 화면의 '에어컨' 버튼을 클릭하면 에어컨 제어 화면으로 전환
+            airconButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(airconScreen);
+            });
+
+            // 8. 에어컨 제어 화면의 '뒤로가기' 버튼을 클릭하면 메뉴 화면으로 전환
+            airconBackButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(menuScreen);
+            });
+
+            // 9. 메뉴 화면의 '세탁기' 버튼을 클릭하면 세탁기 제어 화면으로 전환
+            washerButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(washerScreen);
+            });
+
+            // 10. 세탁기 제어 화면의 '뒤로가기' 버튼을 클릭하면 메뉴 화면으로 전환
+            washerBackButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(menuScreen);
+            });
+
+            // 11. 메뉴 화면의 '냉장고' 버튼 클릭 시 냉장고 화면으로 전환
+            refrigeratorButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(refrigeratorScreen);
+            });
+
+            // 12. 냉장고 화면의 '뒤로가기' 버튼 클릭 시 메뉴 화면으로 전환
+            if (refrigeratorBackButton) {
+                refrigeratorBackButton.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    showScreen(menuScreen);
+                });
+            }
+            
+            // 13. 메뉴 화면의 '외출' 버튼 클릭 시 외출 모드 화면으로 전환
+            goOutButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                // 외출 모드 화면의 내용을 수정
+                const goOutContent = goOutScreen.querySelector('.flex-grow');
+                if (goOutContent) {
+                    goOutContent.innerHTML = `
+                        <div class="text-8xl mb-8">🚪</div>
+                        <h3 class="text-4xl font-bold mb-4">외출 모드가<br>실행되었습니다.</h3>
+                        <p class="text-xl text-gray-600">모든 기기가 절전 모드로 전환되고<br>보안 기능이 활성화됩니다.</p>
+                    `;
+                }
+                showScreen(goOutScreen);
+            });
+
+            // 14. 외출 모드 화면의 '뒤로가기' 버튼 클릭 시 메뉴 화면으로 전환
+            if (goOutBackButton) {
+                goOutBackButton.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    showScreen(menuScreen);
+                });
+            }
+
+            // 15. 고객센터 버튼 클릭 시 고객센터 화면으로 전환
+            customerCenterButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                showScreen(customerCenterScreen);
+            });
+
+            // 16. 고객센터 화면 '뒤로가기' 버튼 클릭 시 메뉴 화면으로 전환
+            if (customerCenterBackButton) {
+                customerCenterBackButton.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    showScreen(menuScreen);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+

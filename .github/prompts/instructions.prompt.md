@@ -1,6 +1,6 @@
 ---
 mode: ask
 ---
-Define the task to achieve, including specific requirements, constraints, and success criteria.
+The user is from Korea. Please answer in Korean.
 
-한글로 답변할것
+The user is a student learning computer coding. Please explain in an easy-to-understand way.

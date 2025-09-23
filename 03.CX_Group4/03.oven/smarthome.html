@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트홈 대시보드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Noto Sans KR 폰트 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        /* 기본적으로 뷰는 숨김 처리 */
+        .view {
+            display: none;
+        }
+        /* 활성화된 뷰만 보여주기 */
+        .view.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <div class="max-w-sm mx-auto bg-black min-h-screen flex flex-col">
+        <!-- 상단 헤더 -->
+        <header class="flex justify-between items-center p-4 pt-6">
+            <div class="flex items-center space-x-2">
+                <h1 class="text-2xl font-bold">박성화 홀</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="flex items-center space-x-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+            </div>
+        </header>
+
+        <!-- 상단 탭 메뉴 (홈 화면 전용) -->
+        <nav id="home-tabs" class="flex space-x-2 p-4">
+            <button class="bg-blue-600 text-white px-5 py-2 rounded-full font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 inline-block -mt-1 mr-1"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                홈
+            </button>
+            <button class="bg-zinc-800 text-gray-300 px-5 py-2 rounded-full font-semibold">에어</button>
+            <button class="bg-zinc-800 text-gray-300 px-5 py-2 rounded-full font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 inline-block -mt-1 mr-1"><path d="m13 2-2 2.5-2-2.5-2 2.5-2-2.5-2 2.5-2 2.5 13 13 2-2.5 2 2.5 2-2.5 2 2.5 2-2.5Z"></path><path d="m13 2-2 2.5-2-2.5-2 2.5-2-2.5-2 2.5-2 2.5 13 13 2-2.5 2 2.5 2-2.5 2 2.5 2-2.5Z" fill="currentColor"></path></svg>
+                에너지
+            </button>
+        </nav>
+
+        <!-- 화면 컨테이너 -->
+        <div class="flex-grow">
+            <!-- 홈 화면 -->
+            <main id="view-home" class="view active flex-grow px-4 pb-24">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">모든 공간</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <section class="mb-6">
+                    <h3 class="text-lg font-semibold mb-3">주방</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-zinc-800 rounded-3xl p-4"><svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20v18H2zM12 3v18M8 3v18m8-18v18"/></svg><p class="font-semibold">김치냉장고1</p><p class="text-sm text-gray-400">켜짐</p></div>
+                        <div class="bg-zinc-800 rounded-3xl p-4"><svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20v18H2zM12 3v18M8 3v18m8-18v18"/></svg><p class="font-semibold">냉장고</p><p class="text-sm text-gray-400">켜짐</p></div>
+                    </div>
+                </section>
+                <section class="mb-6">
+                    <h3 class="text-lg font-semibold mb-3">거실</h3>
+                    <div class="bg-zinc-800 rounded-3xl p-4 flex items-center justify-between">
+                        <div class="flex items-center space-x-4"><svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8 17h8m-8-3h8M12 7h.01"/></svg><div><p class="font-semibold">에어컨</p><p class="text-sm text-gray-400">켜짐</p></div></div>
+                        <div class="text-center"><p class="text-sm text-gray-400">실내 온도</p><p class="text-2xl font-bold">26℃</p></div>
+                        <button class="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg></button>
+                    </div>
+                </section>
+                <section><h3 class="text-lg font-semibold mb-3">다용도실</h3><div class="bg-zinc-800 rounded-3xl p-4"><svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 0-2 2v2H8a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2V4a2 2 0 0 0-2-2z"></path><path d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path></svg><p class="font-semibold">세탁기</p></div></section>
+            </main>
+
+            <!-- 디바이스 화면 -->
+            <main id="view-device" class="view flex-grow px-4 pb-24 space-y-6">
+                <h2 class="text-2xl font-bold pt-2">디바이스 관리</h2>
+                <div class="bg-zinc-800 rounded-3xl p-5">
+                    <h3 class="text-lg font-bold mb-3">주방</h3>
+                    <div class="space-y-3">
+                        <p>김치냉장고1 - <span class="text-green-400">정상 작동</span></p>
+                        <p>냉장고 - <span class="text-green-400">정상 작동</span></p>
+                        <p>광파오븐 - <span class="text-gray-400">꺼짐</span></p>
+                    </div>
+                </div>
+                 <div class="bg-zinc-800 rounded-3xl p-5">
+                    <h3 class="text-lg font-bold mb-3">거실</h3>
+                    <div class="space-y-3">
+                        <p>에어컨 - <span class="text-blue-400">켜짐 (26℃)</span></p>
+                        <p>TV - <span class="text-gray-400">꺼짐</span></p>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 케어 화면 -->
+            <main id="view-care" class="view flex-grow px-4 pb-24 space-y-6">
+                <h2 class="text-2xl font-bold pt-2">스마트 케어</h2>
+                <div class="bg-zinc-800 rounded-3xl p-5">
+                    <h3 class="text-lg font-bold mb-2">AI 스마트 진단</h3>
+                    <p class="text-sm text-gray-300">연결된 모든 기기가 최상의 상태로 작동하고 있습니다.</p>
+                    <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded-full font-semibold">전체 진단 다시하기</button>
+                </div>
+                <div class="bg-zinc-800 rounded-3xl p-5">
+                    <h3 class="text-lg font-bold mb-3">소모품 관리</h3>
+                     <p class="text-sm text-gray-300">정수기 필터 교체가 필요합니다. (5일 전)</p>
+                     <button class="mt-3 text-sm text-blue-400">필터 주문하기</button>
+                </div>
+            </main>
+            
+            <!-- 커뮤니티 화면 -->
+            <main id="view-community" class="view flex-grow px-4 pb-24 space-y-6">
+                <h2 class="text-2xl font-bold pt-2">쿠킹 커뮤니티</h2>
+
+                <!-- Gemini Feature: AI Recipe Generator -->
+                <div class="bg-zinc-800 rounded-3xl p-5">
+                    <h3 class="text-lg font-bold mb-2 text-teal-400">✨ AI 냉장고 파먹기 셰프</h3>
+                    <p class="text-sm text-gray-300 mb-4">냉장고에 있는 재료를 입력하면, AI가 특별한 레시피를 만들어 드려요!</p>
+                    <textarea id="ingredients-input" class="w-full bg-zinc-700 rounded-xl p-3 text-white placeholder-gray-400" rows="3" placeholder="예: 김치, 돼지고기, 양파, 두부"></textarea>
+                    <button onclick="getAIRecipe()" class="mt-4 w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded-full font-semibold flex items-center justify-center">
+                        레시피 생성하기
+                    </button>
+                    <div id="recipe-loading" class="hidden text-center mt-4">
+                        <p>AI 셰프가 레시피를 만들고 있어요...</p>
+                    </div>
+                    <div id="recipe-result" class="hidden mt-4 bg-zinc-700 rounded-xl p-4">
+                        <!-- Generated recipe will appear here -->
+                    </div>
+                    <div id="recipe-audio-player" class="hidden mt-4">
+                        <!-- Audio player will appear here -->
+                    </div>
+                </div>
+
+                <div class="bg-zinc-800 rounded-3xl p-5">
+                    <h3 class="text-lg font-bold mb-2 text-blue-400">이번 주 챌린지: 최고의 냉파 요리 🏆</h3>
+                    <p class="text-sm text-gray-300">냉장고 속 재료로 만든 당신만의 멋진 요리를 공유해주세요! 가장 많은 '좋아요'를 받은 분께 특별한 배지를 드립니다.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-zinc-800 rounded-3xl p-4 text-center">
+                        <h4 class="font-bold">🥇 이번 주 랭킹</h4>
+                        <p class="text-sm text-gray-400 mt-2">1. 요리왕성주</p>
+                        <p class="text-sm text-gray-400">2. ParkCook</p>
+                    </div>
+                    <div class="bg-zinc-800 rounded-3xl p-4 text-center">
+                        <h4 class="font-bold">📜 나의 레시피</h4>
+                         <p class="text-3xl mt-2">5</p>
+                         <p class="text-xs text-gray-400">저장된 레시피</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-3">#냉파챌린지 피드</h3>
+                    <div id="feed-images" class="grid grid-cols-2 gap-3">
+                        <!-- Generated images will appear here -->
+                    </div>
+                </div>
+            </main>
+
+             <!-- 메뉴 화면 -->
+            <main id="view-menu" class="view flex-grow px-4 pb-24 space-y-4">
+                <h2 class="text-2xl font-bold pt-2">전체 메뉴</h2>
+                <div class="bg-zinc-800 rounded-3xl p-2">
+                    <ul class="space-y-1">
+                        <li><a href="#" class="block p-3 hover:bg-zinc-700 rounded-2xl">내 프로필</a></li>
+                        <li><a href="#" class="block p-3 hover:bg-zinc-700 rounded-2xl">알림 설정</a></li>
+                        <li><a href="#" class="block p-3 hover:bg-zinc-700 rounded-2xl">연결된 서비스</a></li>
+                        <li><a href="#" class="block p-3 hover:bg-zinc-700 rounded-2xl">고객센터</a></li>
+                    </ul>
+                </div>
+                 <div class="bg-zinc-800 rounded-3xl p-2">
+                    <ul class="space-y-1">
+                        <li><a href="#" class="block p-3 text-red-400 hover:bg-zinc-700 rounded-2xl">로그아웃</a></li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+
+        <!-- 하단 네비게이션 -->
+        <footer class="fixed bottom-0 left-0 right-0 max-w-sm mx-auto bg-zinc-900 border-t border-zinc-700">
+            <div class="flex justify-around items-center h-20">
+                <a href="#" id="nav-home" onclick="showView('view-home')" class="flex flex-col items-center text-blue-500 space-y-1 nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span class="text-xs font-bold">홈</span>
+                </a>
+                <a href="#" id="nav-device" onclick="showView('view-device')" class="flex flex-col items-center text-gray-400 space-y-1 nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    <span class="text-xs">디바이스</span>
+                </a>
+                <a href="#" id="nav-care" onclick="showView('view-care')" class="flex flex-col items-center text-gray-400 space-y-1 nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span class="text-xs">케어</span>
+                </a>
+                <a href="#" id="nav-community" onclick="showView('view-community')" class="flex flex-col items-center text-gray-400 space-y-1 nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span class="text-xs">커뮤니티</span>
+                </a>
+                <a href="#" id="nav-menu" onclick="showView('view-menu')" class="flex flex-col items-center text-gray-400 space-y-1 nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                    <span class="text-xs">메뉴</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showView(viewId) {
+            // 모든 .view 요소에서 active 클래스 제거
+            document.querySelectorAll('.view').forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // 클릭된 뷰에 active 클래스 추가
+            document.getElementById(viewId).classList.add('active');
+
+            // 홈 뷰일 때만 상단 탭 메뉴를 보여줌
+            document.getElementById('home-tabs').style.display = (viewId === 'view-home') ? 'flex' : 'none';
+
+            // 모든 .nav-item 스타일 초기화
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('text-blue-500');
+                item.classList.add('text-gray-400');
+                item.querySelector('span').classList.remove('font-bold');
+            });
+            
+            // 클릭된 네비게이션 아이템에 활성 스타일 적용
+            const navId = 'nav-' + viewId.replace('view-', '');
+            const activeNavItem = document.getElementById(navId);
+            if (activeNavItem) {
+                activeNavItem.classList.add('text-blue-500');
+                activeNavItem.classList.remove('text-gray-400');
+                activeNavItem.querySelector('span').classList.add('font-bold');
+            }
+
+            // 커뮤니티 뷰가 보일 때 피드 이미지 생성 함수 호출
+            if (viewId === 'view-community') {
+                generateFeedImages();
+            }
+        }
+
+        const apiKey = ""; // API 키는 비워 둡니다.
+
+        // Gemini API로 레시피 생성하는 함수
+        async function getAIRecipe() {
+            const ingredientsInput = document.getElementById('ingredients-input');
+            const recipeResultDiv = document.getElementById('recipe-result');
+            const recipeLoadingDiv = document.getElementById('recipe-loading');
+            const recipeAudioPlayerDiv = document.getElementById('recipe-audio-player');
+            const ingredients = ingredientsInput.value.trim();
+
+            if (!ingredients) {
+                recipeResultDiv.innerHTML = '<p class="text-red-400">재료를 입력해주세요!</p>';
+                recipeResultDiv.classList.remove('hidden');
+                return;
+            }
+
+            recipeLoadingDiv.classList.remove('hidden');
+            recipeResultDiv.classList.add('hidden');
+            recipeAudioPlayerDiv.classList.add('hidden');
+            
+            const systemPrompt = "You are a creative and helpful chef. Your goal is to create a delicious and easy-to-follow recipe based on the ingredients provided by the user. The recipe should have a creative name, a list of ingredients (including the ones provided and any common pantry items needed), and clear step-by-step instructions. Respond in Korean markdown format.";
+            const userQuery = `Create a recipe using the following ingredients: ${ingredients}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    let text = candidate.content.parts[0].text;
+                    // Basic markdown to HTML conversion
+                    text = text.replace(/### (.*)/g, '<h3 class="text-lg font-bold mt-4 mb-2">$1</h3>');
+                    text = text.replace(/## (.*)/g, '<h2 class="text-xl font-bold mt-4 mb-2">$1</h2>');
+                    text = text.replace(/\* (.*)/g, '<li>$1</li>');
+                    text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+                    text = text.replace(/<br><li>/g, '<li>'); // Fix extra breaks before list items
+                    
+                    // Group list items
+                    let listRegex = /(<li>.*<\/li>)/s;
+                    text = text.replace(listRegex, '<ul>$&</ul>');
+                    text = text.replace(/<\/ul><br><ul>/g, '');
+
+
+                    // Add the read aloud button
+                    const ttsButton = `<button onclick="readRecipeAloud()" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-full font-semibold flex items-center justify-center">✨ 레시피 읽어주기</button>`;
+                    
+                    recipeResultDiv.innerHTML = text + ttsButton;
+                    recipeResultDiv.dataset.rawText = candidate.content.parts[0].text; // Store raw text for TTS
+                } else {
+                    throw new Error("응답에서 레시피를 찾을 수 없습니다.");
+                }
+
+            } catch (error) {
+                console.error("Error fetching recipe:", error);
+                recipeResultDiv.innerHTML = '<p class="text-red-400">레시피를 생성하는 중 오류가 발생했습니다. 다시 시도해주세요.</p>';
+            } finally {
+                recipeLoadingDiv.classList.add('hidden');
+                recipeResultDiv.classList.remove('hidden');
+            }
+        }
+
+        // TTS Helper functions
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        function pcmToWav(pcmData, sampleRate) {
+            const numChannels = 1;
+            const bitsPerSample = 16;
+            const blockAlign = (numChannels * bitsPerSample) / 8;
+            const byteRate = sampleRate * blockAlign;
+            const dataSize = pcmData.length * (bitsPerSample / 8);
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            // RIFF header
+            view.setUint32(0, 1380533830, false); // "RIFF"
+            view.setUint32(4, 36 + dataSize, true);
+            view.setUint32(8, 1463899717, false); // "WAVE"
+            // "fmt " sub-chunk
+            view.setUint32(12, 1718449184, false); // "fmt "
+            view.setUint32(16, 16, true); // Subchunk1Size
+            view.setUint16(20, 1, true); // AudioFormat (PCM)
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bitsPerSample, true);
+            // "data" sub-chunk
+            view.setUint32(36, 1684108385, false); // "data"
+            view.setUint32(40, dataSize, true);
+
+            // Write PCM data
+            let offset = 44;
+            for (let i = 0; i < pcmData.length; i++, offset += 2) {
+                view.setInt16(offset, pcmData[i], true);
+            }
+            return new Blob([view], { type: 'audio/wav' });
+        }
+
+
+        // Gemini API로 TTS 생성하는 함수
+        async function readRecipeAloud() {
+            const recipeResultDiv = document.getElementById('recipe-result');
+            const recipeAudioPlayerDiv = document.getElementById('recipe-audio-player');
+            const recipeText = recipeResultDiv.dataset.rawText;
+            
+            if (!recipeText) {
+                console.error("No recipe text to read.");
+                return;
+            }
+
+            recipeAudioPlayerDiv.innerHTML = '<p>음성을 생성하는 중...</p>';
+            recipeAudioPlayerDiv.classList.remove('hidden');
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+            try {
+                const payload = {
+                    model: "gemini-2.5-flash-preview-tts",
+                    contents: [{
+                        parts: [{ text: `Cheerfully read the following recipe in Korean: ${recipeText}` }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName: "Kore" }
+                            }
+                        }
+                    },
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`TTS API Error: ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType;
+
+                if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                    const sampleRateMatch = mimeType.match(/rate=(\d+)/);
+                    if (!sampleRateMatch) throw new Error("Sample rate not found in mime type");
+
+                    const sampleRate = parseInt(sampleRateMatch[1], 10);
+                    const pcmData = base64ToArrayBuffer(audioData);
+                    const pcm16 = new Int16Array(pcmData);
+                    const wavBlob = pcmToWav(pcm16, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+                    
+                    recipeAudioPlayerDiv.innerHTML = `<audio controls autoplay src="${audioUrl}"></audio>`;
+
+                } else {
+                    throw new Error("Invalid TTS response format");
+                }
+
+            } catch (error) {
+                console.error("Error fetching TTS:", error);
+                recipeAudioPlayerDiv.innerHTML = '<p class="text-red-400">음성 생성에 실패했습니다.</p>';
+            }
+        }
+        
+        // Gemini API로 피드 이미지 생성하는 함수
+        async function generateFeedImages() {
+            const feedImagesDiv = document.getElementById('feed-images');
+            // 이미지가 로드되었거나 로딩 중이면 다시 실행하지 않음
+            if (feedImagesDiv.dataset.loaded === 'true' || feedImagesDiv.dataset.loading === 'true') {
+                return;
+            }
+
+            feedImagesDiv.dataset.loading = 'true';
+            feedImagesDiv.innerHTML = `
+                <div class="bg-zinc-700 rounded-2xl animate-pulse h-48"></div>
+                <div class="bg-zinc-700 rounded-2xl animate-pulse h-48"></div>
+            `;
+
+            const prompts = [
+                "A delicious-looking, home-cooked plate of Dubu Jorim (Korean braised tofu), well-lit, top-down view, realistic food photography.",
+                "A vibrant, home-cooked plate of Kimchi Bokkeumbap (kimchi fried rice) topped with a perfect sunny-side-up egg, top-down view, realistic food photography."
+            ];
+            const imageUrls = [];
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+
+            try {
+                for (const prompt of prompts) {
+                    const payload = { instances: { prompt: prompt }, parameters: { "sampleCount": 1 } };
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Image API Error: ${response.statusText}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                        imageUrls.push(`data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`);
+                    } else {
+                        throw new Error("Invalid image response format");
+                    }
+                }
+
+                feedImagesDiv.innerHTML = imageUrls.map(url =>
+                    `<img src="${url}" class="rounded-2xl w-full h-48 object-cover" alt="냉파 챌린지 요리 사진">`
+                ).join('');
+                feedImagesDiv.dataset.loaded = 'true';
+
+            } catch (error) {
+                console.error("Error generating feed images:", error);
+                feedImagesDiv.innerHTML = '<p class="text-red-400 col-span-2">이미지를 불러오는 데 실패했습니다.</p>';
+            } finally {
+                delete feedImagesDiv.dataset.loading;
+            }
+        }
+    </script>
+</body>
+</html>
+
