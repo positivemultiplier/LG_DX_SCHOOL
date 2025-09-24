@@ -32,6 +32,9 @@ public class EX01InputOutput {
 
         // 2-2) 입력받기
         sc.next();
+        // 연산을 할때 숫자로 받아야 한다면 nextInt() 사용 => 문자는 연산이 안되니까!!
+        sc.nextInt();
+
 
     }
 }

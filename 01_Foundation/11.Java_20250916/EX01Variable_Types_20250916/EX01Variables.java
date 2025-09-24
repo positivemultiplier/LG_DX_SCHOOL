@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class variables {
+public class EX01Variables {
 
     // main을 못만들었다면!!
     // main ctrl space --> 자동완성 가능! 
@@ -45,6 +45,7 @@ public class variables {
 
         //변수에 들어가는 값 변경
         num = 14;
+        System.out.println(num);
         //num2 = 13; // ★★★상수★★★는 값을 변경할 수 없다.
 
         // int input = 0; => 변수명 중복선언 불가능!

@@ -21,11 +21,12 @@ public class EX03DataType {
 
 
 
-        // 2) 문자 자료형: char (2byte)
+        // 2) 문자 자료형: char (2byte) >> character
         // : 따옴표를 이용해서 작성하고, 한 글자만 들어갈 수 있다. 
         // char name = "이도연"; ==> 2byte는 한 글자만 쓸 수 있다.  홀따옴표로 감싸야한다.
         char name = '이';
 
+        // 2)-1 문자열 
         // char vs String 문자열 자료형(기본 자료형이 아님!!!) => 대문자로 시작한다.
         // String: 쌍따옴표 이용해서 작성하고, 여러 글자가 들어갈 수 있다. 
         String name2 = "이도연";
@@ -55,6 +56,7 @@ public class EX03DataType {
 
         System.out.println("num1: " + num1); // 넘쳐 흘러서 다시 -128로 돌아감
         System.out.println("num2: " + num2);
+        
 
 
 
@@ -70,6 +72,7 @@ public class EX03DataType {
         System.out.println("num3: " + num3);
         System.out.println("num4: " + num4);    
         System.out.println("num5: " + num5);
+
 
 
 

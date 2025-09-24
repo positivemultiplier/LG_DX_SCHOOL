@@ -1,4 +1,6 @@
-public class EX04LogicalOperator {
+package EX03LogicalOperator;
+
+public class EX03LogicalOperator {
 // 논리 연산자
 // &&(AND), ||(OR), !(NOT)
 

@@ -145,3 +145,92 @@ SELECT MAX(SALARY) - MIN(SALARY) AS "급여차이"
 FROM EMPLOYEES;
 
 -- 20. 모든 사원들의 이름, 부서 이름 및 부서 번호를 출력하시오. 
+SELECT FIRST_NAME, DEPARTMENT_NAME, E.DEPARTMENT_ID, D.DEPARTMENT_ID
+FROM EMPLOYEES E, DEPARTMENTS D 
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID;
+
+-- 21. 매니저의 사번 및 그 매니저 밑 사원들 중 최소 급여를 받는 사원의 급여를 출력하시오
+-- 매니저가 없는 사람들은 제외한다.
+-- 최소 급여가 5,000 미만인 경우는 제외한다.
+-- 급여 기준 역순으로 조회한다. 
+
+-- failed
+-- SELECT *
+-- FROM EMPLOYEES E, JOBS J  
+-- WHERE E.JOB_ID = J.JOB_ID
+-- AND E.MANAGER_ID IS NOT NULL   
+-- AND J.MIN_SALARY >= 5000
+-- ORDER BY E.SALARY DESC;
+
+SELECT MANAGER_ID, MIN(SALARY)
+FROM EMPLOYEES
+WHERE MANAGER_ID IS NOT NULL
+GROUP BY MANAGER_ID
+HAVING MIN(SALARY) >= 5000
+ORDER BY MIN(SALARY) DESC;
+
+-- 22. 커미션을 받는 모든 사람들의 이름, 부서명, 지역ID 및 도시 명을 출력하시오.
+
+-- failed 
+-- SELECT FIRST_NAME AS "사원이름", DEPARTMENT_NAME AS "부서명", COUNTRY_NAME AS "지역ID", CITY AS "도시명"
+-- FROM EMPLOYEES E, DEPARTMENTS D, COUNTRIES C, LOCATIONS L
+-- WHERE ;
+
+SELECT E.LAST_NAME, D.DEPARTMENT_NAME, L.LOCATION_ID, L.CITY
+FROM  EMPLOYEES E, DEPARTMENTS D, LOCATIONS L
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+AND    D.LOCATION_ID = L.LOCATION_ID
+AND    E.COMMISSION_PCT IS NOT NULL;
+
+-- Oracle Join 형태 (동일 결과, 가독성 ↓)
+SELECT  E.LAST_NAME         AS "사원성"          -- 사원 성
+       ,D.DEPARTMENT_NAME   AS "부서명"          -- 소속 부서 이름
+       ,L.LOCATION_ID       AS "지역ID"          -- 부서 위치 ID
+       ,L.CITY              AS "도시명"          -- 위치 도시
+FROM   EMPLOYEES   E
+       ,DEPARTMENTS D
+       ,LOCATIONS  L
+WHERE  E.DEPARTMENT_ID = D.DEPARTMENT_ID   -- 사원 → 부서 매핑
+AND    D.LOCATION_ID   = L.LOCATION_ID     -- 부서 → 위치 매핑
+AND    E.COMMISSION_PCT IS NOT NULL;       -- 커미션 있는 사원만
+
+-- (참고) ANSI JOIN 형태 (동일 결과, 가독성 ↑)
+SELECT  E.LAST_NAME AS "사원성"
+      , D.DEPARTMENT_NAME AS "부서명"
+      , L.LOCATION_ID AS "지역ID"
+      , L.CITY AS "도시명"
+FROM EMPLOYEES E
+JOIN DEPARTMENTS D ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+JOIN LOCATIONS  L ON D.LOCATION_ID   = L.LOCATION_ID
+WHERE E.COMMISSION_PCT IS NOT NULL;
+
+
+
+-- 23. 자신의 매니저보다 먼저 고용된 사원들의 이름 및 고용일을 출력하시오
+-- Self Join: EMPLOYEES 테이블을 사원(EMP)과 매니저(MGR) 두 역할로 참조
+SELECT  EMP.LAST_NAME    AS "사원성"          -- 사원 성
+       ,EMP.EMPLOYEE_ID  AS "사원번호"        -- 사원 사번
+       ,EMP.HIRE_DATE    AS "사원고용일"      -- 사원 고용일
+       ,MGR.LAST_NAME    AS "매니저성"        -- 매니저 성 (이해용 추가)
+       ,MGR.EMPLOYEE_ID  AS "매니저번호"      -- 매니저 사번
+       ,MGR.HIRE_DATE    AS "매니저고용일"    -- 매니저 고용일
+FROM   EMPLOYEES EMP
+       JOIN EMPLOYEES MGR
+         ON EMP.MANAGER_ID = MGR.EMPLOYEE_ID  -- 사원의 매니저 연결 조건
+WHERE  EMP.HIRE_DATE < MGR.HIRE_DATE          -- 사원이 매니저보다 먼저 입사한 경우만
+ORDER BY EMP.LAST_NAME;                       -- 사원 성 기준 정렬
+
+
+-- 24. 부서 명, 부서위치ID, 각 부서 별 사원 총 수, 각 부서 별 평균 급여를 출력하되, 부서위치를 오름차순으로 출력하시오.
+--failed
+SELECT D.DEPARTMENT_NAME 
+FROM DEPARTMENTS D, EMPLOYEES E    
+WHERE D.DEPARTMENT_ID = E.DEPARTMENT_ID
+GROUP BY D.DEPARTMENT_ID;
+
+SELECT D.DEPARTMENT_NAME , D.LOCATION_ID, COUNT(E.EMPLOYEE_ID)
+, AVG(E.SALARY) AVG_SALARY
+FROM EMPLOYEES E, DEPARTMENTS D
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+GROUP BY D.DEPARTMENT_NAME, D.LOCATION_ID
+ORDER BY D.LOCATION_ID;
