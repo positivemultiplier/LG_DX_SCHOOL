@@ -18,7 +18,7 @@ WHERE DEPARTMENT_ID = 90;
 
 
 
--- #2. JOIN 사용해서 문제 해결
+-- 3#2. JOIN 사용해서 문제 해결
 -- join은 oracle에서만 지원하는 방식이다. 
 -- mysql OR mongoDB에서는 다른 방식으로 join을 구현해야한다.
 

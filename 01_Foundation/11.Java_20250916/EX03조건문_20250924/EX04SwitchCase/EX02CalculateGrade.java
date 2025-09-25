@@ -30,7 +30,7 @@ public class EX02CalculateGrade {
         // 점수가 80점 이상 90점 미만이면 --> "B학점
         // 점수가 70점 이상 80점 미만이면 --> "C학점"
         // 점수가 70점 미만이면 --> "D학점"
-        char grade = ' '; // Grobal variable  initialization
+        char grade = ' '; // 전역변수 Global variable initialization
          
 
         switch (totalScore / 10) { //totalScore를 10으로 나눈 몫을 가지고 판단한다.
