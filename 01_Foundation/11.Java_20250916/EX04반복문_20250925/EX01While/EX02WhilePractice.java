@@ -9,7 +9,6 @@ public class EX02WhilePractice {
 
 
         //방법1 while문 사용
-
         /*
         // 1. 입력받는 도구 꺼내기
         Scanner sc = new Scanner(System.in);
@@ -31,7 +30,6 @@ public class EX02WhilePractice {
 
          
         // 방법2 무한 반복문 사용
-
         // 1. 입력받는 도구 꺼내기
         Scanner sc = new Scanner(System.in);
         
@@ -48,6 +46,8 @@ public class EX02WhilePractice {
             }
         }
         
+
+
 
         /* 혼자연습해보기 20250925
         // while문을 사용하여 키보드로부터 입력받은 수가 10보다 작을 때만 계속 정수를 입력 받으세요.
