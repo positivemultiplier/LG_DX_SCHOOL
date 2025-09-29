@@ -56,7 +56,8 @@ CREATE TABLE 직원정보(
 
 
 ----------#2 INSERT 쿼리를 실행해서 1개의 sample data를 넣어줬다. ----------
-INSERT INTO 직원정보 VALUES (100, '승환', 3000, SYSDATE, 60); -- SYSDATE: 현재 날짜와 시간을 반환하는 Oracle 내장 함수
+INSERT INTO 직원정보 
+VALUES (100, '승환', 3000, SYSDATE, 60); -- SYSDATE: 현재 날짜와 시간을 반환하는 Oracle 내장 함수
 
 
 
