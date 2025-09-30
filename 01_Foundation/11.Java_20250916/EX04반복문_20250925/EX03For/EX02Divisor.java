@@ -9,10 +9,11 @@ public class EX02Divisor {
 
         // 1. 입력도구 꺼내오기
         Scanner sc = new Scanner(System.in);
-
+        
         // 2. 정수 입력받기
-        System.out.println("정수를 입력하세요 : ");
+        System.out.print("정수를 입력하세요 : ");
         long inputNumber = sc.nextLong();
+        sc.close();
         
         // 3. 약수 출력하기
         // 입력받은 숫자를 임의의 숫자로 나누었을 때 나머지가 0이라면? 약수

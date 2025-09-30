@@ -1,3 +1,4 @@
+package EX01Array;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -65,7 +66,7 @@ public class EX04ScoreCarculate {
         for(int i = 0; i < array.length; i++  ) {
             mean += (float)array[i]/array.length;
         }
-        System.out.println("평균 :" + mean);
+        System.out.println("평균 : " + mean);
 
 
     }

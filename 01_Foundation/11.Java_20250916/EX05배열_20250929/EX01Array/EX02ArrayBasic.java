@@ -1,5 +1,4 @@
-
-
+package EX01Array;
 public class EX02ArrayBasic {
     public static void main(String[] args) {
         

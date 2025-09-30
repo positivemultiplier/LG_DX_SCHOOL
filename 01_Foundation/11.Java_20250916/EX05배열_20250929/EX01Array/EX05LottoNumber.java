@@ -1,3 +1,4 @@
+package EX01Array;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -16,7 +17,7 @@ public class EX05LottoNumber {
         for(int i = 0; i < array.length; i++){
             array[i] = ran.nextInt(10)+1;
         }
-
+        
         // 3.방법1(2중for문). 단, 배열에 중복된 값을 제거해주세요.
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < i; j++) {
