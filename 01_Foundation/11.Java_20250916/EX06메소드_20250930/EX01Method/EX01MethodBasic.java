@@ -4,15 +4,28 @@ public class EX01MethodBasic {
         // 로그인 메소드
 
         /* 메소드의 기본구조
-        public    int      addNumber(int num1, int num2){
-        접근제한자 리턴타입 메소드이름  매개변수(Parameter)
+        //접근제한자      //메모리기억       //리턴타입      //메소드이름         //매개변수(Parameter)
+        public            static           int             addNumber           (int num1, int num2){
 
-            int result = num1 + num2;
+            //int result = num1 + num2;
             실행문(Execute)
             
+            //반환데이터
             return result;
-            반환데이터
         }
+
+        1. 접근 제한자 4가지
+        public, private,
+        2. 리턴타입
+        int
+        3. 메소드 이름
+
+        4. 매개변수(Parameter) 
+    
+        5. Static => 같은 저장공간에 넣어주세요
+        (객체 생성없이 호출가능)
+
+
          */
 
 
@@ -38,6 +51,9 @@ public class EX01MethodBasic {
 
     //메소드 정의할때는 main 밖에서 선언한다.
     //실행은 main에서 실행한다
+
+
+    
     //  # 1. 더하기 method
     // 리턴타입 : double 
     // 메소드명 : addDouble
