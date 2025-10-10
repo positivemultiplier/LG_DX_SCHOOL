@@ -31,6 +31,7 @@ public class EX02StudentMain {
         // sList.get(0)==> return type : Student 객체!!
 
         System.out.println(sList.get(0).getName() + "\t" + sList.get(1).getAge());
+        //get()은 어떤타입이냐? => ex02student 타입이다.
 
         // 4. 팀원 데이터 전부 추가하기!! 
         sList.add(new EX02Student("곽진규", 19));
