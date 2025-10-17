@@ -1,6 +1,0 @@
-public enum EX02EnumerationConstance {
-    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
-
-
-}
-

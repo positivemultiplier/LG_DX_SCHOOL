@@ -116,7 +116,7 @@ public class EX01Join {
             // # 3. Query  (query문) 전송 
             // ## 3.1. Query문 작성
             String sql = "INSERT INTO LGDXMEMBER VALUES(?, ?, ?, ?, ?)";
-            // ? 인자
+            // "?" 인자 (parameter)
             // : 사용자로부터 어떤 데이터가 들어올지 모를 때 사용
             // 지정한 데이터 공간만큼 비워놓고 실행하기 전까지 대기
 

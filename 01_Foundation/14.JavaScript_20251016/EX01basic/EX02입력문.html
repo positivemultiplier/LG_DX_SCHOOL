@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력문</title>
+</head>
+<body>
+    <script>
+        /*
+            # 1. 입력문 prompt(),confirm()
+        */
+
+        // 1. prompt() -> 사용자에게 직접 입력창을 제공하는 입력문 
+        // HTML에서 input태그의 역할 -> 사용빈도가 적음
+        // 반드시 사용자에게 메세지를 전달해야 한다.
+        // 사용자가 입력한 값은 모두 문자열(String)로 인식 -> 숫자(integer)가 필요하면 형변환(Casting)
+        
+        
+        
+        // frontend에서는 parameter(매개변수)반드시 필요하다.
+        prompt("사용자 아이디", "영문만 사용하세요");
+        prompt("비밀번호", "영문만 사용하세요");
+        
+        // 변수를 넣을때 DataType 대신에 var라는것을 사용했지만 => 무결성(integrity)이 회손되기때문에 현재는 var(variable)를 쓰지 않는다.=> EX03에서 보충 
+        var age = prompt("생년월일을 입력하세요","6글자만 작성하세요");
+        // tip : 세미콜론(;)을 찍는 이유는 코드를 압축하기위해서는 한줄로 만들어야하지만, 개발용 코드와, cunfulse버전을 사용해야한다. 이때 세미콜론을 찍어야 오류가 발생하지 않는다.
+
+
+
+        // 2. confirm -> 사용자에게 확인(true) or 취소(false) 를 입력하는 입력문 
+        // 리턴하는 데이터 타입이 boolean타입 -> true, false 
+        // boolean 데이터가 만들어지면 반드시 조건문을 떠올리자.
+        // 사용처 : 사용자의 상태가 변화할 때 사용 -> 부정적인 선택할 때
+        confirm("탈퇴하시겠어요?");
+        confirm("진짜?");
+        confirm("정말?");
+        confirm("아앙~ 가지마~");
+        confirm("다시 한번 생각해볼래?");
+        confirm("잘가ㅠㅠ");
+
+
+
+
+
+        
+    </script>
+</body>
+</html>

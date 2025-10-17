@@ -23,6 +23,7 @@ public class EX01SwitchCase {
          //int totalScore = sc.nextInt();
          System.out.println("점수를 입력하세요 : ");
          int totalScore = sc.nextInt();
+         System.out.println(totalScore);
          
 
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+            변수 키워드 3가지 : 변수(var, variance), 변수(let), 상수(const, constance)
+        */
+
+        // 1. var(변수, variance) : 자바스크립트에서 처음에 같이 등장한 변수 키워드
+        // - 권장사항이 아니다.
+        // - 특징: 변수명이 중복가능 -> 코드의 통합시 오류가 발생 할 수 있다.
+        // opensorce프로젝트 라이브러리는 var로 적혀있을 가능성이 높다. 이해만 시키자.
+        var name = "이도연";
+        console.log("이름 : " + name);
+
+        var name = "손지영";
+        console.log("이름 : " + name);
+        
+
+        // 2. let = ECMA6버전(2015~)에 등장한 변수 키워드 ECMAScript 6(ES6)
+        //ECMA(European Computer Manufacturers Association)
+        //ANSI(American National Standards Institute)
+        // - 권장사항
+        // - 특징 : 변수명이 중복 불가능
+
+        let age = 10;
+        console.log("나이 : " + age);
+
+        let age2 = 20;
+        console.log("나이 : " + age2);
+
+        // 3. const(상수, constance) = ECAM6 버전에 등장한 상수 키워드 
+        // - 특징 : 이름이 중복 불가능, 다른 값을 재할당이 불가능하다.
+        // - 사용처 : 파일, 라이브러리 호출, 함수를 저장할 때 활용 
+        // 3.1. 라이브러리 library를 관리할때 무결성 확보해주기 => constance로 관리
+        // 3.2. 기능function을 만들때 상수 constance로 무결성 확보해주기
+        const money = 0;
+        console.log("현재금액 : " + money);
+        // const money = 1; //=> 상수 중복이 안된다.
+        console.log("현재금액 : " + money)
+        // money = 2; => 재할당이 안된다.
+
+
+    </script>
+    
+</body>
+</html>

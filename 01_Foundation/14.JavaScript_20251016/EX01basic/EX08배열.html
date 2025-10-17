@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+</head>
+<body>
+    <script>
+        // 배열 ( Arrays ) : **같은 의미**를 갖는 데이터를 넣어야 , 꺼낼 수 있다. 
+        // - 사용방법 : 파이썬과 같다.
+        // - 포인트 : **배열의 길이(length)를 활용**하는 방법 2가지 
+        //  1) 반복문 for문의 범위 지정
+        //  2) 데이터의 유무검증 -> 배열의 길이가 0이면 데이터가 없다 -> 조건문
+        
+        // length 활용
+        // 1. 데이터의 유무 검증 (결측치와 이상치확인 , 0이라면 ㅇ) => length라면 
+        // 2. 반복문의 condition의 범위지정
+        let name = ["정형", "이도연", "손지영", "김미희"];
+        console.log(name);
+        console.log(name.length);
+
+
+        // 배열 함수 : 배열을 쉽게 사용할 수 있는 함수
+        // 1. 값을 가지고 조회, 삭제, 검증 하는 함수
+
+        // 1.1. 배열의 맨 마지막 인덱스에 값을 넣는 함수
+        name.push("곽진규"); //★★★ python에서 append(); // return 함수이므로 변수에 넣을 수 없다.
+        // 1.2. 배열의 맨 마지막 인덱스의 값을 빼는 함수
+        let last = name.pop(); // return함수 이므로 변수에 넣을 수 있다. // 잘 안쓴다. 
+        // 1.3. 배열의 맨 첫번째 인덱스의 값을 넣는 함수
+        name.unshift("차준섭"); // 파워스토어 계약 느낌으로
+        // 1.4. 배열의 맨 첫번째 인덱스의 값을 빼는 함수
+        let first = name.shift(""); //★★★ 파워스토어 계약기간 만료 ★ // to do list에서 완료시 => return 함수 
+        // 1.5. 배열의 특정 값이 포함되어있는지 검증하는 함수 
+        let check = name.includes("손지영"); // return함수 boolean
+
+        // 2. 반복문, 조건문을 담당하는 함수 -> ECMA6
+
+
+
+        // 객체 ( key - value) : **다른 의미** 데이터를 넣어도, 꺼내기 쉽다.
+
+
+
+    </script>
+</body>
+</html>
