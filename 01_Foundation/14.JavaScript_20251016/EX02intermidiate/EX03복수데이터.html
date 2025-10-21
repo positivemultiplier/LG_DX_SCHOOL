@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복수 데이터 제어</title>
+</head>
+<body>
+
+    <ul>
+        <li class="list">아이템1</li>
+        <li class="list">아이템2</li>
+        <li class="list">아이템3</li>
+        <li class="list">아이템4</li>
+        <li class="list">아이템5</li>
+    </ul>
+
+    <script>
+        // 1. 복수개의 데이터를 처리.
+        // 복수개를 요청하면 응답도 복수개로 온다.
+        // class는 배열(Array)로 data type이 전달된다. 따라서 for문을 이용할 수 있다 . index로 접근이 가능하다. 
+        // ElementById는 단수개의 데이터이므로 Object로 전달된다. key로 접근이 가능하다.
+
+        // 유사배열(HTMLCollection) push, map, filter 사용 불가.
+        // 유사배열을 => 배열로 바꿔버리면 배열함수들 사용가능하다. =>  
+        let data = document.getElementsByClassName("list"); // 배열(Array)로 반환
+        console.log(data);
+        console.log(data[0]); // index로 접근 가능
+        console.log(data.length); // length 사용 가능
+        
+        // ★ 리턴하는 데이터가 배열처럼 인덱스, 길이는 존재 -> 실제 배열은 아니다.
+        // HTMLCollection(유사배열)
+        // 특징 : 인덱스와 길이는 활용이 가능하지만, 배열함수를 사용할 수 없다.
+        // 해결책 : 배열로 형변환 2가지 방법(array.from(), spread operator)
+        let arr = [1, 2, 3, 4, 5];
+        console.log(arr);
+        
+
+        // 2. 형변환 :  HTMLCollection => Array 변환 방법 
+        // 2.1. 기존방식
+        let data2 = Array.from(data);// 배열로 변환
+        console.log(data2);
+        // Array method 사용 가능(push, map, filter 등)
+
+
+        // 2.2. 스프레드 연산자(spread operator) 방식 - 최신문법
+        let data3 = [...data]; // 배열로 변환 (ECMAScript6 이상)
+        console.log(data3);
+
+
+    </script>
+</body>
+</html>

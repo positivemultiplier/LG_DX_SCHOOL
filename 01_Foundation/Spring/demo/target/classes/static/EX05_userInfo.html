@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/EX05_userInfo" method="post">
+        <table border="1px solid black">
+            <tr bgcolor="red">
+                <th colspan="2">step 1 : 아이디 / 비밀번호 입력</th>
+            </tr>
+            <tr>
+                <td align="center">아이디</td>
+                <td><input type="text" name="id" required></td>
+            </tr>
+            <tr>
+                <td align="center">비밀번호</td>
+                <td><input type="password" name="pw" required></td>
+            </tr>
+            <tr>
+                <td align="center">비밀번호 확인</td>
+                <td><input type="password" name="pw2" required></td>
+            </tr>
+ 
+            <tr bgcolor="red">
+                <th colspan="2">step2 : 추가정보</th>
+            </tr>
+            <tr>
+                <td align="center">이메일</td>
+                <td>
+                    <input type="text" name="email" > @
+                    <select name="email_select">
+                        <option > naver.com</option>
+                        <option > daum.net</option>
+                        <option > gmail.com</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">성별</td>
+                <td>
+                    <input type="radio" name="gender" value="men">남자
+                    <input type="radio" name="gender" value="women">여자
+                </td>
+            </tr>
+            <tr>
+                <td align="center">취미</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="movie">영화시청
+                    <input type="checkbox" name="hobby" value="music">노래
+                    <input type="checkbox" name="hobby" value="game">게임
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"> <input type="submit" value="회원가입"></td>
+            </tr>
+        </table>        
+    </form>
+</body>
+</html>
+ 

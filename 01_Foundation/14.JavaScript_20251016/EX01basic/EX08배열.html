@@ -7,7 +7,9 @@
 </head>
 <body>
     <script>
-        // 배열 ( Arrays ) : **같은 의미**를 갖는 데이터를 넣어야 , 꺼낼 수 있다. 
+        
+        // 객체(Object) (=> key 와 values로 존재함) : **다른 의미** 데이터를 넣어도, 꺼내기 쉽다.
+        // 배열 ( Arrays )(=> index 와 data로 존재함) : **같은 의미**를 갖는 데이터를 넣어야 , 꺼낼 수 있다. 
         // - 사용방법 : 파이썬과 같다.
         // - 포인트 : **배열의 길이(length)를 활용**하는 방법 2가지 
         //  1) 반복문 for문의 범위 지정
@@ -21,7 +23,7 @@
         console.log(name.length);
 
 
-        // 배열 함수 : 배열을 쉽게 사용할 수 있는 함수
+        // 배열 함수 : 배열을 쉽게 사용할 수 있는 함수 (forEach(), map(), filter()) => parameter : (item, index) 
         // 1. 값을 가지고 조회, 삭제, 검증 하는 함수
 
         // 1.1. 배열의 맨 마지막 인덱스에 값을 넣는 함수
@@ -36,10 +38,70 @@
         let check = name.includes("손지영"); // return함수 boolean
 
         // 2. 반복문, 조건문을 담당하는 함수 -> ECMA6
+        // 반복을 활용한 배열함수 2가지(foreach)
+        
+        
+        // 2.1.forEach : 배열전용 for문이라고 생각하자
+        let hobby = ["위스키", "골프", "게임"];
+        // 2.1.1.for문 사용
+        for (let index = 0; index < hobby.length; index++) {
+            // 콘솔창에 i번째 취미는 ""입니다.
+            console.log(`${index+1}번째 취미는 ${hobby[index]} 입니다.`); 
+        }
+
+        // 2.1.2.foreach문 사용
+        // 배열의 이름을 꺼내온다 =>  이후 foreach함수 사용 => 매개변수로 (item, index)=>{} 넣어준다 . def 와 같다고 한다. 
+        // 특징 : item, index 변수를 활용해서 각각 인덱스, 값을 관리가 편하다 -> 권장사항
+        //forEach(value, index, array)
+        hobby.forEach((item, index)=>{
+            console.log(`${index+1}번째 취미는 ${item} 입니다.`);
+        }) 
+
+        // python에서 예를 든다면 
+        // for i in range(len(name)): 
+        // for i in name 
+
+        // 2.2. map 함수 : 원본 배열을 복제해서 새로운 배열을 생성 -> forEach + 복제
+        // 특징 : 원본이 아닌 새로운 배열을 생성 -> 반드시 변수에 넣어주고, 함수 안에는 return이 필요하다 
+        let price = [10000, 12000, 15000];
+        let disprice = [8000, 10000, 13000];
+        
+        // 이런 코드들은 재사용성, 유지보수성이 낮아진다. 
+        // 이런것을 방지하고자 새로운 데이터로 복제하는것! map
+        
+        let mapprice = price.map((item, index)=>{
+            // ★★return★★ method 이다!! 
+            
+            return item -2000;
+            // value에서 -2000; ★일괄적으로 산술한후 ★★★변수★★에 넣어야한다. 
+        })
+
+        console.log(mapprice);
+
+        // 2.3. filter 함수(조건문, 반복 + 복제 + 조건 ) : map + 조건문 => 새로운 배열을 생성 
+        // mapprice에서 가격이 10000 미만인 값만 추출해서 배열을 생성
+        // 2.3.1.for + 조건문 사용해서 해보기
+        let data = [];
+        for (let index = 0; index < mapprice.length; index++) {
+            if (mapprice[index]<10000) {
+                data.push(mapprice[index])
+            }
+        }
+
+        // 2.3.2.filter 사용해보기
+        // return method, 변수에 담아서 사용하기.
+        let filterArray = mapprice.filter((item, index)=>{
+            return item < 10000;
+        })
+        console.log(filterArray);
 
 
+        // 정리
+        // forEach() = 원본 데이터를 가지고 반복하는 로직을 작성하는 함수 (for)
+        // map() = forEach + 복제 => 원본데이터를 복제해서 새로운 배열을 만드는 함수
+        // filter() = map + 조건 => 원본데이터를 복제해서 조건을 추가한 새로운 배열을 만드는 함수 
+        // 3개의 배열함수가 가장 많이 사용된다.
 
-        // 객체 ( key - value) : **다른 의미** 데이터를 넣어도, 꺼내기 쉽다.
 
 
 

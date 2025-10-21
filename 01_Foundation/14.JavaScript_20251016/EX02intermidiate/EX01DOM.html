@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id = "text">페이지의 제목입니다!</h1>
+    <button onclick="getText()">컨텐츠 수집</button>
+    <button onclick="setText()">컨텐츠 변경</button>
+    <script>
+        // DOM(Document Object Model) Document는 최상위의계층이다. 
+        // WebBrowser시작 => WebDocument 읽기=> DOM 생성 => 페이지 로딩 완료
+        // 객체는 덩어리로 관리하는것이 아니라 쪼개서 관리한다. => 각각의 조작이 가능하다. => 태그tag는 tag끼리 , 속성attribute는 attribute끼리, 내용contents는 contents끼리 관리한다.
+        // 이유 : 각각 저장했기 때문에, 각각 조작이 가능하다.
+        // 포인트 : 문법을 외우는게 아닌 원리를 파악하는게 핵심 (객체는 키로 접근한다.) 
+        // 실습 1) (arrow function 문법사용) 컨텐츠 수집 버튼을 눌렀을 때, h1 태그의 컨텐츠를 콘솔창에 출력
+        // 핵심 : JS로 HTML에 접근하기 위해서는 document에게 요청한다.
+        // 문법 : document.get~("선택자")
+        // 포인트 : 요소를 가지고온 후에 컨텐츠, 속성을 꺼낼 때는 key으로 접근한다.
+
+        const getText = ()=>{
+            // JS로 html에 접근
+            // 대화 : html문서에서 ID가 test인 요소(Element = 태그, 속성, 컨텐츠)를 가져와줘, 그리고 그 안에 글자만 추출
+            
+            // 실습 1.1.요소(태그, 속성, 컨텐츠) 전체를 가져온방법 => getElementById() 사용
+            let h1 = document.getElementById("text");
+            console.log(h1);
+            // 실습 1.2.요소의 컨텐츠만 가져온 방법 => getElementById().textContent
+            let text = document.getElementById("text").textContent;
+            console.log(text);
+
+        }
+
+
+
+        // 실습 2) (arrow function 문법사용) 컨텐츠 변경 버튼을 눌렀을 때, h1 태그의 컨텐츠를 변경
+        // 포인트2 : 값을 변경할 때는 특별한 함수가 있는게 아니고 = 대입으로 변경한다.
+        const setText = ()=>{
+            // 대화 : html에서 id가 text인 요소를 가지고 온 후, 컨텐츠를 변경
+            let change = document.getElementById("text").textContent = "변경했습니다!!"; 
+            console.log(change);
+        }
+
+
+
+        //<h1> 123 </h1> <h2>123</h2> 는 한문장이다  
+        // document = {
+        //     h1 : ~
+        //     h2 : ~
+        // }
+
+        // DOM의 세계에서는 CSS가 가능하고, crawling이 가능한 것! 
+
+        // document = {
+        //     tag = { h1 : 123, h2 : 123},
+        //     attribute = {key : 123},
+        //     contents = {}
+
+
+        // }
+
+
+        //
+
+    </script>
+
+
+</body>
+</html>

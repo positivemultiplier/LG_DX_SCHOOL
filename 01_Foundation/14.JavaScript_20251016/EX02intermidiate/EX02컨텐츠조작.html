@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컨텐츠 조작</title>
+</head>
+<body>
+    <p id="text">컨텐츠 조작</p>
+    <button onclick="setText1()">textContent</button> 
+    <!-- 한계 : 태그를 인식하지 못한다.    -->
+    <button onclick="setText2()">innerHTML</button>
+    <!-- 한계 : 보안에 취약하다 -->
+    <button onclick="setText3()">사용자 입력</button>
+    <!-- 한계 : 사용자가 입력이 가능하므로 제어가 가능. so 보안이 문제가된다 -->
+
+    <script>
+        // 1.컨텐츠를 조작하는 2가지 방법(textContent, innerHTML)
+        // 1.1. textContent : 태그를 인식하지 못한다 -> 태그를 인식 無 (문자로 인식함)
+        const setText1 = ()=>{
+            // 대화 : html에서 id가 text인 요소를 가지고 온 후, 컨텐츠를 변경
+            let change = document.getElementById("text").textContent = "<span>변경했습니다!!</span>"; 
+
+        }
+        
+        // 1.2.1. innerHTML : 컨텐츠를 가지고오고, 수정도 가능 -> 태그를 인식 有
+        const setText2 = ()=>{
+            // 대화 : html에서 id가 text인 요소를 가지고 온 후, 컨텐츠를 변경
+            let change = document.getElementById("text").innerHTML = "<span>변경했습니다!!</span>"; 
+
+        }        
+
+
+        // 1.2.2. XSS(Cross-site Scripting) 보안이슈
+        // https://4rgos.tistory.com/1
+        // 사용자가 입력한 내용을 그대로 innerHTML에 넣어주게 되면, 악성스크립트가 삽입될 수 있다.
+        // 예시 : <img src="x" onerror="alert('해킹!!')">
+        // 해결방법 : 사용자가 입력한 내용을 그대로 innerHTML에 넣어주지 말고, textContent에 넣어준다.
+
+        const setText3 = ()=>{
+            // innerHTML로 태그를 인식한 변화를 만들기 -> 입력을 사용자가 담당
+            let data = prompt("입력하세요");
+            document.getElementById("text").innerHTML = data; // 보안에 취약
+        }
+
+        // ★ 주의점 : innerHTML의 특징이 태그를 인식한다 -> 사용자가 태그를 입려갛면 인식한다.
+        // XSS 공격에 매우 취약하다.
+        // 반드시 innerHTML을 사용할 때는 사용자에게 입력받으면 절대 안된다.
+        // 개발자가 코드안에서 수정할 때는 괜찮다.
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 객체(Object, key-values): "의미가 다른" 데이터를 모아두는 공간 => key- values로 존재함 => 큰 덩어리를 쪼개서 각각 관리하는 데이터 타입  
+        // 배열(Array, index-data) : "의미가 같은" 데이터를 모아두는 공간. => index와 data로 존재함
+        
+        // 객체는 python의 딕셔너리와 구조가 똑같다. Key: Value 형식이다.
+        let person = {
+            name : "정형",
+            age : 20,
+            money : null,
+            school : ["한국초", "한국중", "한국고", {"학번" : "25학번", "전공" : "컴공"}]
+
+        };
+        // 객체의 데이터 조회 => 객체이름.key으로 조회 => value추가 할때는 = 대입을 통해서 추가한다. 
+        person.money = 10000;
+        console.log(person.money);
+        console.log(person.car);
+
+
+        // 객체의 키 생성 => 객체이름.key로 생성한다.
+        person.car
+        console.log(person.money);
+        console.log(person.car);
+
+        // 객체 데이터 분석법: ★★★★★객체는 key로 접근, 배열은 index로 접근!!★★★★★
+
+        // 출발지(person)부터 목적지(한국대)로 하나하나 거슬러가면된다.
+        console.log(person.school[3]);
+        // 출발지(person)부터 목적지(컴공)로 하나하나 거슬러가면된다. => object는 key로 접근 array는 index로 접근
+        console.log(person.school[3].전공);
+
+
+        let soccer = {     
+            "teamName" : "Tottenham",     
+            "league" : "Premier League",     
+            "ranking" : 5,     
+            "players" : [         {         
+                                        "name" : "Son Heungmin",         
+                                        "backNumber" : 7,         
+                                        "age" : 30         },         
+                                    {         
+                                        "name" : "Harry Kane",         
+                                        "backNumber" : 10,         
+                                        "age" : 29         },         
+                                    {         
+                                        "name" : "Hugo Lloris",         
+                                        "backNumber" : 1,         
+                                        "age" : 36         }     ] }
+
+        // 손흥민을 꺼내와보자
+        console.log(soccer.players[0].name);
+        // GPT에게 넣어줘. 하면 알려준다. 
+
+
+        // 객체의 핵심 포인트
+        // - 오픈된 데이터들은 보통 JSON 형태의 데이터를 제공(JabaScript Object Notation)
+        // - 접근하고자 하는 데이터가 있다면, 최상위 객체의 이름부터 값까지 파고 들어간다.
+        // - 객체는 key로 접근, 배열은 index로 접근한다.
+ 
+        
+
+    </script>
+</body>
+</html>
