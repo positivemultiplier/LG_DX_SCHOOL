@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Maven POM (Project Object Model) 파일
+    프로젝트 정보, 의존성, 빌드 설정 등을 정의
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <!-- Maven POM 모델 버전 (항상 4.0.0 사용) -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ========================================
+         프로젝트 기본 정보 (GAV 좌표)
+         groupId:artifactId:version 조합으로 프로젝트를 고유하게 식별
+    ========================================= -->
+    
+    <!-- groupId: 프로젝트 그룹 (보통 회사나 조직의 도메인을 역순으로) -->
+    <groupId>com.example</groupId>
+    
+    <!-- artifactId: 프로젝트 이름 (빌드 시 생성되는 파일명의 기본값) -->
+    <artifactId>demo</artifactId>
+    
+    <!-- version: 프로젝트 버전 (SNAPSHOT은 개발 중인 버전을 의미) -->
+    <version>1.0-SNAPSHOT</version>
+    
+    <!-- packaging: 패키징 타입
+         - jar: Java 라이브러리, 독립 실행 가능한 Spring Boot 애플리케이션 (기본값)
+         - war: 웹 애플리케이션 (외부 Tomcat에 배포하거나 JSP 사용 시)
+         - pom: 부모 프로젝트 (의존성 관리용)
+    -->
+    <packaging>war</packaging>
+
+    <!-- 프로젝트 설명 (선택사항) -->
+    <name>Spring Boot JSP Demo Project</name>
+    <description>Spring Boot 2.7.18 기반의 JSP, Servlet, JSTL 학습용 프로젝트</description>
+
+    <!-- ========================================
+         부모 POM 상속
+         Spring Boot의 기본 설정, 의존성 버전 관리를 상속받음
+    ========================================= -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <!-- Spring Boot 버전: 2.7.18 (LTS 버전, 안정적) -->
+        <version>2.7.18</version>
+        <relativePath/> <!-- 로컬이 아닌 저장소에서 부모 POM을 찾음 -->
+    </parent>
+
+    <!-- ========================================
+         프로퍼티 (변수 정의)
+         ${변수명} 형태로 pom.xml 전체에서 재사용 가능
+    ========================================= -->
+    <properties>
+        <!-- 소스 파일 인코딩: UTF-8 (한글 깨짐 방지) -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        
+        <!-- Spring Boot 메인 클래스 경로 (애플리케이션 시작점) -->
+        <start-class>com.example.App</start-class>
+        
+        <!-- Java 버전: 1.8 (Java 8)
+             컴파일 소스 버전과 타겟 버전을 모두 1.8로 설정 -->
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        
+        <!-- 라이브러리 버전 관리 (중앙 집중식 버전 관리) -->
+        <lombok.version>1.18.30</lombok.version>                <!-- Lombok: 보일러플레이트 코드 자동 생성 -->
+        <log4jdbc.log4j2.version>1.16</log4jdbc.log4j2.version> <!-- JDBC 로깅 라이브러리 -->
+        <rest.assured.version>5.3.2</rest.assured.version>       <!-- REST API 테스트 라이브러리 -->
+    </properties>
+
+    <!-- ========================================
+         의존성 (Dependencies)
+         프로젝트에서 사용할 외부 라이브러리 선언
+         Maven이 자동으로 다운로드하여 classpath에 추가
+    ========================================= -->
+    <dependencies>
+        
+        <!-- ========== Spring Boot 핵심 의존성 ========== -->
+        
+        <!-- 1. spring-boot-starter-web
+             - Spring MVC, REST API 개발을 위한 스타터
+             - 내장 Tomcat 서버 포함
+             - JSON 변환을 위한 Jackson 라이브러리 포함
+             - 웹 애플리케이션 개발의 기본 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- version 생략: 부모 POM에서 관리 (2.7.18) -->
+        </dependency>
+        
+        <!-- 2. spring-boot-starter-jdbc
+             - JDBC 데이터베이스 연결을 위한 스타터
+             - DataSource 자동 설정
+             - JdbcTemplate 제공 (SQL 실행 간소화) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        
+        <!-- ========== 데이터베이스 ========== -->
+        
+        <!-- 3. H2 Database
+             - 인메모리 데이터베이스 (메모리에서 실행, 재시작 시 초기화)
+             - 개발/테스트 환경에 적합
+             - 별도 설치 불필요, 가볍고 빠름
+             - scope 생략 = compile (기본값: 모든 단계에서 사용) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <!-- version 생략: 부모 POM에서 관리 -->
+        </dependency>
+        
+        <!-- ========== 개발 편의성 라이브러리 ========== -->
+        
+        <!-- 4. Lombok
+             - Getter/Setter, Constructor, ToString 등을 자동 생성
+             - @Data, @Builder, @Slf4j 등의 어노테이션 제공
+             - 보일러플레이트 코드 제거로 생산성 향상
+             - scope=provided: 컴파일 시에만 필요, 런타임에는 불필요 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version> <!-- 1.18.30 -->
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- 5. log4jdbc-log4j2
+             - JDBC 쿼리 로깅 라이브러리
+             - 실행된 SQL 쿼리와 파라미터를 콘솔에 보기 좋게 출력
+             - 성능 분석, 디버깅에 유용 -->
+        <dependency>
+            <groupId>org.bgee.log4jdbc-log4j2</groupId>
+            <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+            <version>${log4jdbc.log4j2.version}</version> <!-- 1.16 -->
+        </dependency>
+
+        <!-- ========== JSP 지원 라이브러리 ========== -->
+        
+        <!-- 6. tomcat-embed-jasper
+             - JSP 컴파일러 (Jasper)
+             - Spring Boot 내장 Tomcat에서 JSP를 처리하기 위해 필요
+             - 이것이 없으면 JSP 파일이 컴파일되지 않음
+             - scope=provided: WAR 배포 시 외부 서버가 제공할 수 있으므로 -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- 7. JSTL (JSP Standard Tag Library)
+             - JSP에서 사용하는 표준 태그 라이브러리
+             - <c:if>, <c:forEach>, <c:out> 등의 태그 제공
+             - 스크립트릿(<% %>) 사용을 줄이고 가독성 향상
+             - version 명시: 1.2 (표준 버전) -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!-- ========== 테스트 라이브러리 ========== -->
+        
+        <!-- 8. spring-boot-starter-test
+             - JUnit 5, Mockito, AssertJ 등 테스트 도구 포함
+             - @SpringBootTest 어노테이션 제공
+             - scope=test: 테스트 단계에서만 사용 (배포 시 제외) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- 9. REST Assured
+             - REST API 테스트를 위한 라이브러리
+             - Given-When-Then 스타일의 직관적인 테스트 작성
+             - scope=test: 테스트 단계에서만 사용 -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest.assured.version}</version> <!-- 5.3.2 -->
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <!-- ========================================
+         빌드 설정 (Build Configuration)
+         Maven이 프로젝트를 어떻게 빌드할지 정의
+    ========================================= -->
+    <build>
+        <!-- 빌드된 파일의 최종 이름 (기본값: ${project.artifactId}-${project.version})
+             예: demo-1.0-SNAPSHOT.war
+             project. 접두사 사용 권장 (Maven 표준) -->
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        
+        <!-- Maven 플러그인 설정
+             플러그인: Maven의 각종 작업(컴파일, 패키징, 테스트 등)을 수행하는 도구 -->
+        <plugins>
+            
+            <!-- 1. spring-boot-maven-plugin
+                 - Spring Boot 전용 Maven 플러그인
+                 - 실행 가능한 JAR/WAR 파일 생성
+                 - mvn spring-boot:run 명령어로 애플리케이션 실행
+                 - 모든 의존성을 하나의 파일로 패키징 (Fat JAR/WAR) -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- version 생략: 부모 POM에서 관리 -->
+                
+                <configuration>
+                    <!-- 메인 클래스 지정 (애플리케이션 진입점) -->
+                    <mainClass>${start-class}</mainClass>
+                    
+                    <!-- Lombok 등 provided 의존성을 포함할지 여부 -->
+                    <excludeDevtools>false</excludeDevtools>
+                </configuration>
+                
+                <!-- 플러그인 실행 시점 정의 -->
+                <executions>
+                    <execution>
+                        <!-- package 단계에서 실행 -->
+                        <goals>
+                            <!-- repackage: 의존성을 포함한 실행 가능한 WAR 생성 -->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- 2. maven-compiler-plugin (선택사항, 명시적 설정)
+                 - Java 소스 코드 컴파일
+                 - 이미 부모 POM에서 설정되어 있지만, 명시적으로 재정의 가능 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Java 소스 버전 -->
+                    <source>${java.version}</source>
+                    <!-- 컴파일 타겟 버전 -->
+                    <target>${java.version}</target>
+                    <!-- 소스 파일 인코딩 -->
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <!-- 컴파일 시 상세 정보 출력 -->
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+            
+            <!-- 3. maven-war-plugin (WAR 패키징 설정)
+                 - WAR 파일 생성 시 동작 정의 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <!-- web.xml 파일이 없어도 WAR 생성 가능 (Spring Boot는 web.xml 불필요) -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+    </build>
+
+</project>

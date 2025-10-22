@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input</title>
+</head>
+<body>
+    <div>
+        <input type="text" name="id" id="inputId" value="안녕?" placeholder="input 입력창">
+        <button id="btn">input 값을 출력</button>
+    </div>
+
+
+    <div>
+        <input type="password" name="pw" id="pw" value="" placeholder="비밀번호 입력">
+        <button id="btn2">눈모양입니다!</button>
+    </div>
+
+    <script>
+        // 실습1 : 버튼을 눌렀을 때, input태그에 입력한 값을 콘솔창에 출력(함수 만들고 함수 연결해줘야겠다.)
+        // - 포인트 : input태그는 값을 value속성에 저장한다.
+        // - 핵심 : JS로 요소의 속성을 접근할 때는 속성명을 key값으로 작성(단! class같은 키워드는 사용이 불가!)
+        
+        // 1.1 익명함수 만들기
+        document.getElementById("btn").addEventListener("click", ()=>{
+            let text = document.getElementById("inputId").value;
+            // input tag는 홀태그이다. input tag는 contents가 없다. tag, attribute만 있다. contents가 없다.
+            // input name = key를 의미하고 value = value가 필수적으로 있어야한다.
+            // input 태그 안에 넣는 글은 value에 저장된다. 
+            console.log(text);
+        });
+        
+        // 실습2 : 패스워드를 보이게, 안보이게 설정하기.  
+        //    버튼을 눌렀을 때 type이 패스워드라면 text로 변경 -> 그렇지 않다면 패스워드로 변경
+
+        document.getElementById("btn2").addEventListener("click", ()=>{
+
+            let tag = document.getElementById("pw");
+            let value = tag.value;
+
+            if (tag.type == "password") {
+                tag.type = "text"
+            }else{
+                tag.type = "password"
+            }
+            
+        });
+
+        </script>
+
+
+
+
+
+</body>
+</html>

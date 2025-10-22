@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 처리</title>
+</head>
+<body>
+    
+    
+    <button onclick="print()">인라인방식</button>
+    <button id="btn1">리스너방식</button>
+    <button id="btn2">익명함수방식</button>
+    
+    <!-- ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
+    <script src="EX05event.js"></script>
+    
+    <!-- 
+        JS를 HTML과 분리하기 위해서 파일을 쪼갠다.
+        1) HTML파일을 제작
+        2) JS파일을 제작
+        3) HTML에서 JS를 호출 -> <script src="EX05event.js"></script> -> 외부호출방식
+        - 장점 : 개발자 도구에서 코드가 노출 X, 한줄만 가지고 여러파일에서 활용이 가능(재사용성, 유지보수성, 가독성)
+        - 주의점 :  
+                    1. 호출하는 script태그에는 코드를 작성하면 안된다.
+                    2. 실행순서를 반드시 고려하자. -> 내가 만든 JS파일은 맨 밑으로 넣자.
+    
+    -->
+    
+    <!-- 
+        ★★★스크립트파일과 연결시켜야한다.★★★
+        파일로 쪼개서 따로 관리를해야 유지관리가 편하다. - 재사용성도 좋다. - 가독성도 좋다.
+        외부방식 이라고 한다.
+    -->
+    <!-- 주의사항 
+        1. 불러온 태그에 어떤 코드를 작성하면 안된다.
+        2. JAVA는 컴파일언어 javascript는 인터프리터 언어(한줄씩 읽는것) => btn1이 존재하지 않는 상태에서 스크립트가 실행되면 오류가 난다. getElementById("btn1")이 null값이 된다.
+        그래서 스크립트 파일을 body 맨 아래에 작성한다. (중수는 다시 읽어오기 코드도 작성할 수 있다.)
+    -->
+
+</body>
+</html>
