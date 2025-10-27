@@ -10,7 +10,7 @@ const print = ()=>{
 // - 사용처 : 1.중요하지 않은 함수는 괜찮다. 2.로컬테스트 개발에 편리하다.  
 
 
-// 1.2.리스너방식 : HTML에 작성하지 않고 모든 작업을 JS에서 처리하는 방법
+// 1.2.리스너(Listener)방식 : HTML에 작성하지 않고 모든 작업을 JS에서 처리하는 방법
 //document.getElementById("btn1").addEventListener(//이벤트 종류 , //실행할 함수 )
 
 document.getElementById("btn1").addEventListener("click", print);
@@ -24,13 +24,14 @@ document.getElementById("btn1").addEventListener("click", print);
 // - 권장사항 : ★★★무조건 리스너 방식을 사용하자.
 
 
-// 1.3. 익명함수방식 : 함수를 이름없이 제작한다.
+// 1.3. 익명함수(Anonymous Function)방식 : 함수를 이름없이 제작한다.
 // - 사용처 : 특정 태그에게만 사용할 함수를 제작할 때 활용
 // - 사용처2 : 제작한 함수가 매개변수를 활용하는 경우 익명함수로 감싸야한다. (콜백함수) 
 // ★★★매개변수를 넘겨야하는 상황이 발생할때 활용하게된다. 매개변수를 넘길때 리스너방식은 사용이 불가능하다. => 콜백call back 함수(함수안에 다시 함수가 들어가는 형태의 함수)
 
+//document.getElementById("btn1").addEventListener(//이벤트 종류 , // Arrow function(){실행할 코드} 정의해버림 )
 document.getElementById("btn2").addEventListener("click", function(){
-    print(1,2);
+    print(1,2); // 콜백(Callback)함수
     alert("익명함수실행");
 });
 

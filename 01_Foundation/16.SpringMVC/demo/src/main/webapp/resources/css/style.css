@@ -1,0 +1,175 @@
+/* 전역 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 헤더 */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+/* 메인 콘텐츠 */
+main {
+    padding: 40px;
+}
+
+/* 박스 공통 스타일 */
+.welcome-box,
+.greeting-box,
+.info-box,
+.code-example,
+.navigation {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+.welcome-box h2,
+.greeting-box h2,
+.info-box h3,
+.code-example h3,
+.navigation h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.welcome-box p,
+.greeting-box p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* 리스트 스타일 */
+.info-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-box li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.info-box li:last-child {
+    border-bottom: none;
+}
+
+.info-box strong {
+    color: #667eea;
+}
+
+/* 코드 블록 */
+pre {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* 네비게이션 링크 */
+.navigation ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.navigation li {
+    margin: 10px 0;
+}
+
+.navigation a {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.navigation a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 푸터 */
+footer {
+    background: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    main {
+        padding: 20px;
+    }
+    
+    .welcome-box,
+    .greeting-box,
+    .info-box,
+    .code-example,
+    .navigation {
+        padding: 15px;
+    }
+}

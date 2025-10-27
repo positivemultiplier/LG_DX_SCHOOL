@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>이미지 변경 버튼을 누르면 이미지가 변경됩니다.
+        <img id="img" src="https://i.namu.wiki/i/kg0P8xNDIeAgLnR_eeLaBWt7YvJvhKf6x0jKu7PZBZ2DsfK5bk-UmqQyvQoHVt4oBXD9hSaaaZ3CCYQOj7k9uA.webp">
+         <br> <!-- br: line break -->
+    </div>
+
+
+    <div>공간으로 감싸서 뜯어야한다.
+        <button id="btn">이미지 변경</button>
+    </div>
+
+    <script>
+        // 실습목표 : 버튼을 눌렀을 때, img를 변경하는 실습 => 누를때마다 원래이미지로 돌아오고 다시 변경한다.
+
+        let src1 = "https://i.namu.wiki/i/kg0P8xNDIeAgLnR_eeLaBWt7YvJvhKf6x0jKu7PZBZ2DsfK5bk-UmqQyvQoHVt4oBXD9hSaaaZ3CCYQOj7k9uA.webp";
+        let src2 = "https://it.chosun.com/news/photo/202302/2023021500864_1.png";
+
+        document.getElementById("btn").addEventListener("click", ()=>{
+            let tag = document.getElementById("img");
+
+            if (tag.src == src1) {
+                tag.src = src2;
+            }else{
+                tag.src = src1;
+            }
+        }); 
+    </script>
+
+
+</body>
+</html>

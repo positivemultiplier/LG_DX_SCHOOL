@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dark{
+            background-color: black;
+            color: white;
+        }
+        .gray{
+            background-color: gray;
+            color: yellow;
+        }
+        .blue{
+            background-color: cyan;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>목요일 입니다.</h1>
+    <span>화이팅하세요~</span>
+    <button id="btn">다크모드 변경</button>
+
+    <script>
+        // 실습목표 : 버튼을 눌렀을 때 스타일을 한번에 변경하기
+        // 주의점 : JS로 CSS에 대한 직접 조작은 불가능!
+        // 해결책 : JS로 HTML의 Class 속성은 접근 가능!
+        // 클래스를 접근하는 방법 2가지 : classList, className 
+        // 2가지 존재하는 이유 : class는 여러개의 값을 넣을 수 있다.
+        // classList에 존재하는 toggle함수를 활용한다. -> 넣다 뺐다를 반복하는 함수.
+        // 웹버전에서 모바일 버전으로 바꾸고 싶을때 한방에 CSS를 제어 가능하다.
+
+        // 요즘은 DarkMode Library가 존재한다고 함.
+
+        
+        document.getElementById("btn").addEventListener("click", ()=>{
+           // 로직 : body태그의 클래스값을 dark로 변경하는 실습
+           
+            // 변수 영역(기능단위로 구분)
+            let body_tag = document.getElementsByTagName("body")[0]; 
+            let btn = document.getElementById("btn");
+            // html collection 유사배열인데 => 복수요청(request) 복수응답(response)
+            // list인데 1개의 값만 넣을것이니깐 0번째의 index만 변수에 넣어버리면 easy하다!
+            
+            // 클래스 변경영역(기능단위로 구분)
+            body_tag.classList.toggle("gray") // 값을 갈아끼우겠다 => toggle (모든 프로그램에서 사용한다네~)
+            // 추가실습 : body의 class가 gray라면 버튼의 글자를 일반모드 변경 수정
+            // 반대로 body의 class가 없다면 버튼의 글자를 다크모드 변경 수정
+            // 현재상태에서 버튼의 컨텐츠를 바꾸는 작업
+            
+            // 1.1.버튼 변경영역(기능단위로 구분)
+            // if (body_tag.classList.contains("gray")) { 
+            //     btn.textContent = "일반모드 변경"
+            // }else{
+            //     btn.textContent = "다크모드 변경"
+            // }
+
+            // 1.2.삼항 연산자로 버튼 변경 사용하는방법 
+            // condition ? true : false 
+            btn.textContent = body_tag.classList.contains("gray") ?  "일반모드 변경" : "다크모드 변경";
+        });
+
+    </script>
+</body>
+</html>

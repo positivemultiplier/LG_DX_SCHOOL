@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="txt"> 스타일을 변경하겠습니다!</p>
+    <button id="btn">스타일변경</button>
+
+    <script>
+        // 실습목표 : 버튼을 클릭했을 때, p태그의 글자색을 빨간색으로 글자 크기를 50px로 변경
+        // - JS로 CSS를 접근하기 위해서는 style속성을 활용한다.
+        // - 포인트 : style속성은 단일데이터 구조가 아닌 객체안에 객체를 가진 구조
+        // - 사용법 : 요소.style.속성명 = "값"; 
+        // - 단점 : 가독성 낮다, 유지보수성 낮다, 코드 노출 된다.
+        // - 사용처 : 단일 스타일 제어에는 편리하다. 
+
+        document.getElementById("btn").addEventListener("click", ()=>{
+            let p_tag = document.getElementById("txt");
+            console.log(p_tag.style);
+            
+            p_tag.style.color = "red";
+            p_tag.style.fontSize = "100px";// 키값에는 Camel Case를 활용한다. // CSS : font-size -> JS : fontSize
+        });
+    </script>
+
+</body>
+</html>
