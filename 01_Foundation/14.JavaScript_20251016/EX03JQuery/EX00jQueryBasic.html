@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 라이브러리 호출시에는 head에서 호출한다! 안전장치가 되어있기 때문에 -->
+    <script src="./jquery-3.7.1.min.js"></script>
+    <!-- CDN 방식 : <script src="https://code.jquery.com/jquery-3.7.1.js"></script> --> 
+    
+    <style>
+        .gray{
+            background-color: gray;
+            color: yellow;}
+    </style>
+</head>
+<body>
+    <!-- 
+        제이쿼리 : JS언어를 활용한 라이브러리 -> JS코드를 짧고 간결하게 사용이 가능하다.  
+        바닐라JS와의 차이점 : 순수JS는 객체기반의 key값 접근 -> jQuery는 함수기반
+        
+        * ★★★★★라이브러리는 반드시 import 작업이 필요하다.★★★★★
+        import방법 2가지 
+        1) 파일을 직접 로딩하는방법(File Load) => develop 환경에서 주로 사용한다.
+        <script src="./jquery-3.7.1.min.js"></script>
+        장점 : 안전성 보장 -> 로컬에 파일이 존재하므로 파일 사라지지 않는다.
+        단점 : 파일이 최신버전이 아닐 수 있다.
+
+        2) 네트워크를 통해서 파일을 호출하는 방법(CDN: Contents Delivery Network) => deploy 환경에서 주로 사용한다. 
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        단점 : 네트워크가 불안정하면 파일이 로드되지 않을 수 있다.
+        장점 : 항상 최신버전을 로드할 수 있다. 공유,배포 할때 같은 버전을 사용할 수 있다.
+    -->
+
+    <h1 id="txt">제이퀘리 방식으로 접근</h1>
+    <button id="btn">클릭</button>
+
+    <script>
+        // 1. Banila JS 문법과 jQuery 문법을 비교
+        // - 순수JS는 객체기반의 key값 접근, jQuery는 함수기반의 접근
+        document.getElementById("txt");
+        // $("selector")
+        // $("#txt > a > span > h2") 선택자의 선택이 유연해진다.
+        $("#txt"); // jQuery 문법   
+        
+        // 2. 컨텐츠 접근
+        document.getElementById("txt").textContent; // textContent : 텍스트 컨텐츠 접근
+        let h1 = $("#txt").text(); // text() : 텍스트 컨텐츠 접근 => Return fnction
+        document.getElementById("txt").innerHTML; // innerHTML : HTML 컨텐츠 접근
+        $("#txt").html(); // html() : HTML 컨텐츠 접근
+        
+        // 3. 컨텐츠 수정 => 바닐라JS는 대입, jQuery는 함수호출
+        document.getElementById("txt").textContent = "바닐라JS로 수정된 텍스트입니다. Value에 대입해주세요"; // key와 value 구조이므로 value에 값을 대입
+        $("#txt").text("jQuery로 수정된 텍스트입니다. Parameter로 넣으세요."); // function 기반이므로 parameter로 값을 넘겨줘야한다.
+        // 단일 데이터 타입에는 Array나 Object를 사용할 필요가 없다.
+        
+        // jQuery 문법
+        // 1) 요소 접근 -> $("선택자")
+        // 2) 컨텐츠 접근 -> $("선택자").text() or .html()
+        // 3) 컨텐츠 수정 -> $("선택자").text("수정값")
+
+        // 4. 스타일 변경
+        // 핵심 : 매개변수(parameter)로 여러개의 값을 넘길 때는 배열(Array) or 객체(Object)를 넘길 수 있다
+        // CSS는 키 값이 다르기 때문에 의미가 다르다 -> 객체(Object)를 넘긴다. 
+        document.getElementById("txt").style.color ="red"; // 바닐라JS 스타일 변경
+        // document.getElementById("txt").style.fontSize ="100px"; // 바닐라JS 스타일 변경 => 2개의 data type을 수정해봐라. =>Array vs Object
+        $("#txt").css({color : "red", fontSize : "20px"}); // css("속성명","값") : 스타일 속성 변경 함수 // 객체의 활용법을 잘 생각해라.
+
+        // 5. 이벤트 처리
+        document.getElementById("btn").addEventListener("click",()=>{
+            alert("바닐라JS를 사용한 이벤트 연결 1");
+        });
+
+        $("#btn").on("click", ()=>{
+            alert("jQuery를 사용한 이벤트 연결 2");
+            toggle("gray");
+        });
+
+
+
+
+
+
+    </script>
+
+
+
+    
+</body>
+</html>

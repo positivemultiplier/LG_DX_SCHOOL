@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .yellow{
+            background-color: yellow;
+            color : gray;
+        }
+
+        .white{
+            background-color: white;
+            color : black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ajax 비동기 통신 실습</h1>
+    <button id="btn">CSS변경 </button>
+    <script>
+        // 1. 통신이란? : 클라이언트의 요청(request)을 서버가 받아서 응답(response)하는 구조
+
+
+        // 2. 동기(synchronous) vs 비동기(Asynchronous)
+
+        // 2.1. 동기 synchronous : 순차적으로 처리하는 방식=> 데이터를 주고 받은 후 전체 페이지가 다시 로드된다. (Blocking 상태에 도달한다.)
+        // 단점 : 서버쪽에서 처리가 오래걸리면 로딩시간이 증가(넘겨줄 파일이 많아서)
+        // 장점 : 서버가 처리하는 동안 사용자는 다른 요청을 보낼 수 없다. 
+        // 사용처 : 대규모 서비스에 적합 (많은 업무를 처리할 때, 은행업무, 예약시스템 등)
+
+        // 2.2. 비동기 A(n) + synchronous : 처리 결과를 기다리지 않고 다음 작업을 수행하는 방식 => 특정 부분만 다시 로드된다. (Blocking 상태에 도달X) 
+        // 장점 : 화면의 전환이 부드럽다, 적은양의 데이터를 빠르게 처리 가능하다.
+        // 단점 : 많은 양의 데이터 처리가 어렵다.(업무 처리 순서를 잘 계산해야 한다. )
+        // 사용처 : 짧은 양의 데이터를 초기화 할 때 좋다(채팅서비스, 실시간 알림, SNS 등)
+
+
+        // 3. 기술 : SPA vs MPA
+        // SPA : Single Page Application (비동기 방식으로 동작하는 어플리케이션) => React, Vue, Angular 등이 있다.
+        // MPA : Multi Page Application (동기 방식으로 동작하는 어플리케이션) => Spring, Django 등이 있다.
+        // 토스뱅크는 hybrid 방식이다. => MPA + SPA
+
+        // 실습 : 영화진흥위원회 오픈API를 비동기로 요청(JSON 파일) -> 내 화면에 출력!!
+        // 1. jQuery ajax를 활용
+        // 2. 바닐라JS함수 fetch를 활용 -> 순수JS에 내장되어있는 비동기 기술(대중적으로 사용하는 기술)
+        // $("#btn").on("click", ()=>{
+        //     $("body").toggleClass("yellow");
+        // });
+
+        $("#btn").on("click", ()=>{
+            $("body").toggleClass("yellow");
+        });
+    </script>
+
+</body>
+</html>

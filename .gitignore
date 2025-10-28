@@ -145,6 +145,3 @@ env*/
 
 # 설치 스크립트(로컬 전용)
 get-pip.py
-
-**/Spring
-**/SpringMVC

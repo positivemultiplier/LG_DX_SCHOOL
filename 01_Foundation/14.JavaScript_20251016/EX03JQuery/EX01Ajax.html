@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Ajac : Asynchronous JavaScript and XML
+        // 비동기 방식으로 서버와 통신하는 기술
+        // 동기 synchronous : 순차적으로 처리하는 방식=> 전체 페이지가 다시 로드된다. 
+        // 비동기 An + synchronous : 처리 결과를 기다리지 않고 다음 작업을 수행하는 방식 => 특정 부분만 다시 로드된다. -> 사용자 경험 향상
+        // javascript에서는 비동기 통신이 default값이다. => 카카오톡의 대화내용이 실시간으로 오게된다. // 라이브 검색어도 비동기 통신이다.// 아이디 중복검사도 비동기 통신이다.
+
+        // 필요한 데이터만을 웹 서버에 요청해서 받은 후 클라이언트에서 데이터에 대한 처리를 진행하는 비동기적인 웹 어플리케이션을 제작하기 위한 웹 개발 방법
+        // 채팅방에 이미지를 100개 넣을동안 다른 작업을 할 수 없다( synchronous ) => 비동기 통신을 활용하면 이미지 로딩중에 다른작업을 할 수 있다.
+        // JAVA, Spring은 기본적으로 동기방식(synchronous)이다. (Java)순서대로 처리하면 돼. => Blocking 해놓고 처리하면된다.
+        
+        // JS는 Ajax를 활용해서 비동기방식(Asynchronous)으로 변경할 수 있다.
+        // NodeJS는 기본적으로 비동기방식(Asynchronous)이다. => Non-Blocking
+
+        // 1. 이미지를 넣고 프론트에서 backend로 파이썬쪽으로 flask나 pastapi를 보내놓고 뭔가 할 수 없다. 
+        // 2. 실시간 객체탐지기능은 비동기방식(Asynchronous)으로 구현해야한다.
+
+        //영화진흥위원회 오픈 API를 활용해서 
+        // 1. 객체Data분석하는 방법 (객체 : key), (배열 : index)
+        // 2. 동기와 비동기 방식 으로 영화 순위를 나열해보자.
+
+    </script>
+</body>
+</html>
