@@ -1,0 +1,41 @@
+# 외국인 한국여행 불편사항 크롤링 및 분석 프로젝트
+# 설치: pip install -r requirements_crawling.txt
+
+# 크롤링
+praw>=7.7.1                      # Reddit API
+google-api-python-client>=2.110.0  # YouTube Data API v3
+requests>=2.31.0                 # HTTP 요청
+tenacity>=8.2.3                  # 재시도 메커니즘
+python-dotenv>=1.0.0             # 환경변수 관리
+
+# 데이터 처리
+pandas>=2.1.4
+numpy>=1.26.3
+
+# 감성분석
+textblob>=0.17.1                 # 영어 감성분석
+vaderSentiment>=3.3.2            # 소셜 미디어 감성분석
+langdetect>=1.0.9                # 언어 감지
+
+# 한국어 처리
+konlpy>=0.6.0                    # 한국어 형태소 분석 (Java 필요)
+JPype1>=1.5.0                    # KoNLPy 의존성
+
+# 중국어/일본어/태국어/베트남어 처리
+jieba>=0.42.1                    # 중국어 토큰화
+# mecab-python3>=1.0.6           # 일본어 토큰화 (MeCab 설치 필요)
+deep-translator>=1.11.4          # 다국어 번역 (Google Translate)
+googletrans==4.0.0rc1            # 대체 번역 라이브러리
+
+# 토픽모델링 & 머신러닝
+scikit-learn>=1.3.2              # TF-IDF, NMF, KMeans
+
+# 시각화
+wordcloud>=1.9.3                 # 워드클라우드
+matplotlib>=3.8.2
+seaborn>=0.13.1
+Pillow>=10.2.0                   # 이미지 처리
+
+# 노트북
+jupyter>=1.0.0
+ipykernel>=6.28.0
